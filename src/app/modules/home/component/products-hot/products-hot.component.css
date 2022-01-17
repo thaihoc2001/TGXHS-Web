@@ -1,0 +1,12 @@
+.product-by-type-outsize{
+  background-color: white;
+}
+.product-item{
+  box-shadow: 0px 1px 1px gray;
+}
+.readmore-btn{
+  width: 20vw;
+}
+a{
+  text-decoration: none;
+}

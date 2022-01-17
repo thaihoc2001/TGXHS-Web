@@ -30,6 +30,7 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "ngx-bootstrap": "^7.0.0",
+    "ngx-owl-carousel-o": "^7.0.1",
     "ngx-page-scroll": "^7.0.5",
     "ngx-page-scroll-core": "^7.0.5",
     "ngx-toastr": "^14.0.0",

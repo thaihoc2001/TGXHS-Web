@@ -1,0 +1,15 @@
+.product-sales{
+  background-color: #FED100;
+}
+mat-card{
+  background-color: white;
+}
+.product{
+  padding:5vh 0 5vh 0 !important;
+}
+.readmore-btn{
+  width: 20vw;
+}
+a{
+  text-decoration: none;
+}
