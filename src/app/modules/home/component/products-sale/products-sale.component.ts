@@ -4,7 +4,7 @@ import {OwlOptions} from "ngx-owl-carousel-o";
 @Component({
   selector: 'app-products-sale',
   templateUrl: './products-sale.component.html',
-  styleUrls: ['./products-sale.component.css']
+  styleUrls: ['./products-sale.component.scss']
 })
 export class ProductsSaleComponent implements OnInit {
 

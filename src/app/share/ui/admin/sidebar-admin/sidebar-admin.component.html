@@ -1,0 +1,63 @@
+<aside class="sidebar shadow-sm pt-5 pt-md-0">
+  <div class="sidebar-profile d-flex flex-column justify-content-center pt-5 pb-3">
+    <div class="picture-wrapper mb-4">
+      <div class="user-picture m-auto">
+        <img src="./assets/image/avatar/user.jpg" class="img-fluid" alt="">
+      </div>
+    </div>
+    <div class="profile-details text-center pb-4">
+      <p class="mb-0 text-uppercase name">User</p>
+      <small class="text-uppercase role">Administrator</small>
+    </div>
+  </div>
+  <nav class="sidebar-menu pt-3 pb-3 mx-3">
+    <div class="menu-header mt-3 mb-2">
+      Feature
+    </div>
+    <ul class="menu-items list-unstyled">
+      <li >
+        <a href="admin/dashboard" routerLinkActive="active">
+          <i class="fas fa-tachometer-alt"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li >
+        <a href="/admin/product-manage">
+          <i class="fas fa-newspaper"></i>
+          <span>Product manage</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/messenger">
+          <i class="fas fa-sms"></i>
+          <span>Messenger</span>
+        </a>
+      </li>
+      <li >
+        <a routerLink="/home/me" >
+          <i class="fas fa-user-plus"></i>
+          <span>Register</span>
+        </a>
+      </li>
+    </ul>
+    <div class="menu-header mt-4 mb-4">
+      Other
+    </div>
+    <ul class="menu-items list-unstyled ">
+      <li >
+        <a routerLink="/home/me" routerLinkActive="active" >
+          <i class="fas fa-user"></i>
+          <span>Profile</span>
+        </a>
+      </li>
+      <li>
+        <a class="">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>
+            Logout
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>

@@ -1,0 +1,9 @@
+<div class="wrapper default-theme" [ngClass]="getClasses()">
+  <app-navbar-admin></app-navbar-admin>
+  <main>
+    <app-sidebar-admin class="mt-5"></app-sidebar-admin>
+    <div class="mx-4 mt-5 pt-3 w-100">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

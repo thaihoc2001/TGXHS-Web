@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/layout/layout.module').then(m => m.LayoutModule)
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }

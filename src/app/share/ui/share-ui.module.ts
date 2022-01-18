@@ -8,6 +8,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 import { MatInputModule } from '@angular/material/input';
 import {FormsModule} from "@angular/forms";
+import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.component';
+import { SidebarAdminComponent } from './admin/sidebar-admin/sidebar-admin.component';
+import {CollapseModule} from "ngx-bootstrap/collapse";
 
 
 
@@ -16,19 +19,24 @@ import {FormsModule} from "@angular/forms";
     NavbarComponent,
     FooterComponent,
     PageNotFoundComponent,
-    MenuComponent
+    MenuComponent,
+    NavbarAdminComponent,
+    SidebarAdminComponent
   ],
   exports: [
     NavbarComponent,
     FooterComponent,
-    MenuComponent
+    MenuComponent,
+    NavbarAdminComponent,
+    SidebarAdminComponent
   ],
   imports: [
     CommonModule,
     MatFormFieldModule,
     MatIconModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    CollapseModule
   ]
 })
 export class ShareUiModule { }
