@@ -1,1 +1,225 @@
-<p>create-product-modal works!</p>
+<div class="modal-header">
+  <div class="modal-title h4">Thêm sản phẩm mới</div>
+</div>
+<div class="modal-body">
+  <ng-container>
+    <div class="row">
+      <div class="col-12">
+        <form class="form" [formGroup]="productForm">
+          <div class="col-12 row">
+            <div class="form-group col-12">
+              <label class="form-label">Tên sản phẩm</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="productName"
+                     placeholder="Tên sản phẩm" autocomplete="off" formControlName="productName"
+                     [class.is-invalid]="isControlInvalid(productForm, 'productName')"
+                     [class.is-valid]="isControlValid(productForm, 'productName')"/>
+              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'productName')">Tên sản phẩm đã nhập chính
+                xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'productName')">Tên sản phâm
+                không được để trống
+              </div>
+            </div>
+          </div>
+          <div class=" col-12 row">
+            <div class="form-group col-6">
+              <label class="form-label mt-2">Giá sản phẩm</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="priceValue"
+                     placeholder="Giá sản phẩm" autocomplete="off" formControlName="priceValue"
+                     [class.is-invalid]="isControlInvalid(productForm, 'priceValue')"
+                     [class.is-valid]="isControlValid(productForm, 'priceValue')"/>
+              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'priceValue')">Gía sản phẩm đã nhập chính
+                xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'priceValue')">Gía sản phẩm
+                không được để trống
+              </div>
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label mt-2">Giảm giá</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="discount"
+                     placeholder="Giảm giá" autocomplete="off" formControlName="discount"
+                     [class.is-invalid]="isControlInvalid(productForm, 'discount')"
+                     [class.is-valid]="isControlValid(productForm, 'discount')"/>
+              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'discount')">Giảm giá sản phẩm đã nhập
+                chính xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'discount')">Giảm giá sản
+                phẩm không được để trống
+              </div>
+            </div>
+          </div>
+          <div class="col-12 row">
+            <div class="form-group col-12">
+              <label class="form-label mt-2">Mô tả sản phẩm</label>
+              <textarea type="text" class="form-control form-control-lg form-control-solid  is-invalid"
+                        name="description"
+                        placeholder="Mô tả sản phẩm" autocomplete="off" formControlName="description"
+                        [class.is-invalid]="isControlInvalid(productForm, 'description')"
+                        [class.is-valid]="isControlValid(productForm, 'description')">
+              </textarea>
+              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'description')">Tên sản phẩm đã nhập chính
+                xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'description')">Tên sản phâm
+                không được để trống
+              </div>
+            </div>
+          </div>
+          <div class="col-12 row">
+            <div class="form-group col-6">
+              <label class="form-label mt-2">Hãng sản xuất</label>
+              <select class="form-control form-control-lg form-control-solid" name="productCategory"
+                      formControlName="productCategory"
+                      [class.is-invalid]="isControlInvalid(productForm, 'productCategory')"
+                      [class.is-valid]="isControlValid(productForm, 'productCategory')">
+                <option *ngFor="let productCategory of listProductCategory" [ngValue]="productCategory">
+                  {{productCategory.productCategoryName}}
+                </option>
+              </select>
+              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'productCategory')">Hãng sản xuất đã nhập
+                chính xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'productCategory')">Hãng sản
+                xuất không được để trống
+              </div>
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label mt-2">Loại sản phẩm</label>
+              <select class="form-control form-control-lg form-control-solid" name="productType"
+                      formControlName="productType" [class.is-invalid]="isControlInvalid(productForm, 'productType')"
+                      [class.is-valid]="isControlValid(productForm, 'productType')">
+                <option *ngFor="let productType of listProductType" [ngValue]="productType">
+                  {{productType.productTypeName}}
+                </option>
+              </select>
+              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'productType')">Loại sản phẩm đã nhập chính
+                xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'productType')">Loại sản
+                phẩm không được để trống
+              </div>
+            </div>
+          </div>
+          <div class="col-12 row">
+            <div class="form-group col-12">
+              <label class="form-label mt-2">Hình sản phẩm chính</label>
+              <input type="file" class="form-control form-control-lg form-control-solid  is-invalid"
+                     name="imageThumbnail"
+                     placeholder="Hình sản phẩm chính" autocomplete="off" formControlName="imageThumbnailSource"
+                     [class.is-invalid]="isControlInvalid(productForm, 'imageThumbnailSource')"
+                     [class.is-valid]="isControlValid(productForm, 'imageThumbnailSource')"
+                     (change)="onFileSelected($event, 'imageThumbnail')"/>
+              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'imageThumbnailSource')">Hình sản phẩm chính đã
+                nhập chính xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'imageThumbnailSource')">Hình sản
+                phẩm chính không được để trống
+              </div>
+            </div>
+          </div>
+          <div class="col-12 row">
+            <div class="form-group col-4">
+              <label class="form-label mt-2">Hình ảnh sản phẩm 1</label>
+              <input type="file" class="form-control form-control-lg form-control-solid  is-invalid" name="imageSource1"
+                     placeholder="Hình sản phẩm chính" autocomplete="off" formControlName="imageSource1"
+                     [class.is-invalid]="isControlInvalid(productForm, 'imageSource1')"
+                     [class.is-valid]="isControlValid(productForm, 'imageSource1')"
+                     (change)="onFileSelected($event, 'image1')"/>
+              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'imageSource1')">Hình sản phẩm 1 đã nhập chính
+                xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'imageSource1')">Hình sản phẩm 1
+                không được để trống
+              </div>
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label mt-2">Hình ảnh sản phẩm 2</label>
+              <input type="file" class="form-control form-control-lg form-control-solid  is-invalid" name="imageSource2"
+                     placeholder="Hình sản phẩm chính" autocomplete="off" formControlName="imageSource2"
+                     [class.is-invalid]="isControlInvalid(productForm, 'imageSource2')"
+                     [class.is-valid]="isControlValid(productForm, 'imageSource2')"
+                     (change)="onFileSelected($event, 'image2')"/>
+              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'imageSource2')">Hình sản phẩm 2 đã nhập chính
+                xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'imageSource2')">Hình sản phẩm 2
+                không được để trống
+              </div>
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label mt-2">Hình ảnh sản phẩm 3</label>
+              <input type="file" class="form-control form-control-lg form-control-solid  is-invalid" name="imageSource3"
+                     placeholder="Hình sản phẩm chính" autocomplete="off" formControlName="imageSource3"
+                     [class.is-invalid]="isControlInvalid(productForm, 'imageSource3')"
+                     [class.is-valid]="isControlValid(productForm, 'imageSource3')"
+                     (change)="onFileSelected($event, 'image3')"/>
+              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'imageSource3')">Hình sản phẩm 3 đã nhập chính
+                xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'imageSource3')">Hình sản phẩm 3
+                không được để trống
+              </div>
+            </div>
+          </div>
+          <div class="col-12 row">
+            <div class="form-group col-4">
+              <label class="form-label mt-2">Hình ảnh sản phẩm 4</label>
+              <input type="file" class="form-control form-control-lg form-control-solid  is-invalid" name="imageSource4"
+                     placeholder="Hình sản phẩm chính" autocomplete="off" formControlName="imageSource4"
+                     [class.is-invalid]="isControlInvalid(productForm, 'imageSource4')"
+                     [class.is-valid]="isControlValid(productForm, 'imageSource4')"
+                     (change)="onFileSelected($event, 'image4')"/>
+              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'imageSource4')">Hình sản phẩm 4 đã nhập chính
+                xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'imageSource4')">Hình sản phẩm 4
+                không được để trống
+              </div>
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label mt-2">Hình ảnh sản phẩm 5</label>
+              <input type="file" class="form-control form-control-lg form-control-solid  is-invalid" name="imageSource5"
+                     placeholder="Hình sản phẩm chính" autocomplete="off" formControlName="imageSource5"
+                     [class.is-invalid]="isControlInvalid(productForm, 'imageSource5')"
+                     [class.is-valid]="isControlValid(productForm, 'imageSource5')"
+                     (change)="onFileSelected($event, 'image5')"/>
+              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'imageSource5')">Hình sản phẩm 5 đã nhập chính
+                xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'imageSource5')">Hình sản phẩm 5
+                không được để trống
+              </div>
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label mt-2">Hình ảnh sản phẩm 6</label>
+              <input type="file" class="form-control form-control-lg form-control-solid  is-invalid" name="imageSource6"
+                     placeholder="Hình sản phẩm chính" autocomplete="off" formControlName="imageSource6"
+                     [class.is-invalid]="isControlInvalid(productForm, 'imageSource6')"
+                     [class.is-valid]="isControlValid(productForm, 'imageSource6')"
+                     (change)="onFileSelected($event, 'image6')"/>
+              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'imageSource6')">Hình sản phẩm 6 đã nhập chính
+                xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'imageSource6')">Hình sản phẩm 6
+                không được để trống
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-light btn-elevate mr-1"
+          (click)="cancel()"
+  >
+    Hủy
+  </button>&nbsp;
+  <button type="button" class="btn btn-primary btn-elevate" (click)="submit()"
+  >
+    Lưu
+  </button>
+</div>
+

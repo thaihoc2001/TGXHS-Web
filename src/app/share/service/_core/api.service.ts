@@ -37,6 +37,25 @@ export class ApiService {
     // @ts-ignore
     return httpHeaders;
   }
+
+  public setHeadersFormData(headers?: any): HttpHeaders {
+    const token = 'Bearer ' + this.storageService.getToken();
+    // const token = '';
+    let httpHeaders;
+
+    if (token) {
+      try {
+        httpHeaders = new HttpHeaders(_.assign({
+          Authorization: token
+        }, headers));
+      } catch (error) {
+        // todo
+        // this.storageService.deleteAll();
+      }
+    }
+    // @ts-ignore
+    return httpHeaders;
+  }
   public setHeadersNoToken(headers?: any): HttpHeaders {
     // const token = 'Bearer ' + this.storageService.getToken();
     const token = '';
@@ -96,6 +115,18 @@ export class ApiService {
       path, body,
       {
         headers: this.setHeaders(customHeader),
+        withCredentials: false,
+        observe: 'response'
+      })
+      .pipe(
+        catchError(this.errorHandler)
+      );
+  }
+  public postFormData(path: string, body: any, customHeader?: any): Observable<HttpResponse<any>> {
+    return this.httpClient.post<any>(
+      path, body,
+      {
+        headers: this.setHeadersFormData(customHeader),
         withCredentials: false,
         observe: 'response'
       })

@@ -10,6 +10,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ProductsByTypeComponent } from './component/products-by-type/products-by-type.component';
 import {ProductsHotComponent} from "./component/products-hot/products-hot.component";
 import { NewsHomeComponent } from './component/news-home/news-home.component';
+import {ProductState} from "../../share/states/product/product.state";
 
 
 @NgModule({
@@ -26,6 +27,9 @@ import { NewsHomeComponent } from './component/news-home/news-home.component';
     HomeRoutingModule,
     MatCardModule,
     CarouselModule
+  ],
+  providers: [
+    ProductState
   ]
 })
 export class HomeModule { }
