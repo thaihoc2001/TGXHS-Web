@@ -23,7 +23,7 @@ export class ProductsByTypeComponent implements OnInit {
   }
 
   listenProductChange(): void{
-    const listProduct = this.productState.getProduct();
+    const listProduct = this.productState.getListProductSubject();
     if (listProduct){
       this.listProduct = listProduct;
       console.log(listProduct);

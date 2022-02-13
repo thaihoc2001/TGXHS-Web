@@ -26,6 +26,9 @@ export class ProductState implements OnDestroy {
   private listProductTypeSubject = new BehaviorSubject<IohProductTypeModel[]>([]);
   public $listProductType = this.listProductTypeSubject.asObservable();
 
+  private productSubject = new BehaviorSubject<IohProduct | null>(null);
+  public $product = this.productSubject.asObservable();
+
   subscription: Subscription = new Subscription();
 
   constructor(private productService: ProductService,
@@ -64,17 +67,25 @@ export class ProductState implements OnDestroy {
     return this.listProductTypeSubject.next(productType);
   }
 
-  getProduct(): IohProduct[] {
+  getListProductSubject(): IohProduct[] {
     return this.listProductSubject.getValue();
   }
 
-  setProduct(product: IohProduct[]): void {
+  getProduct(): IohProduct | null{
+    return this.productSubject.getValue();
+  }
+
+  setProduct(product:IohProduct){
+    return this.productSubject.next(product);
+  }
+
+  setListProductSubject(product: IohProduct[]): void {
     return this.listProductSubject.next(product);
   }
   getListProduct(): void {
     const sb = this.productService.getProduct()
       .pipe(
-        tap((listProduct: IohProduct[]) => this.setProduct(listProduct)),
+        tap((listProduct: IohProduct[]) => this.setListProductSubject(listProduct)),
         catchError(async (error) => console.log(error)),
         finalize(() => this.setIsReady(true))
       )
@@ -124,5 +135,16 @@ export class ProductState implements OnDestroy {
       .pipe(
         finalize(() => this.setIsReady(true))
       );
+  }
+
+  getProductById(id: String): void{
+    const sb = this.productService.productById(id)
+      .pipe(
+        tap((product: IohProduct) => this.setProduct(product)),
+        catchError(async (error) => console.log(error)),
+        finalize(() => this.setIsReady(true))
+      )
+      .subscribe()
+    this.subscription.add(sb);
   }
 }

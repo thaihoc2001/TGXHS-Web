@@ -35,5 +35,16 @@ export class ProductService {
         })
       )
   }
+  productById(id: String): Observable<IohProduct>{
+    const url = `${apiUrl}/${path.product}/${id}`;
+    return this.apiService.get(url)
+      .pipe(
+        map((response: HttpResponse<any>) => {
+          const body = response.body;
+          console.log(body);
+          return IohProduct.fromJson(JSON.stringify(body));
+        }
+      ))
+  }
 
 }

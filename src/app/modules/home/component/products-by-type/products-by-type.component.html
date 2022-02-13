@@ -10,7 +10,7 @@
           <mat-card class="product-item mx-3" style="background-color: white">
             <mat-card-header>
               <mat-card-title style="height: 50px !important;">
-                <a href="#" class="text-dark">{{product.productName}}</a>
+                <a href="/product/{{product.productId}}" class="text-dark">{{product.productName}}</a>
               </mat-card-title>
               <mat-card-subtitle>
                 <div class="d-flex">
@@ -28,7 +28,7 @@
               </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content class="text-center">
-              <a href="#">
+              <a href="/product/{{product.productId}}">
                 <img src="{{product.imageThumbnail?.Array_Img}}" width="95%" height="300px">
               </a>
             </mat-card-content>
