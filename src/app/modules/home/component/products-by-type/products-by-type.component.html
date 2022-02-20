@@ -1,4 +1,4 @@
-<div class="product-by-type-outsize bg-light rounded pb-5" *ngFor="let productType of listProductType">
+<div class="product-by-type-outsize bg-light rounded pb-5" *ngFor="let productType of this.filterProductType()">
   <div class="bg-dark rounded-top mt-4">
     <h2 class="text-uppercase text-light px-3 py-2">{{productType.productTypeName}}</h2>
   </div>
@@ -14,8 +14,8 @@
               </mat-card-title>
               <mat-card-subtitle>
                 <div class="d-flex">
-                  <a href="#" class="text-danger fw-bolder">{{product.priceValue|currency:'VND':true}}</a>
-                  <s class="mx-2 fw-light">{{product.priceValue |currency:'VND':true}}</s>
+                  <a href="#" class="text-danger fw-bolder">{{product.priceNew|currency:'VND':true}}</a>
+                  <s class="mx-2 fw-light">{{product.priceOld |currency:'VND':true}}</s>
                 </div>
                 <div class="d-flex my-auto">
                   <span class="me-2">Đánh giá:</span>
@@ -28,8 +28,10 @@
               </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content class="text-center">
-              <a href="/product/{{product.productId}}">
-                <img src="{{product.imageThumbnail?.Array_Img}}" width="95%" height="300px">
+              <a href="/product/{{product.productId}}" *ngFor="let itemImage of product.images">
+                <div *ngIf="itemImage.type === 'Main'">
+                  <img src="{{itemImage.url}}" width="95%" height="300px">
+                </div>
               </a>
             </mat-card-content>
             <mat-card-actions>

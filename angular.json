@@ -120,5 +120,11 @@
       "style": "scss"
     }
   },
-  "defaultProject": "tesla-web"
+  "defaultProject": "tesla-web",
+  "stylePreprocessorOptions": {
+    "includePaths": [
+      "node_modules",
+      "src/assets/styles"
+    ]
+  }
 }

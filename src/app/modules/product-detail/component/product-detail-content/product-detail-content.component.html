@@ -7,12 +7,12 @@
     </div>
     <div class="content row">
       <div class="col-md-5">
-        <div>
-          <img src="{{item.imageThumbnail.Array_Img}}" width="100%">
+        <div *ngFor="let imageItem of item.images">
+          <img  *ngIf="imageItem.type === 'Main'" src="{{imageItem.url}}" width="100%">
         </div>
         <div class="d-flex list-image-product mt-3">
-          <div *ngFor="let imageItem of item.images" class="me-2">
-            <img src="{{imageItem.Array_Img}}" width="100" height="100">
+          <div class="me-2" *ngFor="let imageItem of item.images">
+            <img src="{{imageItem.url}}" width="100" height="100">
           </div>
         </div>
       </div>

@@ -16,15 +16,15 @@ const path = apiPath.product
 export class ProductCategoryService {
 
   constructor(private apiService: ApiService) { }
-  createProductCategory(productCategory: IohProductCategoryModel): Observable<IohProductCategoryModel>{
-    const url = `${apiUrl}/${path.productCategory}`
-    return this.apiService.post(url, productCategory)
-      .pipe(
-        map((res: HttpResponse<any>) => {
-          return IohProduct.fromJson(JSON.stringify(res))
-        })
-      )
-  }
+  // createProductCategory(productCategory: IohProductCategoryModel): Observable<IohProductCategoryModel>{
+  //   const url = `${apiUrl}/${path.productCategory}`
+  //   return this.apiService.post(url, productCategory)
+  //     .pipe(
+  //       map((res: HttpResponse<any>) => {
+  //         return IohProduct.fromJson(JSON.stringify(res))
+  //       })
+  //     )
+  // }
 
   getProductCategory(): Observable<IohProductCategoryModel[]>{
     const url = `${apiUrl}/${path.productCategory}`

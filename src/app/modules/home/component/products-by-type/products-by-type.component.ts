@@ -40,7 +40,23 @@ export class ProductsByTypeComponent implements OnInit {
   filterProduct(productTypeId: any): IohProduct[]{
     const listPorductFilter = this.listProduct.filter(item => item.productTypeId === productTypeId);
     console.log(listPorductFilter);
-    return listPorductFilter;
+    if(listPorductFilter.length >= 3){
+      return listPorductFilter;
+    }
+    return [];
+  }
+  filterProductType(): IohProductTypeModel[]{
+    let index = 0;
+    const listProductTypeFilter: IohProductTypeModel[] = [];
+    this.listProductType.map(productType => this.listProduct.map(product => {
+      if( product.productTypeId = productType.productTypeId){
+        index++;
+      }
+      if(index >= 3){
+        listProductTypeFilter.push(productType);
+      }
+    }))
+    return listProductTypeFilter;
   }
   customOptions: OwlOptions = {
     loop: true,

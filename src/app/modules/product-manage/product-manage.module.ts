@@ -7,7 +7,7 @@ import { CreateProductModalComponent } from './component/create-product-modal/cr
 import { ProductSummaryComponent } from './component/product-summary/product-summary.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {ProductState} from "../../share/states/product/product.state";
-
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,11 @@ import {ProductState} from "../../share/states/product/product.state";
   imports: [
     CommonModule,
     ProductManageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CKEditorModule,
+    CKEditorModule,
+    CKEditorModule,
+    CKEditorModule
   ],
   providers: [
     ProductState

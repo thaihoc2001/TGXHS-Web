@@ -2,40 +2,43 @@ import {classToPlain, deserialize, Expose, serialize, Type} from 'class-transfor
 import {IohImage} from "../image/ioh-image";
 
 export class IohProduct {
-  @Expose({name: 'product_id'})
-  productId: string;
+  @Expose({name: 'id'})
+  productId: number;
 
-  @Expose({name: 'product_name'})
+  @Expose({name: 'name'})
   productName: string;
 
-  @Expose({name: 'price_value'})
-  priceValue: number;
+  @Expose({name: 'price_old'})
+  priceOld: number;
 
-  @Expose({name: 'discount'})
-  discount: number;
+  @Expose({name: 'price_new'})
+  priceNew: number;
 
   @Expose({name: 'description'})
   description: string;
 
-  @Expose({name: 'start_date'})
-  startDate: string;
+  @Expose({name: 'created_at'})
+  createAt: string;
 
-  @Expose({name: 'list_promotion_id'})
-  listPromotionId: string[];
+  @Expose({name: 'status'})
+  status: string;
 
-  @Expose({name: 'product_category_id'})
-  productCategoryId: string;
+  @Expose({name: 'quantity'})
+  quantity: string;
+
+  @Expose({name: 'updated_at'})
+  updatedAt: string;
+
+  @Expose({name: 'category_id'})
+  categoryId: number;
 
   @Expose({name: 'product_type_id'})
-  productTypeId: string;
-
-  @Expose({name: 'image_thumbnail'})
-  // @Type(() => IohImage)
-  imageThumbnail: IohImage;
+  productTypeId: number;
 
   @Expose({name: 'images'})
-  // @Type(() => IohImage)
+  @Type(() => IohImage)
   images: IohImage[];
+
 
   static fromJson(iohProductdto: any): IohProduct {
     return deserialize(IohProduct, iohProductdto);

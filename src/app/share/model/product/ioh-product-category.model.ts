@@ -1,17 +1,17 @@
 import {classToPlain, deserialize, Expose, serialize} from 'class-transformer';
 
 export class IohProductCategoryModel {
-  @Expose({name: 'products_category_id'})
-  productCategoryId?: string;
+  @Expose({name: 'id'})
+  productCategoryId: number;
 
-  @Expose({name: 'product_category_name'})
-  productCategoryName?: string;
+  @Expose({name: 'name'})
+  productCategoryName: string;
 
   @Expose({name: 'description'})
-  description?: string;
+  description: string;
 
-  @Expose({name: 'product_type_id'})
-  productTypeId?: string;
+  @Expose({name: 'status'})
+  status: string;
 
   static fromJson(gender: any): IohProductCategoryModel {
     return deserialize(IohProductCategoryModel, gender);

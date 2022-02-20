@@ -1,12 +1,20 @@
 import {classToPlain, deserialize, Expose, serialize} from 'class-transformer';
 
 export class IohImage {
-  @Expose({name: 'Array_Img'})
-  Array_Img?: string;
+  @Expose({name: 'id'})
+  imageID: number;
 
-  @Expose({name: 'Array_CloudinaryId'})
-  Array_CloudinaryId?: string;
+  @Expose({name: 'cloudinary_id'})
+  arrayCloudinaryId: string;
 
+  @Expose({name: 'url'})
+  url: string;
+
+  @Expose({name: 'type'})
+  type: string
+
+  @Expose({name: 'product_id'})
+  productId: number;
 
   static fromJson(gender: any): IohImage {
     return deserialize(IohImage, gender);
