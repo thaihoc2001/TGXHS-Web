@@ -8,12 +8,14 @@ import { ProductSummaryComponent } from './component/product-summary/product-sum
 import {ReactiveFormsModule} from "@angular/forms";
 import {ProductState} from "../../share/states/product/product.state";
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ProductManageNavComponent } from './component/product-manage-nav/product-manage-nav.component';
 
 @NgModule({
   declarations: [
     ProductManageComponent,
     CreateProductModalComponent,
-    ProductSummaryComponent
+    ProductSummaryComponent,
+    ProductManageNavComponent
   ],
   imports: [
     CommonModule,

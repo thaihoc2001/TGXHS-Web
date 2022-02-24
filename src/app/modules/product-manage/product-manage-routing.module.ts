@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ProductManageComponent} from "./product-manage.component";
 import {ProductSummaryComponent} from "./component/product-summary/product-summary.component";
+import {CreateProductModalComponent} from "./component/create-product-modal/create-product-modal.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'summary',
         component: ProductSummaryComponent
+      },
+      {
+        path: 'create',
+        component: CreateProductModalComponent
       }
     ]
   }

@@ -96,9 +96,6 @@ export class ProductSummaryComponent implements OnInit {
     language: 'en'
   };
 
-  openModalCreateProduct() {
-    const modalRef = this.modalService.open(CreateProductModalComponent, {size: 'xl', backdrop: 'static'});
-  }
 
   onReady(editor: any) {
 

@@ -11,6 +11,9 @@ import {FormsModule} from "@angular/forms";
 import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.component';
 import { SidebarAdminComponent } from './admin/sidebar-admin/sidebar-admin.component';
 import {CollapseModule} from "ngx-bootstrap/collapse";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatTreeModule} from "@angular/material/tree";
+import {MatButtonModule} from '@angular/material/button';
 
 
 
@@ -21,7 +24,7 @@ import {CollapseModule} from "ngx-bootstrap/collapse";
     PageNotFoundComponent,
     MenuComponent,
     NavbarAdminComponent,
-    SidebarAdminComponent
+    SidebarAdminComponent,
   ],
   exports: [
     NavbarComponent,
@@ -36,7 +39,10 @@ import {CollapseModule} from "ngx-bootstrap/collapse";
     MatIconModule,
     FormsModule,
     MatInputModule,
-    CollapseModule
+    CollapseModule,
+    MatExpansionModule,
+    MatTreeModule,
+    MatButtonModule
   ]
 })
 export class ShareUiModule { }

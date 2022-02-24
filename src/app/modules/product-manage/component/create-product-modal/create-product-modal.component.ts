@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {FormGroup, Validators, FormControl, FormBuilder} from "@angular/forms";
 import {ProductState} from "../../../../share/states/product/product.state";
 import {IohProductCategoryModel} from "../../../../share/model/product/ioh-product-category.model";
 import {IohProductTypeModel} from "../../../../share/model/product/ioh-product-type.model";
+import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import {BigInteger} from "@angular/compiler/src/i18n/big_integer";
 
 @Component({
   selector: 'app-create-product-modal',
@@ -15,9 +17,9 @@ export class CreateProductModalComponent implements OnInit {
   listProductCategory: IohProductCategoryModel[] = [];
   listProductType: IohProductTypeModel[] = [];
   listFileImage: any = [];
+  Editor = ClassicEditor;
 
-  constructor(private modal: NgbActiveModal,
-              private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
               private productState: ProductState) { }
 
   ngOnInit(): void {
@@ -51,9 +53,11 @@ export class CreateProductModalComponent implements OnInit {
   initFormProduct(): void{
     this.productForm = this.formBuilder.group({
       productName: new FormControl('', Validators.required),
-      priceValue: new FormControl('', Validators.required),
-      discount: new FormControl('', Validators.required),
+      priceOld: new FormControl('', Validators.required),
+      priceNew: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
+      status: new FormControl('', Validators.required),
+      quantity: new FormControl('', Validators.required),
       imageThumbnailSource: new FormControl(null, Validators.required),
       imageThumbnail: [null],
       productCategory: new FormControl('', Validators.required),
@@ -71,10 +75,6 @@ export class CreateProductModalComponent implements OnInit {
       image5: [null],
       image6: [null],
     })
-  }
-
-  cancel() {
-    this.modal.close();
   }
   isControlValid(formGroup: FormGroup, controlName: string): boolean {
     const control = formGroup.controls[controlName];
@@ -106,13 +106,15 @@ export class CreateProductModalComponent implements OnInit {
   submit(): void{
     this.pushToListImage();
     const fd: any  = new FormData();
-    fd.append('product_name',this.productForm.get('productName').value);
-    fd.append('price_value', this.productForm.get('priceValue').value);
-    fd.append('discount', this.productForm.get('discount').value);
+    fd.append('name',this.productForm.get('productName').value);
+    fd.append('price_old', parseInt(this.productForm.get('priceOld').value));
+    fd.append('price_new', parseInt(this.productForm.get('priceNew').value));
     fd.append('description', this.productForm.get('description').value);
     fd.append('image_thumbnail', this.productForm.get('imageThumbnail').value);
-    fd.append('product_category_id', this.productForm.get('productCategory').value.productCategoryId);
-    fd.append('product_type_id', this.productForm.get('productType').value.productTypeId);
+    fd.append('category_id', parseInt(this.productForm.get('productCategory').value.productCategoryId));
+    fd.append('product_type_id', parseInt(this.productForm.get('productType').value.productTypeId));
+    fd.append('status', this.productForm.get('status').value);
+    fd.append('quantity', parseInt(this.productForm.get('quantity').value));
     fd.append('images', this.productForm.get('image1').value);
     fd.append('images', this.productForm.get('image2').value);
     fd.append('images', this.productForm.get('image3').value);
@@ -131,4 +133,76 @@ export class CreateProductModalComponent implements OnInit {
     )
     console.log(this.productForm.getRawValue())
   }
+  @Input() config = {
+    toolbar: {
+      items: [
+        'heading', '|',
+        'fontfamily', 'fontsize',
+        'alignment',
+        'fontColor', 'fontBackgroundColor', '|',
+        'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', '|',
+        'link', '|',
+        'outdent', 'indent', '|',
+        'bulletedList', '-', 'numberedList', 'todoList', '|',
+        'code', 'codeBlock', '|',
+        'insertTable', '|',
+        'imageUpload', 'blockQuote', '|',
+        'todoList'
+        ,
+        'undo', 'redo',
+      ],
+      shouldNotGroupWhenFull: true,
+
+    },
+    image: {
+      // Configure the available styles.
+      styles: [
+        'alignLeft', 'alignCenter', 'alignRight'
+      ],
+
+      // Configure the available image resize options.
+      resizeOptions: [
+        {
+          name: 'resizeImage:original',
+          label: 'Original',
+          value: null
+        },
+        {
+          name: 'resizeImage:50',
+          label: '25%',
+          value: '25'
+        },
+        {
+          name: 'resizeImage:50',
+          label: '50%',
+          value: '50'
+        },
+        {
+          name: 'resizeImage:75',
+          label: '75%',
+          value: '75'
+        }
+      ],
+
+      // You need to configure the image toolbar, too, so it shows the new style
+      // buttons as well as the resize buttons.
+      toolbar: [
+        'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
+        '|',
+        'ImageResize',
+        '|',
+        'imageTextAlternative'
+      ]
+    },
+    // simpleUpload: {
+    //    The URL that the images are uploaded to.
+    // uploadUrl: 'http://localhost:52536/api/Image/ImageUpload',
+
+    //   Enable the XMLHttpRequest.withCredentials property.
+
+    //},
+
+    language: 'en'
+  };
+
 }
