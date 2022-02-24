@@ -1,0 +1,53 @@
+form{
+  background-color: #ffffff;
+  height: 90%;
+  border-radius: 20px;
+}
+
+@media only screen and (min-width: 1220px) {
+  form{
+    width: 28% !important;
+  }
+}
+@media only screen and (max-width: 1220px) {
+  form{
+    width: 50% !important;
+  }
+}
+@media only screen and (max-width: 992px) {
+  form{
+    width: 80% !important;
+  }
+}
+button{
+  width: 90%;
+  height: 50px;
+  color: white;
+  border-radius: 30px;
+  //background-image: linear-gradient(to right,#23bce2, #7277ed, #e416fc);
+  background-color: #242939;
+}
+.outer{
+  //background-image: url("../../assets/img/img-content/bg-login.webp");
+  //background-size: cover;
+  //background-repeat: no-repeat;
+  //background-position: center;
+  background-color: #242939;
+  width: 100vw;
+  height: 100vh;
+}
+
+input{
+  height: 40px;
+  border: none !important;
+  border-bottom: 2px solid #adadad !important;
+  color: #adadad !important;
+  font-size: 1.5rem;
+}
+i{
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 100px;
+  color: white;
+}
