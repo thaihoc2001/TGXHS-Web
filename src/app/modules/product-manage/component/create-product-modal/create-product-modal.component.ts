@@ -2,8 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {FormGroup, Validators, FormControl, FormBuilder} from "@angular/forms";
 import {ProductState} from "../../../../share/states/product/product.state";
-import {IohProductCategoryModel} from "../../../../share/model/product/ioh-product-category.model";
-import {IohProductTypeModel} from "../../../../share/model/product/ioh-product-type.model";
+import {IohProductCategoryModel} from "../../../../share/model/categories/ioh-product-category.model";
+import {IohProductTypeModel} from "../../../../share/model/product-type/ioh-product-type.model";
 import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import {BigInteger} from "@angular/compiler/src/i18n/big_integer";
 

@@ -5,8 +5,8 @@ import {environment} from '../../../../environments/environment';
 import {ProductService} from "../../service/product/product.service";
 import {ProductCategoryService} from "../../service/product-category/product-category.service";
 import {ProductTypeService} from "../../service/product-type/product-type.service";
-import {IohProductCategoryModel} from "../../model/product/ioh-product-category.model";
-import {IohProductTypeModel} from "../../model/product/ioh-product-type.model";
+import {IohProductCategoryModel} from "../../model/categories/ioh-product-category.model";
+import {IohProductTypeModel} from "../../model/product-type/ioh-product-type.model";
 import {IohProduct} from "../../model/product/ioh-product";
 
 @Injectable({

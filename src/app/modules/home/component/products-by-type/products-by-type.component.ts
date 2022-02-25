@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductState} from "../../../../share/states/product/product.state";
 import {IohProduct} from "../../../../share/model/product/ioh-product";
-import {IohProductTypeModel} from "../../../../share/model/product/ioh-product-type.model";
+import {IohProductTypeModel} from "../../../../share/model/product-type/ioh-product-type.model";
 import {OwlOptions} from "ngx-owl-carousel-o";
 
 @Component({

@@ -6,7 +6,7 @@ import {IohProduct} from "../../model/product/ioh-product";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {HttpResponse} from "@angular/common/http";
-import {IohProductCategoryModel} from "../../model/product/ioh-product-category.model";
+import {IohProductCategoryModel} from "../../model/categories/ioh-product-category.model";
 
 const apiUrl = environment.apiUrl;
 const path = apiPath.product

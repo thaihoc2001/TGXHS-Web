@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {environment} from "../../../../environments/environment";
 import {apiPath} from "../../constance/api-path";
 import {ApiService} from "../_core/api.service";
-import {IohProductTypeModel} from "../../model/product/ioh-product-type.model";
+import {IohProductTypeModel} from "../../model/product-type/ioh-product-type.model";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {HttpResponse} from "@angular/common/http";
