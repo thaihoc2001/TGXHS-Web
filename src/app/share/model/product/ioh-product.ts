@@ -18,6 +18,7 @@ export class IohProduct {
   description: string;
 
   @Expose({name: 'created_at'})
+  @Type(() => Date)
   createAt: string;
 
   @Expose({name: 'status'})
@@ -27,6 +28,7 @@ export class IohProduct {
   quantity: string;
 
   @Expose({name: 'updated_at'})
+  @Type(() => Date)
   updatedAt: string;
 
   @Expose({name: 'category_id'})

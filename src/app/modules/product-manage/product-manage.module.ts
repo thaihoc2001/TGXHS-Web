@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ProductManageRoutingModule } from './product-manage-routing.module';
 import { ProductManageComponent } from './product-manage.component';
 import { CreateProductModalComponent } from './component/create-product-modal/create-product-modal.component';
@@ -9,13 +8,23 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {ProductState} from "../../share/states/product/product.state";
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ProductManageNavComponent } from './component/product-manage-nav/product-manage-nav.component';
+import { SummaryCategoryComponent } from './component/summary-category/summary-category.component';
+import {SummaryProductTypeComponent} from "./component/summary-product-type/summary-product-type.component";
+import {CreateProductTypeComponent} from "./component/create-product-type/create-product-type.component";
+import {CreateCategoryComponent} from "./component/create-category/create-category.component";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
     ProductManageComponent,
     CreateProductModalComponent,
     ProductSummaryComponent,
-    ProductManageNavComponent
+    ProductManageNavComponent,
+    SummaryCategoryComponent,
+    SummaryProductTypeComponent,
+    CreateProductTypeComponent,
+    CreateCategoryComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +33,9 @@ import { ProductManageNavComponent } from './component/product-manage-nav/produc
     CKEditorModule,
     CKEditorModule,
     CKEditorModule,
-    CKEditorModule
+    CKEditorModule,
+    MatPaginatorModule,
+    MatTableModule
   ],
   providers: [
     ProductState

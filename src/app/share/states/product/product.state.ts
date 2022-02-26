@@ -121,13 +121,13 @@ export class ProductState implements OnDestroy {
       );
   }
 
-  // createProductCategory(productCategory: IohProductCategoryModel): Observable<IohProductCategoryModel>{
-  //   this.setIsReady(false);
-  //   return this.productCategoryService.createProductCategory(productCategory)
-  //     .pipe(
-  //       finalize(() => this.setIsReady(true))
-  //     );
-  // }
+  createProductCategory(productCategory: IohProductCategoryModel): Observable<IohProductCategoryModel>{
+    this.setIsReady(false);
+    return this.productCategoryService.createProductCategory(productCategory)
+      .pipe(
+        finalize(() => this.setIsReady(true))
+      );
+  }
 
   createProductType(ProductType: IohProductTypeModel): Observable<IohProductTypeModel>{
     this.setIsReady(false);

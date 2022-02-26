@@ -1,0 +1,58 @@
+<div class="bg-light p-3">
+  <ng-container>
+    <div class="row">
+      <div class="col-12">
+        <form class="form" [formGroup]="productTypeForm">
+          <div class=" col-12 row">
+            <div class="form-group col-6">
+              <label class="form-label mt-2">Tên hãng sản xuất</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="productTypeName"
+                     placeholder="Giá sản phẩm" autocomplete="off" formControlName="productTypeName"
+                     [class.is-invalid]="isControlInvalid(productTypeForm, 'productTypeName')"
+                     [class.is-valid]="isControlValid(productTypeForm, 'productTypeName')"/>
+              <div class="valid-feedback" *ngIf="isControlValid(productTypeForm, 'productTypeName')">Tên sản phẩm cũ đã nhập chính xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productTypeForm, 'required', 'productTypeName')">Tên sản phẩm cũ không được để trống
+              </div>
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label mt-2">Trạng thái</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="status"
+                     placeholder="Giá sản phẩm" autocomplete="off" formControlName="status"
+                     [class.is-invalid]="isControlInvalid(productTypeForm, 'status')"
+                     [class.is-valid]="isControlValid(productTypeForm, 'status')"/>
+              <div class="valid-feedback" *ngIf="isControlValid(productTypeForm, 'status')">Mô tả sản phẩm cũ đã nhập chính xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productTypeForm, 'required', 'status')">Mô tả sản phẩm cũ không được để trống
+              </div>
+            </div>
+          </div>
+          <div class="col-12 row">
+            <div class="form-group col-12">
+              <label class="form-label">Mô tả</label>
+              <textarea type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="description"
+                     placeholder="Tên sản phẩm" autocomplete="off" formControlName="description"
+                     [class.is-invalid]="isControlInvalid(productTypeForm, 'description')"
+                     [class.is-valid]="isControlValid(productTypeForm, 'description')">
+              </textarea>
+              <div class="valid-feedback" *ngIf="isControlValid(productTypeForm, 'description')">Trạng thái đã nhập chính xác
+              </div>
+              <div class="invalid-feedback" *ngIf="controlHasError(productTypeForm, 'required', 'description')">Trạng thái không được để trống
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-container>
+  <div class="my-4 mx-4 d-flex justify-content-end">
+    <button type="button" class="btn btn-danger btn-elevate me-2">
+      Hủy
+    </button>
+    <button type="button" class="btn btn-primary btn-elevate px-5" (click)="submit()">
+      Lưu
+    </button>
+  </div>
+</div>
+
+

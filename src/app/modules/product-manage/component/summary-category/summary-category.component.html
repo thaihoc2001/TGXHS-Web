@@ -1,0 +1,46 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="categoryId">
+      <th mat-header-cell *matHeaderCellDef> Mã hãng </th>
+      <td mat-cell *matCellDef="let element"> {{element.productCategoryId}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="categoryName">
+      <th mat-header-cell *matHeaderCellDef> Tên hãng </th>
+      <td mat-cell *matCellDef="let element">{{element.productCategoryName}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Trạng thái </th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="createAt">
+      <th mat-header-cell *matHeaderCellDef> Ngày tạo </th>
+      <td mat-cell *matCellDef="let element"> {{element.createAt | date:'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Chức năng </th>
+      <td mat-cell *matCellDef="let element">
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-primary">Cập nhật</button>
+          <button class="btn btn-danger ms-2">Xóa</button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>

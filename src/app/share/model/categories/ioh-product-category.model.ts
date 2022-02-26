@@ -1,4 +1,4 @@
-import {classToPlain, deserialize, Expose, serialize} from 'class-transformer';
+import {classToPlain, deserialize, Expose, serialize, Type} from 'class-transformer';
 
 export class IohProductCategoryModel {
   @Expose({name: 'id'})
@@ -12,6 +12,14 @@ export class IohProductCategoryModel {
 
   @Expose({name: 'status'})
   status: string;
+
+  @Expose({name: 'created_at'})
+  @Type(() => Date)
+  createAt: String;
+
+  @Expose({name: 'updated_at'})
+  @Type(() => Date)
+  updateAt: String;
 
   static fromJson(gender: any): IohProductCategoryModel {
     return deserialize(IohProductCategoryModel, gender);

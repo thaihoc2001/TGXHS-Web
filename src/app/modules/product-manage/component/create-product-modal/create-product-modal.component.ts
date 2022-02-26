@@ -6,6 +6,8 @@ import {IohProductCategoryModel} from "../../../../share/model/categories/ioh-pr
 import {IohProductTypeModel} from "../../../../share/model/product-type/ioh-product-type.model";
 import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import {BigInteger} from "@angular/compiler/src/i18n/big_integer";
+import {NotifyService} from "../../../../share/service/notify/notify.service";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-create-product-modal',
@@ -20,7 +22,8 @@ export class CreateProductModalComponent implements OnInit {
   Editor = ClassicEditor;
 
   constructor(private formBuilder: FormBuilder,
-              private productState: ProductState) { }
+              private productState: ProductState,
+              private notifyService: NotifyService) { }
 
   ngOnInit(): void {
     this.listenState();
@@ -123,12 +126,14 @@ export class CreateProductModalComponent implements OnInit {
     fd.append('images', this.productForm.get('image6').value);
     console.log(this.listFileImage);
 
-    this.productState.createProduct(fd).subscribe(
+    this.productState.createProduct(fd)
+      .pipe(tap(res => this.productState.getListProduct()))
+      .subscribe(
       res => {
-        console.log(res);
+        this.notifyService.success('Tạo sản phẩm thành công')
       },
       error => {
-        console.log(error);
+        this.notifyService.error('Tạo sản phẩm thất bại')
       }
     )
     console.log(this.productForm.getRawValue())
