@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   initFormLogin(): void{
     this.infoLogin = this.formBuilder.group({
       username: new FormControl('0985140102', Validators.required),
-      password: new FormControl('123456789', Validators.required),
+      password: new FormControl('11111111', Validators.required),
     })
   }
 

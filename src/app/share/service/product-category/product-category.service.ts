@@ -36,4 +36,8 @@ export class ProductCategoryService {
         })
       )
   }
+  deleteProductCategory(id: String): Observable<IohProductCategoryModel>{
+    const url = `${apiUrl}/${path.productCategory}/${id}`;
+    return this.apiService.delete(url);
+  }
 }

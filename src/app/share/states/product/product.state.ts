@@ -147,4 +147,23 @@ export class ProductState implements OnDestroy {
       .subscribe()
     this.subscription.add(sb);
   }
+
+  deleteProduct(id:String): Observable<any>{
+    return this.productService.deleteProduct(id)
+      .pipe(
+        finalize(() => this.setIsReady(true))
+      )
+  }
+  deleteCategory(id:String): Observable<any>{
+    return this.productCategoryService.deleteProductCategory(id)
+      .pipe(
+        finalize(() => this.setIsReady(true))
+      )
+  }
+  deleteProductType(id: String): Observable<any>{
+    return this.productTypeService.deleteProductType(id)
+      .pipe(
+        finalize(() => this.setIsReady(true))
+      )
+  }
 }

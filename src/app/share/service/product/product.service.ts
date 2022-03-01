@@ -46,5 +46,9 @@ export class ProductService {
         }
       ))
   }
+  deleteProduct(id: String): Observable<IohProduct>{
+    const url = `${apiUrl}/${path.product}/${id}`;
+    return this.apiService.delete(url);
+  }
 
 }

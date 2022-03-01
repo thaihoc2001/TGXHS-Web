@@ -39,8 +39,7 @@ export class ApiService {
   }
 
   public setHeadersFormData(headers?: any): HttpHeaders {
-    // const token = 'Bearer ' + this.storageService.getToken();
-    const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjQ1NzE3NDAwLCJleHAiOjE2NDU3MjEwMDB9.HEhP26gytW2wPcFT2m3lluCrfkM_jF1QzOtK6qPZ8ug';
+    const token = 'Bearer ' + this.storageService.getToken();
     // const token = '';
     let httpHeaders;
 

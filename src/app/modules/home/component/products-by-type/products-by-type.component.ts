@@ -3,7 +3,6 @@ import {ProductState} from "../../../../share/states/product/product.state";
 import {IohProduct} from "../../../../share/model/product/ioh-product";
 import {IohProductTypeModel} from "../../../../share/model/product-type/ioh-product-type.model";
 import {OwlOptions} from "ngx-owl-carousel-o";
-
 @Component({
   selector: 'app-products-by-type',
   templateUrl: './products-by-type.component.html',
@@ -34,29 +33,19 @@ export class ProductsByTypeComponent implements OnInit {
     const listProductType = this.productState.getProductType();
     if (listProductType) {
       this.listProductType = listProductType;
-      console.log(listProductType);
     }
-  }
-  filterProduct(productTypeId: any): IohProduct[]{
-    const listPorductFilter = this.listProduct.filter(item => item.productTypeId === productTypeId);
-    console.log(listPorductFilter);
-    if(listPorductFilter.length >= 3){
-      return listPorductFilter;
-    }
-    return [];
   }
   filterProductType(): IohProductTypeModel[]{
-    let index = 0;
-    const listProductTypeFilter: IohProductTypeModel[] = [];
-    this.listProductType.map(productType => this.listProduct.map(product => {
-      if( product.productTypeId = productType.productTypeId){
-        index++;
+    return this.listProductType.filter(productType => productType.status === 'Home')
+  }
+  filterProductByProductType(productTypeName: String): IohProduct[]{
+    let productTypeId = 0;
+    this.listProductType.filter(productType => {
+      if(productType.productTypeName === productTypeName){
+        productTypeId = productType.productTypeId;
       }
-      if(index >= 3){
-        listProductTypeFilter.push(productType);
-      }
-    }))
-    return listProductTypeFilter;
+    })
+    return this.listProduct.filter(res => res.productTypeId === productTypeId);
   }
   customOptions: OwlOptions = {
     loop: true,

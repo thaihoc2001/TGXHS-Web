@@ -4,7 +4,7 @@ export class Token {
   @Expose({name: 'accessToken'})
   accessToken: String;
 
-  @Expose({name: 'accessToken'})
+  @Expose({name: 'refreshToken'})
   refreshToken: String;
 
   static fromJson(iohToken: any): Token {

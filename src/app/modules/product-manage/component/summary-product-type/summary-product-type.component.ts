@@ -4,6 +4,8 @@ import {IohProductCategoryModel} from "../../../../share/model/categories/ioh-pr
 import {MatPaginator} from "@angular/material/paginator";
 import {IohProductTypeModel} from "../../../../share/model/product-type/ioh-product-type.model";
 import {ProductState} from "../../../../share/states/product/product.state";
+import {tap} from "rxjs/operators";
+import {NotifyService} from "../../../../share/service/notify/notify.service";
 
 @Component({
   selector: 'app-summary-product-type',
@@ -14,7 +16,8 @@ export class SummaryProductTypeComponent implements OnInit {
   dataSource = new MatTableDataSource<IohProductTypeModel>([]);
   displayedColumns: string[] = ['productTypeId', 'productTypeName', 'status', 'createAt', 'action'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor(private productState: ProductState) { }
+  constructor(private productState: ProductState,
+              private notifyService: NotifyService) { }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
@@ -29,5 +32,14 @@ export class SummaryProductTypeComponent implements OnInit {
     if(listproductType){
       this.dataSource.data = listproductType
     }
+  }
+
+  deleteProduct(productType: IohProductTypeModel) {
+    this.productState.deleteProductType(productType.productTypeId.toString())
+      .pipe(tap(res => this.productState.getListProductType()))
+      .subscribe(
+        res => this.notifyService.success('Xóa loại sản phẩm thành công'),
+        error => this.notifyService.error('Xóa loại sản phẩm thất bại')
+      )
   }
 }
