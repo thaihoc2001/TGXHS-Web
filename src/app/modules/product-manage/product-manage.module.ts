@@ -14,6 +14,8 @@ import {CreateProductTypeComponent} from "./component/create-product-type/create
 import {CreateCategoryComponent} from "./component/create-category/create-category.component";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
+import {ProductTypeState} from "../../share/states/product-type/product-type.state";
+import {ProductCategoryState} from "../../share/states/product-category/product-category.state";
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import {MatTableModule} from "@angular/material/table";
     MatTableModule
   ],
   providers: [
-    ProductState
+    ProductState,
+    ProductTypeState,
+    ProductCategoryState
   ]
 })
 export class ProductManageModule { }

@@ -6,6 +6,7 @@ import {IohProductTypeModel} from "../../../../share/model/product-type/ioh-prod
 import {ProductState} from "../../../../share/states/product/product.state";
 import {tap} from "rxjs/operators";
 import {NotifyService} from "../../../../share/service/notify/notify.service";
+import {ProductTypeState} from "../../../../share/states/product-type/product-type.state";
 
 @Component({
   selector: 'app-summary-product-type',
@@ -16,7 +17,7 @@ export class SummaryProductTypeComponent implements OnInit {
   dataSource = new MatTableDataSource<IohProductTypeModel>([]);
   displayedColumns: string[] = ['productTypeId', 'productTypeName', 'status', 'createAt', 'action'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor(private productState: ProductState,
+  constructor(private productTypeState: ProductTypeState,
               private notifyService: NotifyService) { }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -25,18 +26,18 @@ export class SummaryProductTypeComponent implements OnInit {
     this.listenState();
   }
   listenState(): void{
-    this.productState.$listProductType.subscribe(res => this.productTypeChange())
+    this.productTypeState.$listProductType.subscribe(res => this.productTypeChange())
   }
   productTypeChange(): void{
-    const listproductType = this.productState.getProductType();
+    const listproductType = this.productTypeState.getProductType();
     if(listproductType){
       this.dataSource.data = listproductType
     }
   }
 
   deleteProduct(productType: IohProductTypeModel) {
-    this.productState.deleteProductType(productType.productTypeId.toString())
-      .pipe(tap(res => this.productState.getListProductType()))
+    this.productTypeState.deleteProductType(productType.productTypeId.toString())
+      .pipe(tap(res => this.productTypeState.getListProductType()))
       .subscribe(
         res => this.notifyService.success('Xóa loại sản phẩm thành công'),
         error => this.notifyService.error('Xóa loại sản phẩm thất bại')

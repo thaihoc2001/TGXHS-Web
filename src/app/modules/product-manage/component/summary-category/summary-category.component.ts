@@ -5,6 +5,7 @@ import {ProductState} from "../../../../share/states/product/product.state";
 import {MatPaginator} from "@angular/material/paginator";
 import {tap} from "rxjs/operators";
 import {NotifyService} from "../../../../share/service/notify/notify.service";
+import {ProductCategoryState} from "../../../../share/states/product-category/product-category.state";
 
 @Component({
   selector: 'app-summary-category',
@@ -15,7 +16,7 @@ export class SummaryCategoryComponent implements OnInit {
   dataSource = new MatTableDataSource<IohProductCategoryModel>([]);
   displayedColumns: string[] = ['categoryId', 'categoryName', 'status', 'createAt', 'action'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor(private productState: ProductState,
+  constructor(private productCategoryState: ProductCategoryState,
               private notifyService: NotifyService) { }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -24,18 +25,18 @@ export class SummaryCategoryComponent implements OnInit {
     this.listenState();
   }
   listenState(): void{
-    this.productState.$listCategory.subscribe(res => this.productCategoryChange())
+    this.productCategoryState.$listCategory.subscribe(res => this.productCategoryChange())
   }
   productCategoryChange(): void{
-    const listCategory = this.productState.getProductCategory();
+    const listCategory = this.productCategoryState.getProductCategory();
     if(listCategory){
       this.dataSource.data = listCategory
     }
   }
 
   deleteProductCategory(productCategory: IohProductCategoryModel) {
-    this.productState.deleteCategory(productCategory.productCategoryId.toString())
-      .pipe(tap(res => this.productState.getProductCategory()))
+    this.productCategoryState.deleteCategory(productCategory.productCategoryId.toString())
+      .pipe(tap(res => this.productCategoryState.getProductCategory()))
       .subscribe(res => this.notifyService.success('Xóa hãng thành công'),
                   error => this.notifyService.error('Xóa hãng thất bại'))
   }

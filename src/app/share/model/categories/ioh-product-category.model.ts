@@ -8,18 +8,18 @@ export class IohProductCategoryModel {
   productCategoryName: string;
 
   @Expose({name: 'description'})
-  description: string;
+  description?: string;
 
   @Expose({name: 'status'})
-  status: string;
+  status?: string;
 
   @Expose({name: 'created_at'})
   @Type(() => Date)
-  createAt: String;
+  createAt?: String;
 
   @Expose({name: 'updated_at'})
   @Type(() => Date)
-  updateAt: String;
+  updateAt?: String;
 
   static fromJson(gender: any): IohProductCategoryModel {
     return deserialize(IohProductCategoryModel, gender);

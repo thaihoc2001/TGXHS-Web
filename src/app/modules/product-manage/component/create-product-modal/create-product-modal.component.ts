@@ -8,6 +8,8 @@ import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import {BigInteger} from "@angular/compiler/src/i18n/big_integer";
 import {NotifyService} from "../../../../share/service/notify/notify.service";
 import {tap} from "rxjs/operators";
+import {ProductTypeState} from "../../../../share/states/product-type/product-type.state";
+import {ProductCategoryState} from "../../../../share/states/product-category/product-category.state";
 
 @Component({
   selector: 'app-create-product-modal',
@@ -23,6 +25,8 @@ export class CreateProductModalComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private productState: ProductState,
+              private productTypeState: ProductTypeState,
+              private productCategoryState: ProductCategoryState,
               private notifyService: NotifyService) { }
 
   ngOnInit(): void {
@@ -30,18 +34,18 @@ export class CreateProductModalComponent implements OnInit {
     this.initFormProduct();
   }
   listenState(): void{
-    this.productState.$listCategory.subscribe(res => this.listCategoryChange())
-    this.productState.$listProductType.subscribe(res => this.listProductTypeChange())
+    this.productCategoryState.$listCategory.subscribe(res => this.listCategoryChange())
+    this.productTypeState.$listProductType.subscribe(res => this.listProductTypeChange())
   }
   listCategoryChange(): void{
-    const listCategory = this.productState.getProductCategory();
+    const listCategory = this.productCategoryState.getProductCategory();
     if(listCategory){
       this.listProductCategory = listCategory;
       console.log(this.listProductCategory);
     }
   }
   listProductTypeChange(): void{
-    const listProductType = this.productState.getProductType();
+    const listProductType = this.productTypeState.getProductType();
     if(listProductType){
       this.listProductType = listProductType;
       console.log(this.listProductType);

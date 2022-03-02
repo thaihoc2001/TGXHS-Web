@@ -6,6 +6,7 @@ import {IohProductTypeModel} from "../../model/product-type/ioh-product-type.mod
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {HttpResponse} from "@angular/common/http";
+import {IohTypeCategoriesProduct} from "../../model/product-type/ioh-type-categories-product";
 
 const apiUrl = environment.apiUrl;
 const path = apiPath.product
@@ -39,5 +40,15 @@ export class ProductTypeService {
   deleteProductType(id: String): Observable<IohProductTypeModel>{
     const url = `${apiUrl}/${path.productType}/${id}`;
     return this.apiService.delete(url);
+  }
+  getProductTypebyCategory(): Observable<IohTypeCategoriesProduct[]>{
+    const url = `${apiUrl}/${path.productType}/categories`;
+    return this.apiService.get(url).pipe(
+      map((response: HttpResponse<any>) => {
+        const body = Array.isArray(response.body) ? response.body : [];
+        console.log(body);
+        return body.map(item => IohTypeCategoriesProduct.fromJson(JSON.stringify(item)));
+      })
+    );
   }
 }

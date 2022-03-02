@@ -11,6 +11,7 @@ import { ProductsByTypeComponent } from './component/products-by-type/products-b
 import {ProductsHotComponent} from "./component/products-hot/products-hot.component";
 import { NewsHomeComponent } from './component/news-home/news-home.component';
 import {ProductState} from "../../share/states/product/product.state";
+import {ProductTypeState} from "../../share/states/product-type/product-type.state";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {ProductState} from "../../share/states/product/product.state";
     CarouselModule
   ],
   providers: [
-    ProductState
+    ProductState,
+    ProductTypeState
   ]
 })
 export class HomeModule { }

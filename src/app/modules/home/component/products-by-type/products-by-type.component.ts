@@ -3,6 +3,7 @@ import {ProductState} from "../../../../share/states/product/product.state";
 import {IohProduct} from "../../../../share/model/product/ioh-product";
 import {IohProductTypeModel} from "../../../../share/model/product-type/ioh-product-type.model";
 import {OwlOptions} from "ngx-owl-carousel-o";
+import {ProductTypeState} from "../../../../share/states/product-type/product-type.state";
 @Component({
   selector: 'app-products-by-type',
   templateUrl: './products-by-type.component.html',
@@ -11,14 +12,15 @@ import {OwlOptions} from "ngx-owl-carousel-o";
 export class ProductsByTypeComponent implements OnInit {
   listProduct: IohProduct[] = [];
   listProductType: IohProductTypeModel[] = [];
-  constructor(private productState: ProductState) { }
+  constructor(private productState: ProductState,
+              private productTypeState: ProductTypeState) { }
 
   ngOnInit(): void {
     this.listenState();
   }
   listenState(): void{
     this.productState.$listProduct.subscribe(res => this.listenProductChange());
-    this.productState.$listProductType.subscribe(res => this.listenProductType());
+    this.productTypeState.$listProductType.subscribe(res => this.listenProductType());
   }
 
   listenProductChange(): void{
@@ -30,7 +32,7 @@ export class ProductsByTypeComponent implements OnInit {
   }
 
   listenProductType(): void{
-    const listProductType = this.productState.getProductType();
+    const listProductType = this.productTypeState.getProductType();
     if (listProductType) {
       this.listProductType = listProductType;
     }

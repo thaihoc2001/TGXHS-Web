@@ -14,6 +14,7 @@ import {CollapseModule} from "ngx-bootstrap/collapse";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatTreeModule} from "@angular/material/tree";
 import {MatButtonModule} from '@angular/material/button';
+import {ProductTypeState} from "../states/product-type/product-type.state";
 
 
 
@@ -43,6 +44,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatExpansionModule,
     MatTreeModule,
     MatButtonModule
+  ],
+  providers: [
+    ProductTypeState
   ]
 })
 export class ShareUiModule { }

@@ -4,6 +4,7 @@ import {ProductState} from "../../../../share/states/product/product.state";
 import {IohProductCategoryModel} from "../../../../share/model/categories/ioh-product-category.model";
 import {tap} from "rxjs/operators";
 import {NotifyService} from "../../../../share/service/notify/notify.service";
+import {ProductCategoryState} from "../../../../share/states/product-category/product-category.state";
 
 @Component({
   selector: 'app-create-category',
@@ -14,7 +15,7 @@ export class CreateCategoryComponent implements OnInit {
   productForm: any;
 
   constructor(private formBuilder: FormBuilder,
-              private productState: ProductState,
+              private productCategoryState: ProductCategoryState,
               private notifyService: NotifyService) {
   }
 
@@ -38,8 +39,8 @@ export class CreateCategoryComponent implements OnInit {
     iohProductCategoryModel.productCategoryName = this.productForm.get('productCategoryName').value;
     iohProductCategoryModel.status = this.productForm.get('status').value;
     iohProductCategoryModel.description = this.productForm.get('description').value;
-    this.productState.createProductCategory(iohProductCategoryModel.toPlain())
-      .pipe(tap(res => this.productState.getListProductCategory()))
+    this.productCategoryState.createProductCategory(iohProductCategoryModel.toPlain())
+      .pipe(tap(res => this.productCategoryState.getListProductCategory()))
       .subscribe(res => {
         this.notifyService.success('Tạo hãng xe thành công');
       },

@@ -4,6 +4,7 @@ import {ProductState} from "../../../../share/states/product/product.state";
 import {NotifyService} from "../../../../share/service/notify/notify.service";
 import {tap} from "rxjs/operators";
 import {IohProductTypeModel} from "../../../../share/model/product-type/ioh-product-type.model";
+import {ProductTypeState} from "../../../../share/states/product-type/product-type.state";
 
 @Component({
   selector: 'app-create-product-type',
@@ -14,7 +15,7 @@ export class CreateProductTypeComponent implements OnInit {
   productTypeForm: any;
 
   constructor(private formBuilder: FormBuilder,
-              private productState: ProductState,
+              private productTypeState: ProductTypeState,
               private notifyService: NotifyService) {
   }
 
@@ -39,8 +40,8 @@ export class CreateProductTypeComponent implements OnInit {
     iohProductTypeModel.productTypeName = this.productTypeForm.get('productTypeName').value;
     iohProductTypeModel.status = this.productTypeForm.get('status').value;
     iohProductTypeModel.description = this.productTypeForm.get('description').value;
-    this.productState.createProductType(iohProductTypeModel.toPlain())
-      .pipe(tap(res => this.productState.getListProductType()))
+    this.productTypeState.createProductType(iohProductTypeModel.toPlain())
+      .pipe(tap(res => this.productTypeState.getListProductType()))
       .subscribe(
         res => {
           this.notifyService.success('Tạo loại sản phẩm thành công');
