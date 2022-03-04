@@ -1,6 +1,7 @@
 export const apiPath = {
   product: {
-    product: 'api/products',
+    product: 'api/products/see/more',
+    productById: 'api/products',
     productCategory: 'api/categories',
     productType: 'api/product-type'
   },

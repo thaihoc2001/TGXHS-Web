@@ -8,6 +8,7 @@ import {ProductTypeService} from "../../service/product-type/product-type.servic
 import {IohProductCategoryModel} from "../../model/categories/ioh-product-category.model";
 import {IohProductTypeModel} from "../../model/product-type/ioh-product-type.model";
 import {IohProduct} from "../../model/product/ioh-product";
+import {Parser} from "@angular/compiler";
 
 @Injectable({
   providedIn: 'root'
@@ -23,10 +24,17 @@ export class ProductState implements OnDestroy {
   private productSubject = new BehaviorSubject<IohProduct | null>(null);
   public $product = this.productSubject.asObservable();
 
+  private countProductsSubject = new BehaviorSubject<number>(0);
+  public $countProduct = this.countProductsSubject.asObservable();
+
+  private productIdSubject = new BehaviorSubject<number>(0);
+  public $productId = this.productIdSubject.asObservable();
+
   subscription: Subscription = new Subscription();
 
   constructor(private productService: ProductService) {
-    this.getListProduct();
+    this.getListProduct(this.countProductsSubject.getValue())
+    this.getProductById(this.productIdSubject.getValue());
   }
 
   ngOnDestroy(): void {
@@ -40,6 +48,12 @@ export class ProductState implements OnDestroy {
   getIsReady(): boolean {
     return this.isReadySubject.getValue();
   }
+  getCountNumber(): number{
+    return this.countProductsSubject.getValue();
+  }
+  setCountNumber(count: number): void{
+    this.countProductsSubject.next(count);
+  }
 
   getListProductSubject(): IohProduct[] {
     return this.listProductSubject.getValue();
@@ -49,15 +63,30 @@ export class ProductState implements OnDestroy {
     return this.productSubject.getValue();
   }
 
-  setProduct(product:IohProduct){
+  setProduct(product:IohProduct): void{
     return this.productSubject.next(product);
+  }
+  setId(id:number): void{
+    return this.productIdSubject.next(id);
+  }
+  getId(id:number): number{
+    return this.productIdSubject.getValue();
   }
 
   setListProductSubject(product: IohProduct[]): void {
     return this.listProductSubject.next(product);
   }
-  getListProduct(): void {
-    const sb = this.productService.getProduct()
+  defaultCountProductMore(count: number): void{
+    this.setCountNumber(count);
+    this.getListProduct(this.getCountNumber());
+  }
+  getProductId(id: number): void{
+    this.setId(id);
+    this.getProductById(this.productIdSubject.getValue());
+  }
+
+  getListProduct(count: number): void {
+    const sb = this.productService.getProduct(count)
       .pipe(
         tap((listProduct: IohProduct[]) => this.setListProductSubject(listProduct)),
         catchError(async (error) => console.log(error)),
@@ -75,10 +104,13 @@ export class ProductState implements OnDestroy {
       );
   }
 
-  getProductById(id: String): void{
+  getProductById(id: number): void{
     const sb = this.productService.productById(id)
       .pipe(
-        tap((product: IohProduct) => this.setProduct(product)),
+        tap((product: IohProduct) => {
+          console.log(product);
+          this.setProduct(product)
+        }),
         catchError(async (error) => console.log(error)),
         finalize(() => this.setIsReady(true))
       )

@@ -131,7 +131,7 @@ export class CreateProductModalComponent implements OnInit {
     console.log(this.listFileImage);
 
     this.productState.createProduct(fd)
-      .pipe(tap(res => this.productState.getListProduct()))
+      .pipe(tap(res => this.productState.getListProduct(0)))
       .subscribe(
       res => {
         this.notifyService.success('Tạo sản phẩm thành công')

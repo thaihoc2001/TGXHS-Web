@@ -21,7 +21,7 @@ export class ProductDetailContentComponent implements OnInit {
   }
   listenState(): void{
     if(this.productId){
-      this.productState.getProductById(this.productId);
+      this.productState.getProductById(parseInt(this.productId));
     }
     this.productState.$product.subscribe(res => this.listenProductDetail())
   }

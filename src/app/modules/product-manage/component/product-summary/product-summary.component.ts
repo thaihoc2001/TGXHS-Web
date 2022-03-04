@@ -37,7 +37,7 @@ export class ProductSummaryComponent implements OnInit {
 
   deleteProduct(product: IohProduct): void{
     this.productState.deleteProduct(product.productId.toString())
-      .pipe(tap(res => this.productState.getListProduct()))
+      .pipe(tap(res => this.productState.getListProduct(0)))
       .subscribe(
         res => this.notifyService.success('Xóa sản phẩm thành công'),
         error => {

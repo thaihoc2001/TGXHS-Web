@@ -25,8 +25,8 @@ export class ProductService {
         })
       )
   }
-  getProduct(): Observable<IohProduct[]>{
-    const url = `${apiUrl}/${path.product}`
+  getProduct(count: number): Observable<IohProduct[]>{
+    const url = `${apiUrl}/${path.product}/${count}`
     return this.apiService.get(url)
       .pipe(
         map((response: HttpResponse<any>) => {
@@ -35,8 +35,8 @@ export class ProductService {
         })
       )
   }
-  productById(id: String): Observable<IohProduct>{
-    const url = `${apiUrl}/${path.product}/${id}`;
+  productById(id: number): Observable<IohProduct>{
+    const url = `${apiUrl}/${path.productById}/${id}`;
     return this.apiService.get(url)
       .pipe(
         map((response: HttpResponse<any>) => {
