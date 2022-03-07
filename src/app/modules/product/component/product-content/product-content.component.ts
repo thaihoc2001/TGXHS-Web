@@ -1,7 +1,6 @@
   import {Component, OnInit} from '@angular/core';
   import {ProductState} from "../../../../share/states/product/product.state";
   import {IohProduct} from "../../../../share/model/product/ioh-product";
-  import { tap } from 'rxjs/operators';
 
   @Component({
     selector: 'app-product-content',
@@ -15,13 +14,13 @@
     }
 
     ngOnInit(): void {
-      this.productState.defaultCountProductMore(5);
       this.listenState();
     }
 
     listenState(): void {
       this.productState.$listProduct
         .subscribe(res => {
+          this.productState.defaultCountProductMore(0);
           this.listProductChange();
         });
     }
@@ -32,5 +31,11 @@
         this.listProduct = listProduct;
         console.log(this.listProduct);
       }
+    }
+    formatCash(price: number) {
+      const str = price.toString();
+      return str.split('').reverse().reduce((prev, next, index) => {
+        return ((index % 3) ? next : (next + ',')) + prev
+      })
     }
   }

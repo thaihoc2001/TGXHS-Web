@@ -4,9 +4,8 @@ import {IohProduct} from "../../model/product/ioh-product";
 import {Observable} from "rxjs";
 import {environment} from "../../../../environments/environment";
 import {apiPath} from "../../constance/api-path";
-import {map} from "rxjs/operators";
+import {catchError, map} from "rxjs/operators";
 import {HttpResponse} from "@angular/common/http";
-import {IohProductCategoryModel} from "../../model/categories/ioh-product-category.model";
 
 const apiUrl = environment.apiUrl;
 const path = apiPath.product
@@ -50,5 +49,32 @@ export class ProductService {
     const url = `${apiUrl}/${path.product}/${id}`;
     return this.apiService.delete(url);
   }
-
+  getProductsByCategory(category_id: any): Observable<IohProduct[]>{
+    const url = `${apiUrl}/${path.productByCategory(category_id)}`;
+    return this.apiService.get(url)
+      .pipe(
+        map((httpResponse: HttpResponse<any>) => {
+          const body = Array.isArray(httpResponse.body) ? httpResponse.body: [];
+          return body.map(item => IohProduct.fromJson(JSON.stringify(item)));
+        }),
+        catchError( err => {
+          console.error(err);
+          return [];
+        })
+      )
+  }
+  getProductsByType(type_id: any): Observable<IohProduct[]>{
+    const url = `${apiUrl}/${path.productByType(type_id)}`;
+    return this.apiService.get(url)
+      .pipe(
+        map((httpResponse: HttpResponse<any>) => {
+          const body = Array.isArray(httpResponse.body) ? httpResponse.body: [];
+          return body.map(item => IohProduct.fromJson(JSON.stringify(item)));
+        }),
+        catchError( err => {
+          console.error(err);
+          return [];
+        })
+      )
+  }
 }

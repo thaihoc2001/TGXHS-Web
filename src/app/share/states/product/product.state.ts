@@ -33,7 +33,6 @@ export class ProductState implements OnDestroy {
   subscription: Subscription = new Subscription();
 
   constructor(private productService: ProductService) {
-    this.getListProduct(this.countProductsSubject.getValue())
   }
 
   ngOnDestroy(): void {
@@ -116,7 +115,26 @@ export class ProductState implements OnDestroy {
       .subscribe()
     this.subscription.add(sb);
   }
-
+  getListProductOfCategory(category_id: any): void{
+    const sb = this.productService.getProductsByCategory(category_id)
+      .pipe(
+        tap((products: IohProduct[]) => this.setListProductSubject(products)),
+        catchError(async (error) => console.log(error)),
+        finalize(() => this.setIsReady(true))
+      )
+      .subscribe()
+    this.subscription.add(sb);
+  }
+  getListProductOfType(type_id: any): void{
+    const sb = this.productService.getProductsByType(type_id)
+      .pipe(
+        tap((products: IohProduct[]) => this.setListProductSubject(products)),
+        catchError(async (err) => console.log(err)),
+        finalize(() => this.setIsReady(true))
+      )
+      .subscribe()
+    this.subscription.add(sb);
+  }
   deleteProduct(id:String): Observable<any>{
     return this.productService.deleteProduct(id)
       .pipe(
