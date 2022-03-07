@@ -1,0 +1,48 @@
+<div class="p-3">
+  <h3 class="text-danger">Tìm kiếm</h3>
+  <h4 class="text-uppercase">Xe ga 50cc</h4>
+  <hr>
+  <div>
+    <div class="form-check mt-3" *ngFor="let productType of listProductType">
+      <input class="form-check-input" type="checkbox" value="" id="{{productType.productTypeId}}">
+      <label class="form-check-label" for="{{productType.productTypeId}}">
+        {{productType.productTypeName}}
+      </label>
+    </div>
+  </div>
+  <div class="mt-4">
+    <h3 class="text-danger">Giá tiền</h3>
+    <hr>
+    <div class="form-check mt-3" >
+      <input class="form-check-input" type="checkbox" value="" id="">
+      <label class="form-check-label" for="">
+        Dưới 8 triệu
+      </label>
+    </div>
+    <div class="form-check mt-3" >
+      <input class="form-check-input" type="checkbox" value="" id="">
+      <label class="form-check-label" for="">
+        Dưới 10 triệu
+      </label>
+    </div>
+    <div class="form-check mt-3" >
+      <input class="form-check-input" type="checkbox" value="" id="">
+      <label class="form-check-label" for="">
+        Dưới 12 triệu
+      </label>
+    </div>
+    <div class="form-check mt-3" >
+      <input class="form-check-input" type="checkbox" value="" id="">
+      <label class="form-check-label" for="">
+        Dưới 15 triệu
+      </label>
+    </div>
+    <div class="form-check mt-3" >
+      <input class="form-check-input" type="checkbox" value="" id="">
+      <label class="form-check-label" for="">
+        Trên 16 triệu
+      </label>
+    </div>
+  </div>
+</div>
+

@@ -34,7 +34,6 @@ export class ProductState implements OnDestroy {
 
   constructor(private productService: ProductService) {
     this.getListProduct(this.countProductsSubject.getValue())
-    this.getProductById(this.productIdSubject.getValue());
   }
 
   ngOnDestroy(): void {
@@ -48,9 +47,11 @@ export class ProductState implements OnDestroy {
   getIsReady(): boolean {
     return this.isReadySubject.getValue();
   }
+
   getCountNumber(): number{
     return this.countProductsSubject.getValue();
   }
+
   setCountNumber(count: number): void{
     this.countProductsSubject.next(count);
   }
@@ -66,6 +67,7 @@ export class ProductState implements OnDestroy {
   setProduct(product:IohProduct): void{
     return this.productSubject.next(product);
   }
+
   setId(id:number): void{
     return this.productIdSubject.next(id);
   }
@@ -73,19 +75,16 @@ export class ProductState implements OnDestroy {
     return this.productIdSubject.getValue();
   }
 
-  setListProductSubject(product: IohProduct[]): void {
+  setListProductSubject(product: IohProduct[]): void{
     return this.listProductSubject.next(product);
   }
+
   defaultCountProductMore(count: number): void{
     this.setCountNumber(count);
     this.getListProduct(this.getCountNumber());
   }
-  getProductId(id: number): void{
-    this.setId(id);
-    this.getProductById(this.productIdSubject.getValue());
-  }
 
-  getListProduct(count: number): void {
+  getListProduct(count: number): void{
     const sb = this.productService.getProduct(count)
       .pipe(
         tap((listProduct: IohProduct[]) => this.setListProductSubject(listProduct)),
