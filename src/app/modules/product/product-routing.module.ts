@@ -4,7 +4,7 @@ import {ProductComponent} from "./product.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':type/:id',
     component: ProductComponent,
     children: [
       {

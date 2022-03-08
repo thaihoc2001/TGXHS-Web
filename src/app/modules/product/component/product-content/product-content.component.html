@@ -42,3 +42,14 @@
   </div>
 <!--  end product item-->
 </div>
+<div class="text-center">
+  <div class="lds-spinner" *ngIf="isdLoading"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+<div class="text-center">
+  <div class="btn btn-secondary" style="width: 200px" (click)="getProduct()" *ngIf="isBtn">
+      <div class="btn-content">
+        <p>Click để xem thêm</p>
+        <mat-icon>arrow_forward</mat-icon>
+      </div>
+  </div>
+</div>

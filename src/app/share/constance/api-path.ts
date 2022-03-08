@@ -4,8 +4,8 @@ export const apiPath = {
     productById: 'api/products',
     productCategory: 'api/categories',
     productType: 'api/product-type',
-    productByCategory: (category_id: any) => `api/products/category/${category_id}`,
-    productByType: (type_id: any) => `api/products/product_type/${type_id}`
+    productByCategory: (category_id: any, count: any) => `api/products/category/${category_id}/${count}`,
+    productByType: (type_id: any, count: any) => `api/products/product_type/${type_id}/${count}`
   },
   token: {
     ID_KEY:'auth-token',

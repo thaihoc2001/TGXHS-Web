@@ -1,6 +1,8 @@
   import {Component, OnInit} from '@angular/core';
   import {ProductState} from "../../../../share/states/product/product.state";
   import {IohProduct} from "../../../../share/model/product/ioh-product";
+  import {ActivatedRoute} from "@angular/router";
+  import {Observable} from "rxjs";
 
   @Component({
     selector: 'app-product-content',
@@ -9,27 +11,43 @@
   })
   export class ProductContentComponent implements OnInit {
     listProduct: IohProduct[] = [];
-
-    constructor(private productState: ProductState) {
+    isdLoading: boolean;
+    isBtn: boolean= true;
+    constructor(private productState: ProductState,private router: ActivatedRoute) {
     }
 
     ngOnInit(): void {
+      this.getProduct();
       this.listenState();
     }
-
+    getProduct(){
+      const {type,id}= this.router.snapshot.params;
+      const count = this.productState.getCountNumber();
+      if (type === 'category'){
+        this.productState.getListProductOfCategory(id,count);
+      }else {
+        this.productState.getListProductOfType(id,count);
+      }
+      this.spinner();
+    }
+    spinner(){
+      this.isdLoading = true;
+      setTimeout ( () =>  {
+        this.isdLoading = false;
+      }, 1500 );
+    }
     listenState(): void {
       this.productState.$listProduct
         .subscribe(res => {
-          this.productState.defaultCountProductMore(0);
           this.listProductChange();
         });
     }
 
     listProductChange(): void {
       const listProduct = this.productState.getListProductSubject();
+      this.isBtn = this.productState.getIsBtn();
       if (listProduct) {
         this.listProduct = listProduct;
-        console.log(this.listProduct);
       }
     }
     formatCash(price: number) {

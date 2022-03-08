@@ -49,8 +49,8 @@ export class ProductService {
     const url = `${apiUrl}/${path.product}/${id}`;
     return this.apiService.delete(url);
   }
-  getProductsByCategory(category_id: any): Observable<IohProduct[]>{
-    const url = `${apiUrl}/${path.productByCategory(category_id)}`;
+  getProductsByCategory(category_id: any, count: any): Observable<IohProduct[]>{
+    const url = `${apiUrl}/${path.productByCategory(category_id, count)}`;
     return this.apiService.get(url)
       .pipe(
         map((httpResponse: HttpResponse<any>) => {
@@ -63,8 +63,8 @@ export class ProductService {
         })
       )
   }
-  getProductsByType(type_id: any): Observable<IohProduct[]>{
-    const url = `${apiUrl}/${path.productByType(type_id)}`;
+  getProductsByType(type_id: any, count: any): Observable<IohProduct[]>{
+    const url = `${apiUrl}/${path.productByType(type_id, count)}`;
     return this.apiService.get(url)
       .pipe(
         map((httpResponse: HttpResponse<any>) => {

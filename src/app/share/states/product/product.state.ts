@@ -21,6 +21,8 @@ export class ProductState implements OnDestroy {
   private listProductSubject = new BehaviorSubject<IohProduct[]>([]);
   public $listProduct = this.listProductSubject.asObservable();
 
+  private isBtn = new BehaviorSubject<boolean>(true);
+  public $isBtn = this.isBtn.asObservable();
   private productSubject = new BehaviorSubject<IohProduct | null>(null);
   public $product = this.productSubject.asObservable();
 
@@ -39,6 +41,12 @@ export class ProductState implements OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  setIsBtn(value: boolean): void{
+    this.isBtn.next(value);
+  }
+  getIsBtn(): boolean{
+    return this.isBtn.getValue();
+  }
   setIsReady(isReady: boolean): void {
     this.isReadySubject.next(isReady);
   }
@@ -82,7 +90,6 @@ export class ProductState implements OnDestroy {
     this.setCountNumber(count);
     this.getListProduct(this.getCountNumber());
   }
-
   getListProduct(count: number): void{
     const sb = this.productService.getProduct(count)
       .pipe(
@@ -115,20 +122,34 @@ export class ProductState implements OnDestroy {
       .subscribe()
     this.subscription.add(sb);
   }
-  getListProductOfCategory(category_id: any): void{
-    const sb = this.productService.getProductsByCategory(category_id)
+  getListProductOfCategory(category_id: any, count: any): void{
+    const sb = this.productService.getProductsByCategory(category_id,count)
       .pipe(
-        tap((products: IohProduct[]) => this.setListProductSubject(products)),
+        tap((products: IohProduct[]) => {
+          if (products.length === 0){
+            this.setIsBtn(false);
+          }
+          this.addProducts(products);
+          const count = this.getCountNumber();
+          this.setCountNumber((count+products.length));
+        }),
         catchError(async (error) => console.log(error)),
         finalize(() => this.setIsReady(true))
       )
       .subscribe()
     this.subscription.add(sb);
   }
-  getListProductOfType(type_id: any): void{
-    const sb = this.productService.getProductsByType(type_id)
+  getListProductOfType(type_id: any, count: any): void{
+    const sb = this.productService.getProductsByType(type_id, count)
       .pipe(
-        tap((products: IohProduct[]) => this.setListProductSubject(products)),
+        tap((products: IohProduct[]) => {
+          if (products.length === 0){
+            this.setIsBtn(false);
+          }
+          this.addProducts(products);
+          const count = this.getCountNumber();
+          this.setCountNumber((count+products.length));
+        }),
         catchError(async (err) => console.log(err)),
         finalize(() => this.setIsReady(true))
       )
@@ -140,5 +161,10 @@ export class ProductState implements OnDestroy {
       .pipe(
         finalize(() => this.setIsReady(true))
       )
+  }
+  addProducts(products: IohProduct[]): void{
+    const list = this.getListProductSubject();
+    list.push(...products);
+    this.setListProductSubject(list);
   }
 }
