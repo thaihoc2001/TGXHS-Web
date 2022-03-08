@@ -4,7 +4,15 @@
   flex-wrap: wrap;
   margin: 0 -10px;
 }
+.name-product{
+  font-size: 18px;
+  color: black;
+}
+.name-product:hover{
+  color: green;
+}
 .card-product{
+  display: flex;
   margin: 10px 10px;
   width: calc(33.33% - 20px);
   border-radius: 10px;
@@ -12,18 +20,47 @@
   background-color: white;
   box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
 }
+.card-product:hover{
+  transform: scale(1.05);
+}
 .image-product{
   width: 100%;
-  height: 250px;
+  height: 200px;
   flex-shrink: 0;
+  padding: 20px 20px;
 }
-// X-Small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {
   .card-product{
     width: 100%;
   }
+  .image-product{
+    height: 300px;
+  }
 }
-
+@media (min-width: 576px) {
+  .card-product{
+    width: 100%;
+  }
+  .image-product{
+    height: 300px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .card-product{
+    width: calc(50% - 20px);
+  }
+  .image-product{
+    height: 200px;
+  }
+}
+@media (min-width: 1200px) {
+  .card-product{
+    width: calc(33.33% - 20px);
+  }
+  .image-product{
+    height: 200px;
+  }
+}
 .price-product{
   display: flex;
   justify-content: flex-start;
@@ -32,8 +69,25 @@
   margin-right: 10px;
 }
 .card-footer-product{
+  flex: 1;
   display: flex;
+  justify-content: flex-start;
+  margin: 0 -10px;
 }
 .card-content{
   margin: 10px 10px;
+  flex: 1;
+}
+.card-body-product{
+  display: flex;
+  margin-top: auto;
+  flex-direction: column;
+}
+.card-content{
+  display: flex;
+  flex-direction: column;
+}
+.item-footer{
+  width: calc(33.33% - 20px);
+  margin: 0 10px;
 }
