@@ -21,7 +21,7 @@ export class ProductState implements OnDestroy {
   private listProductSubject = new BehaviorSubject<IohProduct[]>([]);
   public $listProduct = this.listProductSubject.asObservable();
 
-  private isBtn = new BehaviorSubject<boolean>(true);
+  private isBtn = new BehaviorSubject<boolean>(false);
   public $isBtn = this.isBtn.asObservable();
   private productSubject = new BehaviorSubject<IohProduct | null>(null);
   public $product = this.productSubject.asObservable();
@@ -128,6 +128,8 @@ export class ProductState implements OnDestroy {
         tap((products: IohProduct[]) => {
           if (products.length === 0){
             this.setIsBtn(false);
+          }else {
+            this.setIsBtn(true);
           }
           this.addProducts(products);
           const count = this.getCountNumber();
@@ -145,6 +147,8 @@ export class ProductState implements OnDestroy {
         tap((products: IohProduct[]) => {
           if (products.length === 0){
             this.setIsBtn(false);
+          }else {
+            this.setIsBtn(true);
           }
           this.addProducts(products);
           const count = this.getCountNumber();

@@ -12,7 +12,7 @@
   export class ProductContentComponent implements OnInit {
     listProduct: IohProduct[] = [];
     isdLoading: boolean;
-    isBtn: boolean= true;
+    isBtn: boolean= false;
     constructor(private productState: ProductState,private router: ActivatedRoute) {
     }
 
