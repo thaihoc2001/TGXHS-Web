@@ -77,4 +77,18 @@ export class ProductService {
         })
       )
   }
+  getProductsByTypeAndCategory(type_id: any, count: any, listCategory: any, limit: any): Observable<IohProduct[]>{
+    const url = `${apiUrl}/${path.productByTypeAndCategory(count,type_id,listCategory, limit)}`;
+    return this.apiService.get(url)
+      .pipe(
+        map((httpResponse: HttpResponse<any>) => {
+          const body = Array.isArray(httpResponse.body) ? httpResponse.body: [];
+          return body.map(item => IohProduct.fromJson(JSON.stringify(item)));
+        }),
+        catchError( err => {
+          console.error(err);
+          return [];
+        })
+      )
+  }
 }

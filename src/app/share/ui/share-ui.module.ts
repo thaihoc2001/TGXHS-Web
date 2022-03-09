@@ -15,6 +15,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatTreeModule} from "@angular/material/tree";
 import {MatButtonModule} from '@angular/material/button';
 import {ProductTypeState} from "../states/product-type/product-type.state";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -43,7 +44,8 @@ import {ProductTypeState} from "../states/product-type/product-type.state";
     CollapseModule,
     MatExpansionModule,
     MatTreeModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ],
   providers: [
     ProductTypeState

@@ -1,6 +1,6 @@
 <div class="list-product">
 <!--  begin product item-->
-  <div class="card-product" *ngFor="let item of listProduct">
+  <div class="card-product" *ngFor="let item of listProduct" routerLink="/product/{{item.productId}}">
     <div class="card-content">
       <div class="card-header-product">
         <a href="#" class="text-decoration-none name-product">{{item.productName}}</a>
@@ -22,7 +22,11 @@
           <i class="fas fa-star my-auto text-warning"></i>
           <i class="fas fa-star my-auto"></i>
         </div>
-        <img src="{{item.images[0].url}}" class="image-product">
+        <div *ngFor="let image of item.images">
+          <div *ngIf="image.type === 'Main'">
+            <img src="{{image.url}}" class="image-product">
+          </div>
+        </div>
         <div class="card-footer-product">
           <div class="item-footer">
             <img src="assets/image/product/icon1.png" width="35">
@@ -46,7 +50,7 @@
   <div class="lds-spinner" *ngIf="isdLoading"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 </div>
 <div class="text-center">
-  <div class="btn btn-secondary" style="width: 200px" (click)="getProduct()" *ngIf="isBtn">
+  <div class="btn btn-secondary" style="width: 200px;margin: 20px" (click)="getProduct()" *ngIf="isBtn">
       <div class="btn-content">
         <p>Click để xem thêm</p>
         <mat-icon>arrow_forward</mat-icon>

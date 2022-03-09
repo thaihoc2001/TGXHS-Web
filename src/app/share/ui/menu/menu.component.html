@@ -6,11 +6,11 @@
       </li>
       <li class="col-1" *ngFor="let item of listCategoryAndType">
         <div class="dropdown">
-          <a [ngClass]="item.categories.length > 0 ? 'dropdown-toggle' : ''" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a [ngClass]="item.categories.length > 0 ? 'dropdown-toggle' : ''" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="onclick(item.productTypeId)">
             {{item.productTypeName}}
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" *ngIf="item.categories.length > 0">
-            <a class="dropdown-item" href="#" *ngFor="let categories of item.categories">{{categories.productCategoryName}}</a>
+            <a class="dropdown-item" type="button" *ngFor="let categories of item.categories" (click)="onclickCategory(item.productTypeId, categories.productCategoryId)" >{{categories.productCategoryName}}</a>
           </div>
         </div>
       </li>

@@ -171,4 +171,36 @@ export class ProductState implements OnDestroy {
     list.push(...products);
     this.setListProductSubject(list);
   }
+  getProductByTypeAndCategory(type_id: any, count: any, listCategory: any): void{
+    const sb = this.productService.getProductsByTypeAndCategory(type_id,count,listCategory, true)
+      .pipe(
+        tap((products: IohProduct[]) => {
+          if (products.length === 0){
+            this.setIsBtn(false);
+          }else {
+            this.setIsBtn(true);
+          }
+          this.addProducts(products);
+          const count = this.getCountNumber();
+          this.setCountNumber((count+products.length));
+        }),
+        catchError(async (err) => console.log(err)),
+        finalize(() => this.setIsReady(true))
+      )
+      .subscribe()
+    this.subscription.add(sb);
+  }
+  getCategoryCheckBox(type_id: any, count: any, listCategory: any): void{
+    const sb = this.productService.getProductsByTypeAndCategory(type_id,count,listCategory, false)
+      .pipe(
+        tap((products: IohProduct[]) => {
+          this.setIsBtn(false);
+          this.setListProductSubject(products);
+        }),
+        catchError(async (err) => console.log(err)),
+        finalize(() => this.setIsReady(true))
+      )
+      .subscribe()
+    this.subscription.add(sb);
+  }
 }

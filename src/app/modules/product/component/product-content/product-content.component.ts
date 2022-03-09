@@ -19,27 +19,31 @@
     ngOnInit(): void {
       this.getProduct();
       this.listenState();
+      setTimeout(()=>{
+        this.isdLoading = false;
+      },1500);
     }
     getProduct(){
-      const {type,id}= this.router.snapshot.params;
+      const {id}= this.router.snapshot.params;
+      const {list} = this.router.snapshot.queryParams;
+      console.log(list);
       const count = this.productState.getCountNumber();
-      if (type === 'category'){
-        this.productState.getListProductOfCategory(id,count);
-      }else {
-        this.productState.getListProductOfType(id,count);
-      }
-      this.spinner();
+      this.productState.getProductByTypeAndCategory(id,count,list);
+      // this.spinner();
     }
     spinner(){
-      this.isdLoading = true;
-      setTimeout ( () =>  {
+      const is = this.productState.getIsReady();
+      if (is === false){
+        this.isdLoading = true
+      }else {
         this.isdLoading = false;
-      }, 1500 );
+      }
     }
     listenState(): void {
       this.productState.$listProduct
         .subscribe(res => {
           this.listProductChange();
+          this.spinner();
         });
     }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProductTypeState} from "../../states/product-type/product-type.state";
 import {IohTypeCategoriesProduct} from "../../model/product-type/ioh-type-categories-product";
 import {IohProductTypeModel} from "../../model/product-type/ioh-product-type.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-menu',
@@ -11,7 +12,7 @@ import {IohProductTypeModel} from "../../model/product-type/ioh-product-type.mod
 export class MenuComponent implements OnInit {
   listCategoryAndType: IohTypeCategoriesProduct[] = [];
   listProductType: IohProductTypeModel[] = [];
-  constructor(private productTypeState: ProductTypeState) { }
+  constructor(private productTypeState: ProductTypeState, private router: Router) { }
 
   ngOnInit(): void {
     this.listenState();
@@ -34,5 +35,16 @@ export class MenuComponent implements OnInit {
       // @ts-ignore
       menu.classList.toggle('sticky', window.scrollY > 85);
     });
+  }
+  async onclick(id: any){
+    await this.router.navigate([`/product/type/${id}`]);
+    window.location.reload();
+  }
+  async onclickCategory(type_id: any, category_id: any){
+    console.log(type_id,category_id);
+    console.log(`/product/type/${type_id}?list=${category_id}`);
+    await this.router.navigate([`/product/type/${type_id}`],
+      { queryParams: { list: `${category_id}` } });
+    window.location.reload();
   }
 }
