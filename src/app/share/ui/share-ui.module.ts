@@ -15,7 +15,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatTreeModule} from "@angular/material/tree";
 import {MatButtonModule} from '@angular/material/button';
 import {ProductTypeState} from "../states/product-type/product-type.state";
-import { CartProductComponent } from './cart-product/cart-product.component';
+import { CardProductComponent } from './card-product/card-product.component';
 
 
 
@@ -27,16 +27,16 @@ import { CartProductComponent } from './cart-product/cart-product.component';
     MenuComponent,
     NavbarAdminComponent,
     SidebarAdminComponent,
-    CartProductComponent,
+    CardProductComponent,
   ],
-    exports: [
-        NavbarComponent,
-        FooterComponent,
-        MenuComponent,
-        NavbarAdminComponent,
-        SidebarAdminComponent,
-        CartProductComponent
-    ],
+  exports: [
+    NavbarComponent,
+    FooterComponent,
+    MenuComponent,
+    NavbarAdminComponent,
+    SidebarAdminComponent,
+    CardProductComponent
+  ],
   imports: [
     CommonModule,
     MatFormFieldModule,
