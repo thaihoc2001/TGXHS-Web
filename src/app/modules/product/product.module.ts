@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {ProductTypeState} from "../../share/states/product-type/product-type.state";
 import {ProductCategoryService} from "../../share/service/product-category/product-category.service";
 import {ProductState} from "../../share/states/product/product.state";
+import {ShareUiModule} from "../../share/ui/share-ui.module";
 
 
 @NgModule({
@@ -19,13 +20,14 @@ import {ProductState} from "../../share/states/product/product.state";
     ProductAsideComponent,
     ProductContentComponent
   ],
-  imports: [
-    CommonModule,
-    ProductRoutingModule,
-    MatCheckboxModule,
-    MatIconModule,
-    MatButtonModule
-  ],
+    imports: [
+        CommonModule,
+        ProductRoutingModule,
+        MatCheckboxModule,
+        MatIconModule,
+        MatButtonModule,
+        ShareUiModule
+    ],
   providers: [
     ProductTypeState,
     ProductCategoryService,

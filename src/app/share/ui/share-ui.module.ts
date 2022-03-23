@@ -16,6 +16,7 @@ import {MatTreeModule} from "@angular/material/tree";
 import {MatButtonModule} from '@angular/material/button';
 import {ProductTypeState} from "../states/product-type/product-type.state";
 import { CardProductComponent } from './card-product/card-product.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 
 
@@ -28,6 +29,7 @@ import { CardProductComponent } from './card-product/card-product.component';
     NavbarAdminComponent,
     SidebarAdminComponent,
     CardProductComponent,
+    BreadcrumbComponent,
   ],
   exports: [
     NavbarComponent,
@@ -35,7 +37,8 @@ import { CardProductComponent } from './card-product/card-product.component';
     MenuComponent,
     NavbarAdminComponent,
     SidebarAdminComponent,
-    CardProductComponent
+    CardProductComponent,
+    BreadcrumbComponent
   ],
   imports: [
     CommonModule,
