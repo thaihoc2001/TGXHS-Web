@@ -7,3 +7,15 @@
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
 @import './assets/lightning-admin.scss';
+
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
+:root {
+  --main-color: #056042;
+  --white: #ffffff;
+  --black: #01160F;
+  --gray-light: #CECECE;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

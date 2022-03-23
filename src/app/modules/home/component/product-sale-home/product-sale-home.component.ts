@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-product-sale-home',
+  templateUrl: './product-sale-home.component.html',
+  styleUrls: ['./product-sale-home.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class ProductSaleHomeComponent implements OnInit {
 
   constructor() { }
 
@@ -22,7 +22,16 @@ export class HeaderComponent implements OnInit {
     navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
     responsive: {
       0: {
-        items: 1
+        items: 2
+      },
+      400: {
+        items: 3
+      },
+      740: {
+        items: 4
+      },
+      940: {
+        items: 5
       }
     },
     nav: true

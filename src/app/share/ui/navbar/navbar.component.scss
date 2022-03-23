@@ -1,3 +1,14 @@
-.navbar-toggler-icon{
-  color: white !important;
+nav{
+  background-color: var(--main-color) !important;
+}
+.header{
+  background-image: url("../../../../assets/image/header/bg-header-top.png");
+  height: 44px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+ul li i, span{
+  color: var(--main-color);
+  font-weight: bold;
 }

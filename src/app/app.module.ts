@@ -7,6 +7,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import { ToastrModule } from 'ngx-toastr';
 import {ProductTypeState} from "./share/states/product-type/product-type.state";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {ProductTypeState} from "./share/states/product-type/product-type.state";
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
+    NgbModule,
   ],
   providers: [
   ],

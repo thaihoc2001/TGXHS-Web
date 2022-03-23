@@ -1,17 +1,7 @@
-ul li button{
-  background-color: black;
-  border: none;
-  color: white;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.product-hot{
+  background-color: var(--main-color);
 }
-ul li button:hover{
-  opacity: 0.7;
-}
-li{
-  height: 50px;
-}
+
 ::ng-deep .owl-carousel .owl-dot,::ng-deep .owl-carousel .owl-nav .owl-next {
   position: absolute !important;
   right: -25px;
@@ -64,4 +54,9 @@ li{
   padding: 3em;
   text-decoration: none;
   color: #565a5c;
+}
+.btn-show-all{
+  color: var(--white);
+  background-color: var(--main-color);
+  border: 3px solid var(--white);
 }
