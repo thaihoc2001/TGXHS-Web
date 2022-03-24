@@ -24,15 +24,10 @@ button{
   height: 50px;
   color: white;
   border-radius: 30px;
-  //background-image: linear-gradient(to right,#23bce2, #7277ed, #e416fc);
-  background-color: #242939;
+  background-color: var(--main-color);
 }
 .outer{
-  //background-image: url("../../assets/img/img-content/bg-login.webp");
-  //background-size: cover;
-  //background-repeat: no-repeat;
-  //background-position: center;
-  background-color: #242939;
+  background-color: var(--main-color);
   width: 100vw;
   height: 100vh;
 }
@@ -40,8 +35,8 @@ button{
 input{
   height: 40px;
   border: none !important;
-  border-bottom: 2px solid #adadad !important;
-  color: #adadad !important;
+  border-bottom: 2px solid var(--main-color) !important;
+  color: var(--main-color) !important;
   font-size: 1.5rem;
 }
 i{
@@ -50,4 +45,7 @@ i{
   line-height: 50px;
   border-radius: 100px;
   color: white;
+}
+h1{
+  color: var(--main-color);
 }

@@ -1,8 +1,11 @@
 <div class="outer container-fluid m-0 p-0">
   <div class="row h-100 justify-content-center align-items-center m-0 p-0">
     <form name="myForm" [formGroup]="infoLogin" (ngSubmit)="onSubmit()" class="w-100 p-5">
-      <div class="text-center">
-        <h1 class="fw-bold text-dark">Login</h1>
+      <div class="mt-3">
+        <img src="assets/image/Group%2033.png" width="100%">
+      </div>
+      <div class="text-center mt-5">
+        <h1 class="fw-bold">Login</h1>
       </div>
       <div class="reg-form form-group mt-4">
         <input
@@ -26,31 +29,11 @@
           id="password"
         >
         <div class="mt-3 text-end">
-          <a routerLink="#" class="text-decoration-none" style="color: #666666">Forgot password ?</a>
+          <a routerLink="#" class="text-decoration-none" style="color: var(--main-color)">Forgot password ?</a>
         </div>
       </div>
       <div class="text-center mt-3">
-        <button  type="submit" class="btn btn-dark mt-1 fw-bolder">Login</button>
-      </div>
-      <div class="mt-5 text-center">
-        <p class="mt-5">Or Sign Up Using</p>
-        <div class="d-flex justify-content-center mt-4">
-          <div>
-            <a>
-              <i class="fa fa-facebook mx-1" aria-hidden="true" style="background-color: #3b5998;"></i>
-            </a>
-          </div>
-          <div>
-            <a>
-              <i class="fa fa-twitter mx-2" aria-hidden="true" style="background-color: #1da1f2;"></i>
-            </a>
-          </div>
-          <div>
-            <a>
-              <i class="fa fa-google mx-1" aria-hidden="true" style="background-color: #ea4335;"></i>
-            </a>
-          </div>
-        </div>
+        <button  type="submit" class="btn btn-light mt-1 fw-bolder">Login</button>
       </div>
     </form>
   </div>
