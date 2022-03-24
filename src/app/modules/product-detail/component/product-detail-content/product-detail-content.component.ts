@@ -18,6 +18,7 @@ export class ProductDetailContentComponent implements OnInit {
   ngOnInit(): void {
     this.getIdFormParams();
     this.listenState();
+    this.slideImage();
   }
   listenState(): void{
     if(this.productId){
@@ -41,5 +42,39 @@ export class ProductDetailContentComponent implements OnInit {
       console.log(this.productItem);
       console.log(this.productItem.productName);
     }
+  }
+  slideImage(): void{
+    let thumbnails = document.getElementsByClassName('thumbnail')
+    let activeImages = document.getElementsByClassName('active')
+    for (var i=0; i < thumbnails.length; i++){
+
+      thumbnails[i].addEventListener('mouseover', function(){
+        if (activeImages.length > 0){
+          activeImages[0].classList.remove('active')
+        }
+        // @ts-ignore
+        this.classList.add('active')
+        // @ts-ignore
+        document.getElementById('featured').src = this.src
+      })
+    }
+  }
+
+  left(event: any): void{
+    if (event.y > 0) document.getElementById('slider')!.scrollLeft -= 180;
+    else document.getElementById('slider')!.scrollLeft += 180;
+  }
+
+  right(event: any): void{
+    if (event.y > 0) document.getElementById('slider')!.scrollLeft += 180;
+    else document.getElementById('slider')!.scrollLeft -= 180;
+  }
+
+  chooseImg(event: any): void{
+    const urlImg = event.currentTarget.getAttribute("src");
+    const mainImg = document.getElementById('featured');
+    console.log(urlImg);
+    // @ts-ignore
+    mainImg.setAttribute("src", urlImg);
   }
 }

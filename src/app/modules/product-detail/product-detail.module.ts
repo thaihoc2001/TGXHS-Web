@@ -8,6 +8,7 @@ import {ProductState} from "../../share/states/product/product.state";
 import { ProductDetailByCategoryComponent } from './component/product-detail-by-category/product-detail-by-category.component';
 import {CarouselModule} from "ngx-owl-carousel-o";
 import {MatCardModule} from "@angular/material/card";
+import {ShareUiModule} from "../../share/ui/share-ui.module";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {MatCardModule} from "@angular/material/card";
         CommonModule,
         ProductDetailRoutingModule,
         CarouselModule,
-        MatCardModule
+        MatCardModule,
+        ShareUiModule
     ],
   providers: [
     ProductState
