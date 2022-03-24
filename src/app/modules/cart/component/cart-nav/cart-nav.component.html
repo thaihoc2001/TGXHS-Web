@@ -1,0 +1,5 @@
+<div class="row text-center mt-2 mx-1">
+  <button class="col-4 px-0 py-2" [class.active]="selectedIndex === 1" (click)="setSelected(1)" routerLink="/cart/cart-detail">Giỏ hàng</button>
+  <button class="col-4 px-0 py-2" [class.active]="selectedIndex === 2" (click)="setSelected(2)" routerLink="/cart/info-buy">Thông tin mua hàng</button>
+  <button class="col-4 px-0 py-2" [class.active]="selectedIndex === 3" (click)="setSelected(3)" routerLink="/cart/order">Hóa đơn</button>
+</div>

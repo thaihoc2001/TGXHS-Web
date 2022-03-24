@@ -1,0 +1,11 @@
+button{
+  background-color: var(--white);
+  border: 2px solid var(--main-color);
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.active{
+  background-color: var(--main-color);
+  color: var(--white);
+}
