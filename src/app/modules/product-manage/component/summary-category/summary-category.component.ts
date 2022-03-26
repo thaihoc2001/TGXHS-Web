@@ -14,7 +14,7 @@ import {ProductCategoryState} from "../../../../share/states/product-category/pr
 })
 export class SummaryCategoryComponent implements OnInit {
   dataSource = new MatTableDataSource<IohProductCategoryModel>([]);
-  displayedColumns: string[] = ['categoryId', 'categoryName', 'status', 'createAt', 'action'];
+  displayedColumns: string[] = ['categoryId', 'categoryName', 'createAt', 'action'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(private productCategoryState: ProductCategoryState,
               private notifyService: NotifyService) { }

@@ -42,6 +42,7 @@ export class CreateCategoryComponent implements OnInit {
     this.productCategoryState.createProductCategory(iohProductCategoryModel.toPlain())
       .pipe(tap(res => this.productCategoryState.getListProductCategory()))
       .subscribe(res => {
+        this.initForm();
         this.notifyService.success('Tạo hãng xe thành công');
       },
         error => {

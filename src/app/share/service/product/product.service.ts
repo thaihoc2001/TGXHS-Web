@@ -26,7 +26,7 @@ export class ProductService {
       )
   }
   getProduct(count: number): Observable<IohProduct[]>{
-    const url = `${apiUrl}/${path.product}/${count}`
+    const url = `${apiUrl}/${path.product}/all/${count}`
     return this.apiService.get(url)
       .pipe(
         map((response: HttpResponse<any>) => {

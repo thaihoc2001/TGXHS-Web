@@ -21,11 +21,46 @@
           <span>Dashboard</span>
         </a>
       </li>
-      <li >
-        <a href="/admin/product-manage">
+      <li class="">
+        <a class="caret">
           <i class="fas fa-motorcycle"></i>
-          <span>Product manage</span>
+          <span class="ms-3">Product manage</span>
         </a>
+        <ul class="nested ps-5">
+          <li class="ps-2">
+            <a class="caret p-0" routerLink="/admin/product-manage/summary"><span class="">Sản phẩm</span></a>
+<!--            <ul class="nested ps-4">-->
+<!--              <li class="mt-1" >-->
+<!--                <a href="/admin/product-manage/create" class="px-1">Tạo sản phẩm</a>-->
+<!--              </li>-->
+<!--              <li class="mt-1">-->
+<!--                <a class="px-1" href="/admin/product-manage/summary">Danh sách</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+          </li>
+          <li class="ps-2">
+            <a class="caret p-0" [routerLink]="['/admin/product-manage/summary-category']"><span>Hãng sản xuất</span></a>
+<!--            <ul class="nested ps-4">-->
+<!--              <li class="mt-1" >-->
+<!--                <a href="/admin/product-manage/summary-category" class="px-1">Tạo hãng sản xuất</a>-->
+<!--              </li>-->
+<!--              <li class="mt-1">-->
+<!--                <a class="px-1" href="/admin/product-manage/summary-category">Danh sách</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+          </li>
+          <li class="ps-2">
+            <a class="caret p-0" routerLink="/admin/product-manage/summary-product-type"><span class="">Loại sản phẩm</span></a>
+<!--            <ul class="nested ps-4">-->
+<!--              <li class="mt-1" >-->
+<!--                <a href="/admin/product-manage/create-product-type" class="px-1">Tạo loại sản phẩm</a>-->
+<!--              </li>-->
+<!--              <li class="mt-1">-->
+<!--                <a class="px-1" href="/admin/product-manage/summary-product-type">Danh sách</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+          </li>
+        </ul>
       </li>
       <li>
         <a routerLink="/admin/messenger">
@@ -45,26 +80,6 @@
           <span>Thống kê</span>
         </a>
       </li>
-<!--      <li>-->
-<!--        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">-->
-<!--          &lt;!&ndash; This is the tree node template for leaf nodes &ndash;&gt;-->
-<!--          <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>-->
-<!--            &lt;!&ndash; use a disabled button to provide padding for tree leaf &ndash;&gt;-->
-<!--            <div disabled><mat-icon>{{node.icon}}</mat-icon></div>-->
-<!--            {{node.name}}-->
-<!--          </mat-tree-node>-->
-<!--          &lt;!&ndash; This is the tree node template for expandable nodes &ndash;&gt;-->
-<!--          <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>-->
-<!--            <div matTreeNodeToggle-->
-<!--                    [attr.aria-label]="'Toggle ' + node.name">-->
-<!--              <mat-icon>-->
-<!--                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}-->
-<!--              </mat-icon>-->
-<!--            </div>-->
-<!--            {{node.name}}-->
-<!--          </mat-tree-node>-->
-<!--        </mat-tree>-->
-<!--      </li>-->
     </ul>
     <div class="menu-header mt-4 mb-4">
       Other

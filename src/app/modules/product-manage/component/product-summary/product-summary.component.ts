@@ -13,7 +13,7 @@ import {tap} from "rxjs/operators";
 })
 export class ProductSummaryComponent implements OnInit {
   dataSource = new MatTableDataSource<IohProduct>([]);
-  displayedColumns: string[] = ['productId', 'imageThumbnail', 'productName', 'priceNew', 'quantity', 'action'];
+  displayedColumns: string[] = ['imageThumbnail', 'productName','quantity','action'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(private productState: ProductState,
               private notifyService: NotifyService) { }

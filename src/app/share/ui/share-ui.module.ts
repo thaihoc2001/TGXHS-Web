@@ -17,6 +17,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {ProductTypeState} from "../states/product-type/product-type.state";
 import { CardProductComponent } from './card-product/card-product.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import {TreeviewModule} from "ngx-treeview";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -40,17 +42,19 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     CardProductComponent,
     BreadcrumbComponent
   ],
-  imports: [
-    CommonModule,
-    MatFormFieldModule,
-    MatIconModule,
-    FormsModule,
-    MatInputModule,
-    CollapseModule,
-    MatExpansionModule,
-    MatTreeModule,
-    MatButtonModule
-  ],
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+        MatIconModule,
+        FormsModule,
+        MatInputModule,
+        CollapseModule,
+        MatExpansionModule,
+        MatTreeModule,
+        MatButtonModule,
+        TreeviewModule,
+        RouterModule
+    ],
   providers: [
     ProductTypeState
   ]

@@ -44,6 +44,7 @@ export class CreateProductTypeComponent implements OnInit {
       .pipe(tap(res => this.productTypeState.getListProductType()))
       .subscribe(
         res => {
+          this.initForm();
           this.notifyService.success('Tạo loại sản phẩm thành công');
         },
         error => {

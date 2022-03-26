@@ -6,8 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import { ToastrModule } from 'ngx-toastr';
-import {ProductTypeState} from "./share/states/product-type/product-type.state";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TreeviewModule } from 'ngx-treeview';
 
 @NgModule({
   declarations: [
@@ -21,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     NgbModule,
+    TreeviewModule.forRoot(),
   ],
   providers: [
   ],

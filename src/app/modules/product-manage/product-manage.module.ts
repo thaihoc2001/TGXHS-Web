@@ -16,6 +16,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {ProductTypeState} from "../../share/states/product-type/product-type.state";
 import {ProductCategoryState} from "../../share/states/product-category/product-category.state";
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {ProductCategoryState} from "../../share/states/product-category/product-
     CKEditorModule,
     CKEditorModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    RouterModule
   ],
   providers: [
     ProductState,

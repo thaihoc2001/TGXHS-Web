@@ -1,15 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {FormGroup, Validators, FormControl, FormBuilder} from "@angular/forms";
 import {ProductState} from "../../../../share/states/product/product.state";
 import {IohProductCategoryModel} from "../../../../share/model/categories/ioh-product-category.model";
 import {IohProductTypeModel} from "../../../../share/model/product-type/ioh-product-type.model";
 import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import {BigInteger} from "@angular/compiler/src/i18n/big_integer";
 import {NotifyService} from "../../../../share/service/notify/notify.service";
 import {tap} from "rxjs/operators";
 import {ProductTypeState} from "../../../../share/states/product-type/product-type.state";
 import {ProductCategoryState} from "../../../../share/states/product-category/product-category.state";
+// import {ClassicImageResize} from "@emagtechlabs/ckeditor5-classic-image-resize";
 
 @Component({
   selector: 'app-create-product-modal',
@@ -139,6 +138,7 @@ export class CreateProductModalComponent implements OnInit {
       },
       error => {
         this.notifyService.error('Tạo sản phẩm thất bại')
+        console.log(error);
       }
     )
     console.log(this.productForm.getRawValue())
@@ -165,54 +165,62 @@ export class CreateProductModalComponent implements OnInit {
 
     },
     image: {
-      // Configure the available styles.
+      toolbar: [
+        'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
+        '|',
+        'imageStyle:full',
+        'imageStyle:side',
+        '|',
+        'imageTextAlternative'
+      ],
       styles: [
+        'full',
+        'side',
         'alignLeft', 'alignCenter', 'alignRight'
       ],
-
-      // Configure the available image resize options.
       resizeOptions: [
         {
-          name: 'resizeImage:original',
+          name: 'imageResize:original',
           label: 'Original',
           value: null
         },
         {
-          name: 'resizeImage:50',
-          label: '25%',
-          value: '25'
-        },
-        {
-          name: 'resizeImage:50',
+          name: 'imageResize:50',
           label: '50%',
           value: '50'
         },
         {
-          name: 'resizeImage:75',
+          name: 'imageResize:75',
           label: '75%',
           value: '75'
         }
       ],
-
-      // You need to configure the image toolbar, too, so it shows the new style
-      // buttons as well as the resize buttons.
-      toolbar: [
-        'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
-        '|',
-        'ImageResize',
-        '|',
-        'imageTextAlternative'
-      ]
     },
-    // simpleUpload: {
-    //    The URL that the images are uploaded to.
-    // uploadUrl: 'http://localhost:52536/api/Image/ImageUpload',
+  //   language: 'en'
+  };
+  onReady(eventData: any) {
+    eventData.plugins.get('FileRepository').createUploadAdapter = function(loader: any) {
+      console.log(btoa(loader.file));
+      return new UploadAdapter(loader);
+    };
+  }
+}
+export class UploadAdapter {
+  private loader;
+  constructor(loader: any) {
+    this.loader = loader;
+    // console.log(this.readThis(loader.file));
+  }
+  upload() {
+    return this.loader.file
+      .then( (file: Blob) => new Promise( ( resolve, reject ) => {
+        var myReader= new FileReader();
+        myReader.onloadend = (e) => {
+          resolve({ default: myReader.result });
+        }
 
-    //   Enable the XMLHttpRequest.withCredentials property.
-
-    //},
-
-    language: 'en'
+        myReader.readAsDataURL(file);
+      } ) );
   };
 
 }

@@ -1,4 +1,8 @@
 <div class="bg-light p-3">
+  <div>
+    <h3>Thông tin hãng sản xuất</h3>
+    <hr>
+  </div>
   <ng-container>
     <div class="row">
       <div class="col-12">
@@ -10,10 +14,6 @@
                      placeholder="Giá sản phẩm" autocomplete="off" formControlName="productCategoryName"
                      [class.is-invalid]="isControlInvalid(productForm, 'productCategoryName')"
                      [class.is-valid]="isControlValid(productForm, 'productCategoryName')"/>
-              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'productCategoryName')">Tên sản phẩm cũ đã nhập chính xác
-              </div>
-              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'productCategoryName')">Tên sản phẩm cũ không được để trống
-              </div>
             </div>
             <div class="form-group col-6">
               <label class="form-label mt-2">Trạng thái</label>
@@ -21,13 +21,9 @@
                      placeholder="Giá sản phẩm" autocomplete="off" formControlName="status"
                      [class.is-invalid]="isControlInvalid(productForm, 'status')"
                      [class.is-valid]="isControlValid(productForm, 'status')"/>
-              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'status')">Mô tả sản phẩm cũ đã nhập chính xác
-              </div>
-              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'status')">Mô tả sản phẩm cũ không được để trống
-              </div>
             </div>
           </div>
-          <div class="col-12 row">
+          <div class="col-12 row mt-3">
             <div class="form-group col-12">
               <label class="form-label">Mô tả</label>
               <textarea type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="description"
@@ -35,10 +31,6 @@
                      [class.is-invalid]="isControlInvalid(productForm, 'description')"
                      [class.is-valid]="isControlValid(productForm, 'description')">
               </textarea>
-              <div class="valid-feedback" *ngIf="isControlValid(productForm, 'description')">Trạng thái đã nhập chính xác
-              </div>
-              <div class="invalid-feedback" *ngIf="controlHasError(productForm, 'required', 'description')">Trạng thái không được để trống
-              </div>
             </div>
           </div>
         </form>
@@ -49,7 +41,7 @@
     <button type="button" class="btn btn-danger btn-elevate mr-1">
       Hủy
     </button>
-    <button type="button" class="btn btn-primary btn-elevate px-5" (click)="submit()">
+    <button type="button" class="btn btn-primary btn-elevate px-5 ms-2" (click)="submit()">
       Lưu
     </button>
   </div>

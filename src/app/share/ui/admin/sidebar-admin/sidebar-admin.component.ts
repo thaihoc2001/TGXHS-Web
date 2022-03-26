@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {AuthState} from "../../../states/auth/auth.state";
+import {TreeviewConfig, TreeviewItem} from "ngx-treeview";
 
 interface FoodNode {
   name: string;
@@ -36,36 +37,26 @@ interface ExampleFlatNode {
 export class SidebarAdminComponent implements OnInit {
 
   constructor(private authState: AuthState) {
-    // this.dataSource.data = TREE_DATA;
   }
 
   ngOnInit(): void {
+    this.dropdown();
   }
-  // private _transformer = (node: FoodNode, level: number) => {
-  //   return {
-  //     expandable: !!node.children && node.children.length > 0,
-  //     name: node.name,
-  //     level: level,
-  //   };
-  // };
-  //
-  // treeControl = new FlatTreeControl<ExampleFlatNode>(
-  //   node => node.level,
-  //   node => node.expandable,
-  // );
-  //
-  // treeFlattener = new MatTreeFlattener(
-  //   this._transformer,
-  //   node => node.level,
-  //   node => node.expandable,
-  //   node => node.children,
-  // );
-  //
-  // dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-  //
-  // hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
-
   logout(): void{
     this.authState.logout();
+  }
+
+  dropdown(): void{
+    var toggler = document.getElementsByClassName("caret");
+    var i;
+
+    for (i = 0; i < toggler.length; i++) {
+      toggler[i].addEventListener("click", function() {
+        // @ts-ignore
+        this.parentElement.querySelector(".nested").classList.toggle("active");
+        // @ts-ignore
+        this.classList.toggle("caret-down");
+      });
+    }
   }
 }
