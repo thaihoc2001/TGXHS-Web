@@ -10,16 +10,9 @@
     </div>
   </div>
   <img src="assets/image/Line%204.png" width="100%">
-  <div class="row product h-100 w-100 justify-content-center m-0">
-      <app-card-product class="col-3 mt-2"></app-card-product>
-      <app-card-product class="col-3 mt-2"></app-card-product>
-      <app-card-product class="col-3 mt-2"></app-card-product>
-      <app-card-product class="col-3 mt-2"></app-card-product>
-      <app-card-product class="col-3 mt-2"></app-card-product>
-      <app-card-product class="col-3 mt-2"></app-card-product>
-      <app-card-product class="col-3 mt-2"></app-card-product>
-      <app-card-product class="col-3 mt-2"></app-card-product>
-      <app-card-product class="col-3 mt-2"></app-card-product>
-      <app-card-product class="col-3 mt-2"></app-card-product>
+  <div class="row product h-100 w-100 justify-content-center m-0" >
+    <div *ngFor="let product of listProductHot" class="col-3 mt-2">
+      <app-card-product [productCard]="product"></app-card-product>
+    </div>
   </div>
 </div>

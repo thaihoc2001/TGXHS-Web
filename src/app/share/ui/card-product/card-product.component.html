@@ -2,11 +2,19 @@
   <div class="sale p-2">
     <span class="fw-bold px-2">Sale 10%</span>
   </div>
-  <img class="card-img-top" src="./assets/image/product/image-tgxhs/image-tgxhs/yadea-e3.jpg" alt="Card image cap">
+  <div *ngFor="let img of this.productChildren?.images" >
+    <div *ngIf="img.type === 'Main'" class="image align-content-end">
+      <a href="/product/{{this.productChildren?.productId}}">
+        <img class="card-img-top" src="{{img.url}}" alt="Card image cap">
+      </a>
+    </div>
+  </div>
   <div class="card-body">
-    <h6 class="fw-bold mt-3">Xe máy điện DK ROMA SX</h6>
-    <h6 class="fw-bold">23.000.000 đ</h6>
-    <s>25.000.000 đ</s>
+    <a href="/product/{{this.productChildren?.productId}}" class="text-decoration-none text-dark">
+      <h6 class="fw-bold mt-3 name">{{this.productChildren?.productName}}</h6>
+    </a>
+    <h6 class="fw-bold">{{this.productChildren?.priceNew | currency: "VND"}}</h6>
+    <s>{{this.productChildren?.priceOld | currency: "VND": true}}</s>
     <div class="d-flex justify-content-between align-items-center">
       <div class="ratings">
         <i class="fa fa-star rating-color"></i>

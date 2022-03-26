@@ -5,9 +5,13 @@ import {IohProductCategoryModel} from "../../../../share/model/categories/ioh-pr
 import {IohProductTypeModel} from "../../../../share/model/product-type/ioh-product-type.model";
 import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import {NotifyService} from "../../../../share/service/notify/notify.service";
-import {tap} from "rxjs/operators";
+import {switchMap, tap} from "rxjs/operators";
 import {ProductTypeState} from "../../../../share/states/product-type/product-type.state";
 import {ProductCategoryState} from "../../../../share/states/product-category/product-category.state";
+import { UploadAdapter } from 'src/app/share/Upload/UploadAdapter';
+import {IohProductDetail} from "../../../../share/model/product-detail/ioh-product-detail";
+import {Observable} from "rxjs";
+import {IohProduct} from "../../../../share/model/product/ioh-product";
 // import {ClassicImageResize} from "@emagtechlabs/ckeditor5-classic-image-resize";
 
 @Component({
@@ -21,6 +25,8 @@ export class CreateProductModalComponent implements OnInit {
   listProductType: IohProductTypeModel[] = [];
   listFileImage: any = [];
   Editor = ClassicEditor;
+  productDetailForm: any;
+  pageNumber = 2;
 
   constructor(private formBuilder: FormBuilder,
               private productState: ProductState,
@@ -31,6 +37,8 @@ export class CreateProductModalComponent implements OnInit {
   ngOnInit(): void {
     this.listenState();
     this.initFormProduct();
+    this.initFormProductDetail();
+    this.changePageCreate(this.pageNumber);
   }
   listenState(): void{
     this.productCategoryState.$listCategory.subscribe(res => this.listCategoryChange())
@@ -82,6 +90,20 @@ export class CreateProductModalComponent implements OnInit {
       image6: [null],
     })
   }
+  // Handel product detail
+  initFormProductDetail(): void{
+    this.productDetailForm = this.formBuilder.group({
+      brake: new FormControl(''),
+      rim: new FormControl(''),
+      battery: new FormControl(''),
+      capacity: new FormControl(''),
+      power: new FormControl(''),
+      dimension: new FormControl(''),
+      range: new FormControl(''),
+      charging: new FormControl(''),
+      weight: new FormControl('')
+    })
+  }
   isControlValid(formGroup: FormGroup, controlName: string): boolean {
     const control = formGroup.controls[controlName];
     return control.valid && (control.dirty || control.touched);
@@ -130,11 +152,18 @@ export class CreateProductModalComponent implements OnInit {
     console.log(this.listFileImage);
 
     this.productState.createProduct(fd)
-      .pipe(tap(res => this.productState.getListProduct(0)))
+      .pipe(
+        switchMap((res: IohProduct) => {
+          const productDetail = new IohProductDetail();
+          return this.createProductDetail(productDetail, res.productId);
+        }),
+        tap(res => this.productState.getListProduct(0))
+      )
       .subscribe(
       res => {
         this.notifyService.success('Tạo sản phẩm thành công')
         this.initFormProduct();
+        this.initFormProductDetail();
       },
       error => {
         this.notifyService.error('Tạo sản phẩm thất bại')
@@ -142,6 +171,20 @@ export class CreateProductModalComponent implements OnInit {
       }
     )
     console.log(this.productForm.getRawValue())
+  }
+  createProductDetail(productDetail:IohProductDetail, productId: number): Observable<IohProductDetail>{
+    console.log(productId);
+    productDetail.productId = productId;
+    productDetail.brake = this.productDetailForm.get('brake').value;
+    productDetail.rim = this.productDetailForm.get('rim').value;
+    productDetail.battery = this.productDetailForm.get('battery').value;
+    productDetail.capacity = this.productDetailForm.get('capacity').value;
+    productDetail.charging = this.productDetailForm.get('charging').value;
+    productDetail.dimension = this.productDetailForm.get('dimension').value;
+    productDetail.power = this.productDetailForm.get('power').value;
+    productDetail.range = this.productDetailForm.get('range').value;
+    productDetail.weight = this.productDetailForm.get('weight').value;
+    return this.productState.createProductDetail(productDetail);
   }
   @Input() config = {
     toolbar: {
@@ -196,7 +239,6 @@ export class CreateProductModalComponent implements OnInit {
         }
       ],
     },
-  //   language: 'en'
   };
   onReady(eventData: any) {
     eventData.plugins.get('FileRepository').createUploadAdapter = function(loader: any) {
@@ -204,23 +246,24 @@ export class CreateProductModalComponent implements OnInit {
       return new UploadAdapter(loader);
     };
   }
-}
-export class UploadAdapter {
-  private loader;
-  constructor(loader: any) {
-    this.loader = loader;
-    // console.log(this.readThis(loader.file));
-  }
-  upload() {
-    return this.loader.file
-      .then( (file: Blob) => new Promise( ( resolve, reject ) => {
-        var myReader= new FileReader();
-        myReader.onloadend = (e) => {
-          resolve({ default: myReader.result });
-        }
 
-        myReader.readAsDataURL(file);
-      } ) );
-  };
+  changePageCreate(number: number) {
+    const productFormId = document.getElementById('form-create-product');
+    const productDetailFormId = document.getElementById('form-create-product-detail');
+    this.pageNumber = number;
+    console.log(this.pageNumber)
+    if(this.pageNumber === 1){
+      // @ts-ignore
+      productFormId.classList.add('d-none');
+      // @ts-ignore
+      productDetailFormId.classList.remove('d-none');
+    }else{
+      // @ts-ignore
+      productDetailFormId.classList.add('d-none');
+      // @ts-ignore
+      productFormId.classList.remove('d-none');
+    }
+  }
+
 
 }

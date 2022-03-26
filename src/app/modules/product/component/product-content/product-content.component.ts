@@ -15,7 +15,6 @@
     }
 
     ngOnInit(): void {
-      this.productState.defaultCountProductMore(5);
       this.listenState();
     }
 
@@ -32,5 +31,9 @@
         this.listProduct = listProduct;
         console.log(this.listProduct);
       }
+    }
+
+    seeMore(): void{
+      this.productState.seeMoreProduct();
     }
   }

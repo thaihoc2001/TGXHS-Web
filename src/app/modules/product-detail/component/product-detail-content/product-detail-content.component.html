@@ -3,23 +3,15 @@
     <div class="col-12 col-lg-6">
       <div id="content-wrapper">
         <div class="column">
-          <img id="featured" src="assets/image/product/image-tgxhs/image-tgxhs/yadea-e3.jpg">
+          <div *ngFor="let image of this.productItem?.images">
+            <div *ngIf="image.type === 'Main'">
+              <img id="featured" src="{{image.url}}" width="100%" height="550">
+            </div>
+          </div>
           <div id="slide-wrapper">
             <i class="fas fa-arrow-circle-left arrow" id="slideLeft" (click)="left($event)"></i>
             <div id="slider">
-              <img class="thumbnail active" src="assets/image/product/image-tgxhs/image-tgxhs/yadea-e3.jpg"
-                   (click)="chooseImg($event)">
-              <img class="thumbnail" src="assets/image/product/image-tgxhs/image-tgxhs/xe-dap-dien-m3.jpg"
-                   (click)="chooseImg($event)">
-              <img class="thumbnail" src="assets/image/product/image-tgxhs/image-tgxhs/giant-arena-1.jpg"
-                   (click)="chooseImg($event)">
-              <img class="thumbnail" src="assets/image/product/image-tgxhs/image-tgxhs/yadea-e3.jpg"
-                   (click)="chooseImg($event)">
-              <img class="thumbnail" src="assets/image/product/image-tgxhs/image-tgxhs/xe-dap-dien-m3.jpg"
-                   (click)="chooseImg($event)">
-              <img class="thumbnail" src="assets/image/product/image-tgxhs/image-tgxhs/giant-arena-1.jpg"
-                   (click)="chooseImg($event)">
-              <img class="thumbnail" src="assets/image/product/image-tgxhs/image-tgxhs/yadea-e3.jpg"
+              <img *ngFor="let image of this.productItem?.images" class="thumbnail active" src="{{image.url}}"
                    (click)="chooseImg($event)">
             </div>
             <i class="fas fa-arrow-circle-right arrow" id="slideRight" (click)="right($event)"></i>
@@ -28,8 +20,8 @@
       </div>
     </div>
     <div class="col-12 col-lg-6">
-      <h1>Xe Máy Điện HITASA 18IM</h1>
-      <h3 class="text-dark">30.000.000 đ</h3>
+      <h1>{{this.productItem?.productName}}</h1>
+      <h3 class="text-dark">{{this.productItem?.priceNew | currency: 'VND'}}</h3>
       <div class="promotion w-100 mt-4">
         <div class="p-4">
           <h5 class="text-danger fw-bold">Khuyễn mãi</h5>
@@ -52,7 +44,8 @@
         <img src="assets/image/Group%2033.png" width="100%" height="80%">
       </div>
       <div>
-        <button class="btn-add-cart mt-4">Thêm vào giỏ hàng</button> <br>
+        <button class="btn-add-cart mt-4">Thêm vào giỏ hàng</button>
+        <br>
         <button class="btn-buy-now mt-3">Mua ngay</button>
       </div>
     </div>
@@ -63,14 +56,7 @@
   <div>
     <h3>Mô tả sản phẩm</h3>
     <div class="row">
-      <div class="col-12 col-lg-7">
-        <p>
-          Xe đạp điện Hitasa 18IM với thiết kế hiện đại, lạ mắt, gọn nhẹ và dễ sử dụng phục vụ cho mọi hoạt động di chuyển của mọi đối tượng khách hàng.<br>
-          Xe đạp điện Hitasa 18IM được trang bị 4 bình ắc quy với dung tích 48V-12Ah, cần 6 đến 8 giờ để sạc đầy. Với khả năng tích điện đến 250W cho mỗi lần sạc giúp xe đạp điện Hitasa 18IM di chuyển được quãng đường 40 – 50km.
-          Bộ ắc quy được lắp phía dưới yên xe, được trang bị khoá an toàn để cố định cũng như đảm bảo an toàn khi di chuyển.<br>
-          Xe đạp điện Hitasa 18IM được trang bị động cơ hiện đại giúp xe tăng tốc nhanh, di chuyển nhẹ nhàng, giảm tiêu hao năng lượng và chống nước khi di chuyển trong các điều kiện thời tiết.
-        </p>
-        <img src="assets/image/product/image-tgxhs/image-tgxhs/yadea-e3.jpg" width="80%">
+      <div class="col-12 col-lg-7" [innerHTML]="this.productItem?.description">
       </div>
       <div class="col-12 col-lg-5">
         <div class="header-info text-center">

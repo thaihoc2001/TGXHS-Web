@@ -5,6 +5,9 @@ export class IohProductDetail {
   @Expose({name: 'id'})
   productDetailId: number;
 
+  @Expose({name: 'product_id'})
+  productId: number;
+
   @Expose({name: 'brake'})
   brake: string;
 

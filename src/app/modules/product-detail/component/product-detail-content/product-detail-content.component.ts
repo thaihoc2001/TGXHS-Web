@@ -38,7 +38,6 @@ export class ProductDetailContentComponent implements OnInit {
     const product = this.productState.getProduct();
     if(product){
       this.productItem = product;
-      this.productItem.forEach((res: any) => console.log(res.priceValue));
       console.log(this.productItem);
       console.log(this.productItem.productName);
     }

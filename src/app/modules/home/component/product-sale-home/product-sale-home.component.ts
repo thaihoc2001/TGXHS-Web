@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
+import {ProductState} from "../../../../share/states/product/product.state";
+import {IohProduct} from "../../../../share/model/product/ioh-product";
 
 @Component({
   selector: 'app-product-sale-home',
@@ -7,10 +9,25 @@ import {OwlOptions} from "ngx-owl-carousel-o";
   styleUrls: ['./product-sale-home.component.scss']
 })
 export class ProductSaleHomeComponent implements OnInit {
-
-  constructor() { }
+  listProductSale: IohProduct[] = [];
+  constructor(private productState: ProductState) { }
 
   ngOnInit(): void {
+    this.listenState();
+  }
+  listenState(): void{
+    this.productState.$listProduct.subscribe(res => this.changeListProduct())
+  }
+  changeListProduct(): void{
+    const listProduct = this.productState.getListProductSubject();
+    if(listProduct){
+      console.log(listProduct);
+      this.listProductSale = listProduct.filter(res => {
+        if(res.status === null)
+        return res;
+      });
+    }
+    console.log(this.listProductSale);
   }
   customOptions: OwlOptions = {
     loop: true,

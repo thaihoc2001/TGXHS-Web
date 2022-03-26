@@ -1,9 +1,10 @@
 export const apiPath = {
   product: {
     product: 'api/products',
-    productById: 'api/products',
+    productById: 'api/products/detail',
     productCategory: 'api/categories',
-    productType: 'api/product-type'
+    productType: 'api/product-type',
+    productDetail: 'api/product-detail'
   },
   token: {
     ID_KEY:'auth-token',
@@ -14,5 +15,5 @@ export const apiPath = {
     login: 'api/auth/login',
     refreshToken: 'api/auth/refreshToken',
     changePassword: 'api/auth/changePassword'
-  }
+  },
 }

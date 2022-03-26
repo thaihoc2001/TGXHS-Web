@@ -4,7 +4,7 @@
     <hr>
   </div>
   <ng-container>
-    <div class="row">
+    <div class="row" id="form-create-product">
       <div class="col-12">
         <form class="form" [formGroup]="productForm">
           <div class="col-12 row">
@@ -146,17 +146,101 @@
             </div>
           </div>
         </form>
+        <div class="my-4 mx-4 d-flex justify-content-end">
+          <button type="button" class="btn btn-primary btn-elevate px-5" (click)="changePageCreate(1)">
+            Tiếp theo
+          </button>
+        </div>
       </div>
     </div>
   </ng-container>
-  <div class="my-4 mx-4 d-flex justify-content-end">
-    <button type="button" class="btn btn-danger btn-elevate mr-1">
-      Hủy
-    </button>&nbsp;
-    <button type="button" class="btn btn-primary btn-elevate px-5" (click)="submit()">
-      Lưu
-    </button>
-  </div>
+  <ng-container>
+    <div class="row" id="form-create-product-detail">
+      <div class="col-12">
+        <form class="form" [formGroup]="productDetailForm">
+          <div class=" col-12 row">
+            <div class="form-group col-6">
+              <label class="form-label mt-2">Phanh</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="brake"
+                     placeholder="Giá sản phẩm" autocomplete="off" formControlName="brake"
+                     [class.is-invalid]="isControlInvalid(productDetailForm, 'brake')"
+                     [class.is-valid]="isControlValid(productDetailForm, 'brake')"/>
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label mt-2">Vành</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="rim"
+                     placeholder="Giá sản phẩm mới" autocomplete="off" formControlName="rim"
+                     [class.is-invalid]="isControlInvalid(productDetailForm, 'rim')"
+                     [class.is-valid]="isControlValid(productDetailForm, 'rim')"/>
+            </div>
+          </div>
+          <div class=" col-12 row">
+            <div class="form-group col-6">
+              <label class="form-label mt-2">Ắc quy</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="battery"
+                     placeholder="Giá sản phẩm mới" autocomplete="off" formControlName="battery"
+                     [class.is-invalid]="isControlInvalid(productDetailForm, 'battery')"
+                     [class.is-valid]="isControlValid(productDetailForm, 'battery')"/>
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label mt-2">Dung lượng</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="capacity"
+                     placeholder="Giá sản phẩm" autocomplete="off" formControlName="capacity"
+                     [class.is-invalid]="isControlInvalid(productDetailForm, 'capacity')"
+                     [class.is-valid]="isControlValid(productDetailForm, 'capacity')"/>
+            </div>
+          </div>
+          <div class=" col-12 row">
+            <div class="form-group col-6">
+              <label class="form-label mt-2">Công suất xe</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="power"
+                     placeholder="Giá sản phẩm mới" autocomplete="off" formControlName="power"
+                     [class.is-invalid]="isControlInvalid(productDetailForm, 'power')"
+                     [class.is-valid]="isControlValid(productDetailForm, 'power')"/>
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label mt-2">Size xe</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="dimension"
+                     placeholder="Giá sản phẩm mới" autocomplete="off" formControlName="dimension"
+                     [class.is-invalid]="isControlInvalid(productDetailForm, 'dimension')"
+                     [class.is-valid]="isControlValid(productDetailForm, 'dimension')"/>
+            </div>
+          </div>
+          <div class=" col-12 row">
+            <div class="form-group col-4">
+              <label class="form-label mt-2">Quãng đường tối đa</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="range"
+                     placeholder="Giá sản phẩm" autocomplete="off" formControlName="range"
+                     [class.is-invalid]="isControlInvalid(productDetailForm, 'range')"
+                     [class.is-valid]="isControlValid(productDetailForm, 'range')"/>
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label mt-2">Thời gian sạc</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="charging"
+                     placeholder="Giá sản phẩm mới" autocomplete="off" formControlName="charging"
+                     [class.is-invalid]="isControlInvalid(productDetailForm, 'charging')"
+                     [class.is-valid]="isControlValid(productDetailForm, 'charging')"/>
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label mt-2">Trọng lượng</label>
+              <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="weight"
+                     placeholder="Giá sản phẩm mới" autocomplete="off" formControlName="weight"
+                     [class.is-invalid]="isControlInvalid(productDetailForm, 'weight')"
+                     [class.is-valid]="isControlValid(productDetailForm, 'weight')"/>
+            </div>
+          </div>
+        </form>
+        <div class="my-4 mx-4 d-flex justify-content-end">
+          <button type="button" class="btn btn-danger btn-elevate mr-1" (click)="changePageCreate(2)">
+            Trở lại
+          </button>&nbsp;
+          <button type="button" class="btn btn-primary btn-elevate px-5" (click)="submit()">
+            Lưu
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </div>
 
 
