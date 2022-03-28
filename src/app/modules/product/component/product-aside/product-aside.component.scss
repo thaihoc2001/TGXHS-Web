@@ -11,3 +11,6 @@ h5{
 li{
   font-weight: bold;
 }
+li :hover{
+  color:  var(--main-color) !important;
+}

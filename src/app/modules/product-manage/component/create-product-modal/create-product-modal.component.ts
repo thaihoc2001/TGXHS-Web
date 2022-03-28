@@ -184,6 +184,7 @@ export class CreateProductModalComponent implements OnInit {
     productDetail.power = this.productDetailForm.get('power').value;
     productDetail.range = this.productDetailForm.get('range').value;
     productDetail.weight = this.productDetailForm.get('weight').value;
+    console.log(productDetail);
     return this.productState.createProductDetail(productDetail);
   }
   @Input() config = {

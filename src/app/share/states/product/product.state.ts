@@ -16,7 +16,7 @@ import {ProductDetailService} from "../../service/product-detail/product-detail.
   providedIn: 'root'
 })
 export class ProductState implements OnDestroy {
-
+  private lengthProduct = 9;
   private isReadySubject = new BehaviorSubject<boolean>(false);
   public isReady$ = this.isReadySubject.asObservable();
 
@@ -37,7 +37,7 @@ export class ProductState implements OnDestroy {
   constructor(private productService: ProductService,
               private productDetailService: ProductDetailService) {
     console.log(this.getCountNumber());
-    this.getListProduct(this.getCountNumber())
+    this.getAllProduct(this.getCountNumber());
   }
 
   ngOnDestroy(): void {
@@ -84,30 +84,14 @@ export class ProductState implements OnDestroy {
     return this.listProductSubject.next(product);
   }
 
-  // defaultCountProductMore(count: number): void {
-  //   this.setCountNumber(count);
-  //   this.getListProduct(this.getCountNumber());
-  // }
-
-  getListProduct(count: number): void {
+  getAllProduct(count: number): void {
     const sb = this.productService.getProduct(count)
       .pipe(
         tap((listProduct: IohProduct[]) => {
           console.log(listProduct)
-          if(listProduct.length >= 2){
-            console.log(this.getCountNumber());
-            if(this.getCountNumber() === 0){
-              listProduct.splice(listProduct.length - 3, 3);
-              this.setCountNumber(listProduct.length);
-              this.setListProductSubject(listProduct);
-            }else{
-              this.setListProductSubject(listProduct);
-              this.setCountNumber(this.getCountNumber() - 3);
-              console.log(this.getCountNumber());
-            }
-          }else{
-            console.log(listProduct);
-          }
+          this.setListProductSubject(listProduct);
+          this.setCountNumber(listProduct.length - this.lengthProduct);
+          this.getListProduct(this.getCountNumber());
         }),
         catchError(async (error) => console.log(error)),
         finalize(() => this.setIsReady(true))
@@ -115,9 +99,28 @@ export class ProductState implements OnDestroy {
       .subscribe()
     this.subscription.add(sb);
   }
-  seeMoreProduct(): void{
-    console.log(this.getCountNumber());
-    this.getListProduct(this.getCountNumber());
+
+  getListProduct(count: number): void {
+    const sb = this.productService.getProduct(count)
+      .pipe(
+        tap((listProduct: IohProduct[]) => {
+          this.setListProductSubject(listProduct);
+        }),
+        catchError(async (error) => console.log(error)),
+        finalize(() => this.setIsReady(true))
+      )
+      .subscribe()
+    this.subscription.add(sb);
+  }
+
+  seeMoreProduct(): void {
+    if(this.getCountNumber() - this.lengthProduct <= 0){
+      this.getListProduct(0);
+      this.setCountNumber(0)
+    }else{
+      this.getListProduct(this.getCountNumber() - this.lengthProduct);
+      this.setCountNumber(this.getCountNumber() - this.lengthProduct)
+    }
   }
 
   createProduct(product: IohProduct): Observable<IohProduct> {
@@ -151,7 +154,7 @@ export class ProductState implements OnDestroy {
 
   createProductDetail(productDetail: IohProductDetail): Observable<IohProductDetail> {
     this.setIsReady(false);
-    return this.productDetailService.createProductDetail(productDetail)
+    return this.productDetailService.createProductDetail(productDetail.toPlain())
       .pipe(
         finalize(() => this.setIsReady(true))
       );

@@ -17,7 +17,7 @@ export class ProductCategoryService {
 
   constructor(private apiService: ApiService) { }
   createProductCategory(productCategory: IohProductCategoryModel): Observable<IohProductCategoryModel>{
-    const url = `${apiUrl}/${path.productCategory}`
+    const url = `${apiUrl}/${path.category}`
     return this.apiService.post(url, productCategory)
       .pipe(
         map((res: HttpResponse<any>) => {
@@ -27,7 +27,7 @@ export class ProductCategoryService {
   }
 
   getProductCategory(): Observable<IohProductCategoryModel[]>{
-    const url = `${apiUrl}/${path.productCategory}`
+    const url = `${apiUrl}/${path.category}`
     return this.apiService.get(url)
       .pipe(
         map((response: HttpResponse<any>) => {
@@ -37,7 +37,7 @@ export class ProductCategoryService {
       )
   }
   deleteProductCategory(id: String): Observable<IohProductCategoryModel>{
-    const url = `${apiUrl}/${path.productCategory}/${id}`;
+    const url = `${apiUrl}/${path.category}/${id}`;
     return this.apiService.delete(url);
   }
 }

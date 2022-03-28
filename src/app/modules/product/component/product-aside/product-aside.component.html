@@ -2,25 +2,23 @@
   <div>
     <h5 class="fw-bold">Hãng xe</h5>
     <img src="assets/image/Line%207.png" width="100%">
-    <ul class="list-unstyled">
-      <li class="mt-2">Dibao</li>
-      <li class="mt-2">Giant</li>
-      <li class="mt-2">BeforeAll</li>
-      <li class="mt-2">Yadea</li>
-      <li class="mt-2">Việt thái</li>
-      <li class="mt-2">Vin</li>
+    <ul class="list-unstyled" *ngFor="let categories of listProductCategories">
+      <li class="mt-2">
+        <a href="#" class="text-decoration-none text-dark">
+          {{categories.productCategoryName}}
+        </a>
+      </li>
     </ul>
   </div>
   <div class="mt-5">
     <h5 class="fw-bold">Loại xe</h5>
     <img src="assets/image/Line%207.png" width="100%">
-    <ul class="list-unstyled">
-      <li class="mt-2">Xe đạp điện</li>
-      <li class="mt-2">Xe máy điện</li>
-      <li class="mt-2">Xe máy 50cc</li>
-      <li class="mt-2">Xe ga 50cc</li>
-      <li class="mt-2">Xe đạp thể thao</li>
-      <li class="mt-2">Xe đạp học sinh</li>
+    <ul class="list-unstyled" *ngFor="let productType of listProductType">
+      <li class="mt-2">
+        <a routerLink="/product" class="text-decoration-none text-dark" (click)="chooseProductType(productType.productTypeId)">
+          {{productType.productTypeName}}
+        </a>
+      </li>
     </ul>
   </div>
   <div class="mt-5">
