@@ -2,7 +2,7 @@ export const apiPath = {
   product: {
     product: 'api/products',
     productById: 'api/products/detail',
-    productByCategory: 'api/products/categories',
+    productByCategory: 'api/products/category',
     productByType: 'api/products/product_type',
     category: 'api/categories',
     productType: 'api/product-type',

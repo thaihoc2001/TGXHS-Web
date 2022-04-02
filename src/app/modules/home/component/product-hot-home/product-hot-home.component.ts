@@ -26,7 +26,7 @@ export class ProductHotHomeComponent implements OnInit {
     const listProduct = this.productState.getListProductSubject();
     if (listProduct) {
       this.listProductHot = listProduct.filter(res => {
-        if (res.status === null) {
+        if (res.status === "Sale") {
           return res;
         }
       })

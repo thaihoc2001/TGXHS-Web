@@ -28,7 +28,7 @@ export class ProductTypeState implements OnDestroy {
 
   constructor(private productTypeService: ProductTypeService) {
     this.getListProductType();
-    this.getCategoryByProductType();
+    // this.getCategoryByProductType();
   }
 
   ngOnDestroy(): void {
@@ -76,17 +76,17 @@ export class ProductTypeState implements OnDestroy {
         finalize(() => this.setIsReady(true))
       )
   }
-  getCategoryByProductType(): void{
-    const sb = this.productTypeService.getProductTypebyCategory()
-      .pipe(
-        tap((iohTypeCategoriesProducts: IohTypeCategoriesProduct[]) => {
-          console.log(iohTypeCategoriesProducts);
-          this.setProductTypeAndCategories(iohTypeCategoriesProducts);
-        }),
-        catchError(async (error) => console.log(error)),
-        finalize(() => this.setIsReady(true))
-      )
-      .subscribe()
-    this.subscription.add(sb);
-  }
+  // getCategoryByProductType(): void{
+  //   const sb = this.productTypeService.getProductTypebyCategory()
+  //     .pipe(
+  //       tap((iohTypeCategoriesProducts: IohTypeCategoriesProduct[]) => {
+  //         console.log(iohTypeCategoriesProducts);
+  //         this.setProductTypeAndCategories(iohTypeCategoriesProducts);
+  //       }),
+  //       catchError(async (error) => console.log(error)),
+  //       finalize(() => this.setIsReady(true))
+  //     )
+  //     .subscribe()
+  //   this.subscription.add(sb);
+  // }
 }

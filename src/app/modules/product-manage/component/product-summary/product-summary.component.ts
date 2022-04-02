@@ -24,6 +24,10 @@ export class ProductSummaryComponent implements OnInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
+  // ngOnChanges() {
+  //   const count = this.productState.getCountNumber();
+  //   this.productState.getListProduct(count);
+  // }
   listenState(): void{
     this.productState.$listProduct.subscribe(res => this.listProductChange())
   }

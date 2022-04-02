@@ -37,7 +37,6 @@ export class ProductState implements OnDestroy {
   constructor(private productService: ProductService,
               private productDetailService: ProductDetailService) {
     console.log(this.getCountNumber());
-    this.getAllProduct(this.getCountNumber());
   }
 
   ngOnDestroy(): void {
@@ -88,10 +87,8 @@ export class ProductState implements OnDestroy {
     const sb = this.productService.getProduct(count)
       .pipe(
         tap((listProduct: IohProduct[]) => {
-          console.log(listProduct)
-          this.setListProductSubject(listProduct);
-          this.setCountNumber(listProduct.length - this.lengthProduct);
-          this.getListProduct(this.getCountNumber());
+          this.seeMoreProduct(listProduct);
+          this.setCountNumber(count + listProduct.length);
         }),
         catchError(async (error) => console.log(error)),
         finalize(() => this.setIsReady(true))
@@ -113,14 +110,10 @@ export class ProductState implements OnDestroy {
     this.subscription.add(sb);
   }
 
-  seeMoreProduct(): void {
-    if(this.getCountNumber() - this.lengthProduct <= 0){
-      this.getListProduct(0);
-      this.setCountNumber(0)
-    }else{
-      this.getListProduct(this.getCountNumber() - this.lengthProduct);
-      this.setCountNumber(this.getCountNumber() - this.lengthProduct)
-    }
+  seeMoreProduct(listProduct: IohProduct[]): void {
+    const list = this.getListProductSubject();
+    list.push(...listProduct);
+    this.setListProductSubject(list);
   }
 
   createProduct(product: IohProduct): Observable<IohProduct> {
@@ -158,5 +151,31 @@ export class ProductState implements OnDestroy {
       .pipe(
         finalize(() => this.setIsReady(true))
       );
+  }
+  getProductByCategory(categoryId: number, count: number): void {
+    const sb = this.productService.getProductByCategory(categoryId, count)
+      .pipe(
+        tap((product: IohProduct[]) => {
+          this.seeMoreProduct(product);
+          this.setCountNumber(count + product.length);
+        }),
+        catchError(async (error) => console.log(error)),
+        finalize(() => this.setIsReady(true))
+      )
+      .subscribe()
+    this.subscription.add(sb);
+  }
+  getProductByType(typeId: number, count: number): void {
+    const sb = this.productService.getProductByType(typeId, count)
+      .pipe(
+        tap((product: IohProduct[]) => {
+          this.seeMoreProduct(product);
+          this.setCountNumber(count + product.length);
+        }),
+        catchError(async (error) => console.log(error)),
+        finalize(() => this.setIsReady(true))
+      )
+      .subscribe()
+    this.subscription.add(sb);
   }
 }

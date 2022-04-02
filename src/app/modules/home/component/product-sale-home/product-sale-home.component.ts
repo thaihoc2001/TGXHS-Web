@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
 import {ProductState} from "../../../../share/states/product/product.state";
 import {IohProduct} from "../../../../share/model/product/ioh-product";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-product-sale-home',
@@ -23,7 +24,7 @@ export class ProductSaleHomeComponent implements OnInit {
     if(listProduct){
       console.log(listProduct);
       this.listProductSale = listProduct.filter(res => {
-        if(res.status === null)
+        if(res.status === "Sale")
         return res;
       });
     }

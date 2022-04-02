@@ -22,7 +22,7 @@ export class PopularProductComponent implements OnInit {
     const listProduct = this.productState.getListProductSubject();
     if (listProduct) {
       this.listPopularProduct = listProduct.filter(res => {
-        if (res.status === null) {
+        if (res.status === "Sale") {
           return res;
         }
       })

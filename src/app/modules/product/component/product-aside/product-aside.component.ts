@@ -3,6 +3,7 @@ import {ProductTypeState} from "../../../../share/states/product-type/product-ty
 import {IohProductTypeModel} from "../../../../share/model/product-type/ioh-product-type.model";
 import {IohProductCategoryModel} from "../../../../share/model/categories/ioh-product-category.model";
 import {ProductCategoryState} from "../../../../share/states/product-category/product-category.state";
+import {ProductState} from "../../../../share/states/product/product.state";
 
 @Component({
   selector: 'app-product-aside',
@@ -13,7 +14,8 @@ export class ProductAsideComponent implements OnInit {
   listProductType: IohProductTypeModel[] = [];
   listProductCategories: IohProductCategoryModel[] = [];
   constructor(private productTypeState: ProductTypeState,
-              private productCategoryState: ProductCategoryState) { }
+              private productCategoryState: ProductCategoryState,
+              private productState: ProductState) { }
 
   ngOnInit(): void {
     this.listenState();
@@ -40,5 +42,11 @@ export class ProductAsideComponent implements OnInit {
 
   chooseProductType(productTypeId: number) {
 
+  }
+
+  loadProductByCategory(productCategoryId: number) {
+    const count = this.productState.getCountNumber();
+    this.productState.getProductByCategory(productCategoryId, count);
+    console.log(this.productState.getListProductSubject());
   }
 }
