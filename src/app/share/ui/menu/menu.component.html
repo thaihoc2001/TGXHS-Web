@@ -56,8 +56,8 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="mx-3 icon-logo navbar-nav col-12 col-lg-8 row text-lg-center h-100">
         <li class="col-1"></li>
-        <li class="nav-item active col-4 col-lg-2 p-0 dropdown h-100">
-          <a class="nav-link text-light fw-bold dropdown-toggle h-100" href="/product" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="nav-item active col-4 col-lg-2 p-0 dropdown h-100" (click)="toProduct()">
+          <a href="/product" class="nav-link text-light fw-bold dropdown-toggle" >
             Sản phẩm
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 40vw;">
@@ -143,7 +143,7 @@
           </a>
         </li>
         <li class="nav-item active col-2 p-0">
-          <a class="nav-link text-light fw-bold" href="#">
+          <a class="nav-link text-light fw-bold" href="/cart">
             <i class="fas fa-cart-arrow-down"></i>
           </a>
         </li>

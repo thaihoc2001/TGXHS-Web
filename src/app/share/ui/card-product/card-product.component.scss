@@ -19,3 +19,25 @@ s{
 .name{
   height: 50px;
 }
+.card:hover{
+  border: 1px solid #5b6582;
+  .btn-add-cart{
+    bottom: 2px;
+    height: 40px !important;
+  }
+}
+.btn-add-cart{
+  position: absolute;
+  background-color: var(--main-color);
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  height: 0 !important;
+  border: 1px solid var(--main-color);
+  opacity: 0.9;
+  overflow:hidden;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
