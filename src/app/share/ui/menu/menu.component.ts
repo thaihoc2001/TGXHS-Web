@@ -14,23 +14,12 @@ export class MenuComponent implements OnInit {
   constructor(private productTypeState: ProductTypeState) { }
 
   ngOnInit(): void {
-    this.listenState();
     this.addClass();
-  }
-  listenState(): void{
-    this.productTypeState.$listProductTypeAndCategories.subscribe(res => this.categoriesAndProductTypeChange())
-  }
-  categoriesAndProductTypeChange(): void{
-    const list = this.productTypeState.getProductTypeAndCategories();
-    if(list){
-      this.listCategoryAndType = list;
-      console.log(this.listCategoryAndType)
-    }
   }
   addClass(): void{
     // tslint:disable-next-line:only-arrow-functions typedef
     window.addEventListener('scroll', function(){
-      const menu = document.querySelector('menu');
+      const menu = document.querySelector('nav');
       // @ts-ignore
       menu.classList.toggle('sticky', window.scrollY > 85);
     });
