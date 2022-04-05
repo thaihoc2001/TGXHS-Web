@@ -162,8 +162,8 @@ export class CreateProductModalComponent implements OnInit {
       .subscribe(
       res => {
         this.notifyService.success('Tạo sản phẩm thành công')
-        this.initFormProduct();
-        this.initFormProductDetail();
+        // this.initFormProduct();
+        // this.initFormProductDetail();
       },
       error => {
         this.notifyService.error('Tạo sản phẩm thất bại')

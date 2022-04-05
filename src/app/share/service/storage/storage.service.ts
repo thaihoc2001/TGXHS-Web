@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import {IohProduct} from "../../model/product/ioh-product";
 
 const TOKEN_KEY = 'auth-token';
 const USERNAME_KEY = 'username';
-const REFRESH_TOKEN = 'refresh-token'
+const REFRESH_TOKEN = 'refresh-token';
+const CART = 'cart';
 @Injectable({
   providedIn: 'root'
 })
@@ -35,5 +37,10 @@ export class TokenStorageService {
   public logout(): void{
     window.sessionStorage.clear();
   }
-
+  public addCart(product: IohProduct[]): void{
+    window.sessionStorage.setItem(CART, JSON.stringify(product));
+  }
+  public getCartItem(): any {
+    return window.sessionStorage.getItem(CART);
+  }
 }

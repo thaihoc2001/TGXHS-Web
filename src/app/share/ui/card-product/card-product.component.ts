@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IohProduct} from "../../model/product/ioh-product";
+import {TokenStorageService} from "../../service/storage/storage.service";
 
 @Component({
   selector: 'app-card-product',
@@ -8,11 +9,18 @@ import {IohProduct} from "../../model/product/ioh-product";
 })
 export class CardProductComponent implements OnInit {
   @Input('productCard') productChildren: IohProduct;
-  constructor() {
+  constructor(private storageService: TokenStorageService) {
     console.log(this.productChildren);
   }
 
   ngOnInit(): void {
   }
-
+  addItemToCart(product: IohProduct){
+    if(product){
+      const listProduct = this.storageService.getCartItem();
+      listProduct.push(product);
+      this.storageService.addCart(listProduct);
+      console.log(listProduct);
+    }
+  }
 }
