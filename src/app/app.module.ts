@@ -8,6 +8,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TreeviewModule } from 'ngx-treeview';
+import {NgxWebstorageModule} from 'ngx-webstorage';
+
 
 @NgModule({
   declarations: [
@@ -22,8 +24,10 @@ import { TreeviewModule } from 'ngx-treeview';
     ToastrModule.forRoot(),
     NgbModule,
     TreeviewModule.forRoot(),
+    NgxWebstorageModule.forRoot()
   ],
   providers: [
+
   ],
   bootstrap: [AppComponent]
 })

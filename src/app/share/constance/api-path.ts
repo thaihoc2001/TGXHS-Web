@@ -8,14 +8,18 @@ export const apiPath = {
     productType: 'api/product-type',
     productDetail: 'api/product-detail'
   },
-  token: {
+  cookie: {
     ID_KEY:'auth-token',
     USERNAME_KEY: 'username',
-    Refresh_Token: 'refresh'
+    Refresh_Token: 'refresh',
+    CART: 'cart'
   },
   auth: {
     login: 'api/auth/login',
     refreshToken: 'api/auth/refreshToken',
     changePassword: 'api/auth/changePassword'
   },
+  order: {
+    order: 'api/orders',
+  }
 }

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IohProduct} from "../../model/product/ioh-product";
-import {TokenStorageService} from "../../service/storage/storage.service";
+import {TokenStorageService} from "../../service/token-storage/token-storage.service";
 
 @Component({
   selector: 'app-card-product',
@@ -9,18 +9,35 @@ import {TokenStorageService} from "../../service/storage/storage.service";
 })
 export class CardProductComponent implements OnInit {
   @Input('productCard') productChildren: IohProduct;
+
   constructor(private storageService: TokenStorageService) {
     console.log(this.productChildren);
   }
 
   ngOnInit(): void {
   }
-  addItemToCart(product: IohProduct){
-    if(product){
-      const listProduct = this.storageService.getCartItem();
-      listProduct.push(product);
-      this.storageService.addCart(listProduct);
+
+  addItemToCart(product: IohProduct) {
+    const data = {
+      product: product,
+      quantity: 1
+    }
+    console.log(this.storageService.getCartItem());
+    // const listProduct = this.storageService.getCartItem() ? JSON.parse(this.storageService.getCartItem()) : [];
+    const listProduct = this.storageService.getCartItem();
+    console.log(listProduct);
+    const index = listProduct.findIndex((res: any) => res.product.productId === product.productId)
+    console.log(index);
+    if (index === -1) {
+      listProduct.push(data);
       console.log(listProduct);
+      this.storageService.addCart(listProduct);
+    } else {
+      const quantity = listProduct[index].quantity;
+      data.quantity = quantity + 1;
+      listProduct.splice(index, 1);
+      listProduct.push(data);
+      this.storageService.addCart(listProduct);
     }
   }
 }

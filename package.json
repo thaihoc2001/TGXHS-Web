@@ -39,6 +39,7 @@
     "ngb-modal": "^2.0.3",
     "ngx-bootstrap": "^7.0.0",
     "ngx-cookie-service": "^13.1.2",
+    "ngx-localstorage": "^3.4.0",
     "ngx-owl-carousel-o": "^7.0.1",
     "ngx-page-scroll": "^7.0.5",
     "ngx-page-scroll-core": "^7.0.5",

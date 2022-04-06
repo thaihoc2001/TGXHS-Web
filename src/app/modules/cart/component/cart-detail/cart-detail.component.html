@@ -1,1 +1,8 @@
-
+<div *ngFor="let item of listItemCart">
+  <li>{{item.product.productName}}</li>
+  <div *ngFor="let img of item.product.images">
+    <div *ngIf="img.type === 'Main'">
+      <img src="{{img.url}}">
+    </div>
+  </div>
+</div>

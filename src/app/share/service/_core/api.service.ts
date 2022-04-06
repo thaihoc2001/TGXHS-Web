@@ -3,9 +3,8 @@ import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpResponse} fr
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import * as _ from 'lodash-es';
-import {TokenStorageService} from '../storage/storage.service';
 // import { keys } from 'lodash-es';
-// import {StorageService} from '../storage/storage.service';
+import {TokenStorageService} from '../token-storage/token-storage.service';
 
 @Injectable({
   providedIn: 'root'

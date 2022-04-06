@@ -1,6 +1,6 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {AuthService} from "../../service/auth/auth.service";
-import {TokenStorageService} from "../../service/storage/storage.service";
+import {TokenStorageService} from "../../service/token-storage/token-storage.service";
 import {catchError, tap} from "rxjs/operators";
 import {Token} from "../../model/token/token";
 import {Observable, of} from "rxjs";

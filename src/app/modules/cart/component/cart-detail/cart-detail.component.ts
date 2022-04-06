@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenStorageService} from "../../../../share/service/token-storage/token-storage.service";
 
 @Component({
   selector: 'app-cart-detail',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-detail.component.scss']
 })
 export class CartDetailComponent implements OnInit {
-
-  constructor() { }
+  listItemCart: any = [];
+  constructor(private storageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.getItemCart();
+  }
+  getItemCart(): void{
+    this.listItemCart = this.storageService.getCartItem();
+    console.log(this.listItemCart);
   }
 
 }
