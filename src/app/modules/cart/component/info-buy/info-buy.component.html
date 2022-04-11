@@ -1,1 +1,135 @@
-<p>info-buy works!</p>
+<div class="bg-light p-3">
+  <ng-container>
+    <div class="row" id="form-create-product">
+      <div class="col-lg-7 col-12">
+        <div>
+          <h3 class="fw-bold">Thông tin khách hàng</h3>
+          <hr>
+        </div>
+        <div class="col-12">
+          <form class="form" [formGroup]="infoCustomerForm">
+            <div class="col-12 row">
+              <div class="form-group col-12">
+                <label class="form-label">Họ</label>
+                <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="lastName"
+                       placeholder="Họ" autocomplete="off" formControlName="lastName"
+                       [class.is-invalid]="isControlInvalid(infoCustomerForm, 'lastName')"
+                       [class.is-valid]="isControlValid(infoCustomerForm, 'lastName')"/>
+              </div>
+            </div>
+            <div class="col-12 row mt-3">
+              <div class="form-group col-12">
+                <label class="form-label">Tên</label>
+                <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="firstName"
+                       placeholder="Tên" autocomplete="off" formControlName="firstName"
+                       [class.is-invalid]="isControlInvalid(infoCustomerForm, 'firstName')"
+                       [class.is-valid]="isControlValid(infoCustomerForm, 'firstName')"/>
+              </div>
+            </div>
+            <div class="col-12 row mt-3">
+              <div class="form-group col-6">
+                <label class="form-label">Số điện thoại</label>
+                <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="phone"
+                       placeholder="Số điện thoại" autocomplete="off" formControlName="phone"
+                       [class.is-invalid]="isControlInvalid(infoCustomerForm, 'phone')"
+                       [class.is-valid]="isControlValid(infoCustomerForm, 'phone')"/>
+              </div>
+              <div class="form-group col-6">
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="email"
+                       placeholder="Email" autocomplete="off" formControlName="email"
+                       [class.is-invalid]="isControlInvalid(infoCustomerForm, 'email')"
+                       [class.is-valid]="isControlValid(infoCustomerForm, 'email')"/>
+              </div>
+            </div>
+            <div class="col-12 row mt-3">
+              <div class="form-group col-12">
+                <label class="form-label">Địa chỉ</label>
+                <input type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="address"
+                       placeholder="Địa chỉ" autocomplete="off" formControlName="address"
+                       [class.is-invalid]="isControlInvalid(infoCustomerForm, 'address')"
+                       [class.is-valid]="isControlValid(infoCustomerForm, 'address')"/>
+              </div>
+            </div>
+            <div class="col-12 row mt-3">
+              <div class="form-group col-12">
+                <label class="form-label">Ghi chú</label>
+                <textarea type="text" class="form-control form-control-lg form-control-solid  is-invalid" name="message"
+                       placeholder="Ghi chú" autocomplete="off" formControlName="message"
+                       [class.is-invalid]="isControlInvalid(infoCustomerForm, 'message')"
+                       [class.is-valid]="isControlValid(infoCustomerForm, 'message')"></textarea>
+              </div>
+            </div>
+          </form>
+          <div class="mt-4 d-flex justify-content-end me-4">
+            <a href="/cart/cart-detail" class="btn btn-pay px-3 py-2">Quay lại giỏ hàng</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-12">
+        <div class="order-item-outer">
+          <div class="p-4">
+            <h3>Hóa đơn của bạn</h3>
+            <table class="table">
+              <thead>
+              <tr>
+                <th scope="col" class="border-0 bg-light">
+                  <div class="p-2 px-3 text-uppercase">Sản phẩm</div>
+                </th>
+                <th scope="col" class="border-0 bg-light">
+                  <div class="py-2 text-uppercase">Tổng tiền</div>
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of listItemCart.reverse()">
+                <th scope="row" class="border-0 p-0">
+                  <div class="p-2 d-lg-flex" >
+                    <div class="ms-md-3 d-inline-block align-middle">
+                      <p class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle text-decoration-none fw-normal">{{item.product.productName}} <span class="ms-2 fw-bold" style="color: var(--main-color)">x{{item.quantity}}</span></a></p>
+                    </div>
+                  </div>
+                </th>
+                <td class="border-0 align-middle p-0"><strong class=" fw-normal">{{item.product.priceNew * item.quantity | currency: 'VND'}}</strong></td>
+              </tr>
+              </tbody>
+              <tfoot>
+              <tr>
+                <td scope="row" class="border-0">
+                  <h5 class="text-danger fw-bold">Tổng tiền</h5>
+                </td>
+                <td scope="row" class="border-0 p-0">
+                  <h5 class="text-danger fw-bold">{{this.total | currency: 'VND'}}</h5>
+                </td>
+              </tr>
+              </tfoot>
+            </table>
+            <div>
+              <h6>Giao hàng</h6>
+              <div>
+                <input type="radio" name="ship" checked/> <span class="ms-2">Giao hàng miễn phí (Bán kính dưới 15km)</span> <br>
+                <input type="radio" name="ship"/> <span class="ms-2">Nhận xe tại cửa hàng</span>
+              </div>
+            </div>
+            <div class="mt-4">
+              <h6>Hình thức thanh toán</h6>
+              <div>
+                <input type="radio" name="pay" checked/> <span class="ms-2">Thanh toán tại cửa hàng</span> <br>
+                <input type="radio" name="pay"/> <span class="ms-2">Thanh toán chuyển khoản</span>
+              </div>
+            </div>
+            <div class="mt-4">
+              <a href="/cart/order" class="btn-pay px-3 py-2 text-decoration-none" (click)="payment()">Thanh toán</a>
+            </div>
+            <div class="mt-4">
+              <p>Dữ liệu cá nhân của bạn sẽ được sử dụng để xử lý đơn đặt hàng của bạn,
+                hỗ trợ trải nghiệm của bạn trên toàn bộ trang web này và cho các mục đích khác được mô tả trong <a href="#" class="fw-bold text-decoration-none text-dark">chính sách riêng tư</a> của chúng tôi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+

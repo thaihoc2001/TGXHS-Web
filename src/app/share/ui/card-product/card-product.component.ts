@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IohProduct} from "../../model/product/ioh-product";
 import {TokenStorageService} from "../../service/token-storage/token-storage.service";
+import {NotifyService} from "../../service/notify/notify.service";
 
 @Component({
   selector: 'app-card-product',
@@ -10,7 +11,8 @@ import {TokenStorageService} from "../../service/token-storage/token-storage.ser
 export class CardProductComponent implements OnInit {
   @Input('productCard') productChildren: IohProduct;
 
-  constructor(private storageService: TokenStorageService) {
+  constructor(private storageService: TokenStorageService,
+              private  notifyService: NotifyService) {
     console.log(this.productChildren);
   }
 
@@ -32,12 +34,14 @@ export class CardProductComponent implements OnInit {
       listProduct.push(data);
       console.log(listProduct);
       this.storageService.addCart(listProduct);
+      this.notifyService.success('Thêm sản phẩm vào giỏ hàng thành công')
     } else {
       const quantity = listProduct[index].quantity;
       data.quantity = quantity + 1;
       listProduct.splice(index, 1);
       listProduct.push(data);
       this.storageService.addCart(listProduct);
+      this.notifyService.success('Cập nhật sản phẩm vào giỏ hàng thành công')
     }
   }
 }

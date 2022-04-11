@@ -18,6 +18,12 @@ export class IohOrder {
   @Expose({name: 'address'})
   address: string;
 
+  @Expose({name: 'message'})
+  message: string;
+
+  @Expose({name: 'total'})
+  total: number;
+
   @Expose({name: 'orders'})
   @Type(() => IohOrderInfo)
   orders: IohOrder;

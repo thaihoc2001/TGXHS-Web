@@ -1,0 +1,15 @@
+.order-item-outer{
+  border: 2px solid var(--main-color);
+}
+thead{
+  border-bottom: 3px solid #ECECEC !important;
+}
+tfoot{
+  border-top: 3px solid #ECECEC !important;
+}
+.btn-pay{
+  background-color: var(--main-color);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+}

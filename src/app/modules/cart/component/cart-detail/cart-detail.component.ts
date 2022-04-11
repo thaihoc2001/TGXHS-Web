@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {TokenStorageService} from "../../../../share/service/token-storage/token-storage.service";
 
 @Component({
@@ -18,4 +18,11 @@ export class CartDetailComponent implements OnInit {
     console.log(this.listItemCart);
   }
 
+  removeItemCart(item: any): void {
+    console.log(item.product.productId);
+    const index = this.listItemCart.findIndex((res:any) => res.product.productId === item.product.productId);
+    console.log(index);
+    this.listItemCart.splice(index, 1);
+    this.storageService.addCart(this.listItemCart);
+  }
 }
