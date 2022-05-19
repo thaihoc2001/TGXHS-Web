@@ -21,8 +21,17 @@ export class IohOrder {
   @Expose({name: 'message'})
   message: string;
 
+  @Expose({name: 'email'})
+  email: string;
+
   @Expose({name: 'total'})
   total: number;
+
+  @Expose({name: 'payment_method'})
+  paymentMethod: string;
+
+  @Expose({name: 'shipping_method'})
+  shippingMethod: string;
 
   @Expose({name: 'orders'})
   @Type(() => IohOrderInfo)

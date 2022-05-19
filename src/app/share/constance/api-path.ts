@@ -12,7 +12,8 @@ export const apiPath = {
     ID_KEY:'auth-token',
     USERNAME_KEY: 'username',
     Refresh_Token: 'refresh',
-    CART: 'cart'
+    CART: 'cart',
+    USER: 'user'
   },
   auth: {
     login: 'api/auth/login',

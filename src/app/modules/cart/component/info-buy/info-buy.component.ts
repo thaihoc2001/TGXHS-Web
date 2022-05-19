@@ -15,6 +15,8 @@ export class InfoBuyComponent implements OnInit {
   infoCustomerForm: any;
   listItemCart: any = [];
   total = 0;
+  infoPayment: any;
+  isCheckedShip = true;
 
   constructor(private formBuilder: FormBuilder,
               private storageService: TokenStorageService,
@@ -24,6 +26,7 @@ export class InfoBuyComponent implements OnInit {
   ngOnInit(): void {
     this.getItemCart();
     this.initForm();
+    this.initFormPay();
     this.sumTotal();
   }
 
@@ -41,12 +44,18 @@ export class InfoBuyComponent implements OnInit {
 
   initForm(): void {
     this.infoCustomerForm = this.formBuilder.group({
-      lastName: new FormControl('111', Validators.required),
-      firstName: new FormControl('11', Validators.required),
-      phone: new FormControl('11', Validators.required),
-      email: new FormControl('11', Validators.required),
-      address: new FormControl('11', Validators.required),
-      message: new FormControl('11', Validators.required)
+      lastName: new FormControl('Nguyen', Validators.required),
+      firstName: new FormControl('Thai Hoc', Validators.required),
+      phone: new FormControl('0942221865', Validators.required),
+      email: new FormControl('thaihoc123@gmail.com', Validators.required),
+      address: new FormControl('134 Võ Thị Sáu, Phường 8, Quận 3', Validators.required),
+      message: new FormControl('Xin cam on', Validators.required)
+    })
+  }
+  initFormPay(): void{
+    this.infoPayment = this.formBuilder.group({
+      ship: new FormControl(''),
+      pay: new FormControl('')
     })
   }
 
@@ -89,12 +98,20 @@ export class InfoBuyComponent implements OnInit {
     order.phone = this.infoCustomerForm.get('phone').value;
     order.address = this.infoCustomerForm.get('address').value;
     order.message = this.infoCustomerForm.get('message').value;
+    order.email = this.infoCustomerForm.get('email').value;
+    order.paymentMethod = this.infoPayment.get('pay').value;
+    order.shippingMethod = this.infoPayment.get('ship').value;
     order.total = this.total;
     order.listProduct = listProduct;
     if(order){
-      this.ordersState.setOder(order);
+      console.log(order);
+      this.storageService.addUser(order);
     }
 
 
+  }
+
+  clickPayOption(): void{
+    this.isCheckedShip = !this.isCheckedShip;
   }
 }

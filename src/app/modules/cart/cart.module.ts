@@ -10,6 +10,7 @@ import { CartNavComponent } from './component/cart-nav/cart-nav.component';
 import {ShareUiModule} from "../../share/ui/share-ui.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {OrdersState} from "../../share/states/orders/orders.state";
+import { OrderCompleteComponent } from './component/order-complete/order-complete.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {OrdersState} from "../../share/states/orders/orders.state";
     CartDetailComponent,
     InfoBuyComponent,
     OrderComponent,
-    CartNavComponent
+    CartNavComponent,
+    OrderCompleteComponent
   ],
     imports: [
         CommonModule,

@@ -4,6 +4,7 @@ import {CartComponent} from "./cart.component";
 import {CartDetailComponent} from "./component/cart-detail/cart-detail.component";
 import {InfoBuyComponent} from "./component/info-buy/info-buy.component";
 import {OrderComponent} from "./component/order/order.component";
+import {OrderCompleteComponent} from "./component/order-complete/order-complete.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: 'order',
         component: OrderComponent
+      },
+      {
+        path: 'order-complete',
+        component: OrderCompleteComponent
       }
     ]
   }

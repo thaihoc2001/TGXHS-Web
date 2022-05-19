@@ -8,10 +8,12 @@ import {TokenStorageService} from "../../../../share/service/token-storage/token
 })
 export class CartDetailComponent implements OnInit {
   listItemCart: any = [];
+  total = 0;
   constructor(private storageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.getItemCart();
+    this.sumTotal();
   }
   getItemCart(): void{
     this.listItemCart = this.storageService.getCartItem();
@@ -24,5 +26,11 @@ export class CartDetailComponent implements OnInit {
     console.log(index);
     this.listItemCart.splice(index, 1);
     this.storageService.addCart(this.listItemCart);
+  }
+  sumTotal(): void {
+    this.listItemCart.map((res: any) => {
+      const sum = res.product.priceNew * res.quantity;
+      this.total += sum;
+    })
   }
 }

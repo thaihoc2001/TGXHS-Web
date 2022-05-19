@@ -61,9 +61,6 @@
               </div>
             </div>
           </form>
-          <div class="mt-4 d-flex justify-content-end me-4">
-            <a href="/cart/cart-detail" class="btn btn-pay px-3 py-2">Quay lại giỏ hàng</a>
-          </div>
         </div>
       </div>
       <div class="col-lg-5 col-12">
@@ -104,22 +101,25 @@
               </tr>
               </tfoot>
             </table>
-            <div>
-              <h6>Giao hàng</h6>
+            <form [formGroup]="infoPayment">
               <div>
-                <input type="radio" name="ship" checked/> <span class="ms-2">Giao hàng miễn phí (Bán kính dưới 15km)</span> <br>
-                <input type="radio" name="ship"/> <span class="ms-2">Nhận xe tại cửa hàng</span>
+                <h6>Giao hàng</h6>
+                <div form>
+                  <input type="radio" name="ship" formControlName="ship" value="Giao hàng miễn phí" (click)="clickPayOption()" [checked]="isCheckedShip"/> <span class="ms-2">Giao hàng miễn phí (Bán kính dưới 15km)</span> <br>
+                  <input type="radio" name="ship"  formControlName="ship" value="Nhận xe tại của hàng" (click)="clickPayOption()" [checked]="!isCheckedShip"/> <span class="ms-2">Nhận xe tại cửa hàng</span>
+                </div>
               </div>
-            </div>
-            <div class="mt-4">
-              <h6>Hình thức thanh toán</h6>
-              <div>
-                <input type="radio" name="pay" checked/> <span class="ms-2">Thanh toán tại cửa hàng</span> <br>
-                <input type="radio" name="pay"/> <span class="ms-2">Thanh toán chuyển khoản</span>
+              <div class="mt-4">
+                <h6>Hình thức thanh toán</h6>
+                <div>
+                  <input type="radio" name="pay" formControlName="pay" value="Thanh toán trực tiếp" checked/> <span class="ms-2">Thanh toán tại cửa hàng</span> <br>
+                  <input type="radio" name="pay" formControlName="pay" value="Chuyển khoản ngân hàng"/> <span class="ms-2">Thanh toán chuyển khoản</span>
+                </div>
               </div>
-            </div>
-            <div class="mt-4">
-              <a href="/cart/order" class="btn-pay px-3 py-2 text-decoration-none" (click)="payment()">Thanh toán</a>
+            </form>
+            <div class="mt-4 d-flex">
+              <a routerLink="/cart/cart-detail" class="btn btn-danger px-3 py-2">Quay lại giỏ hàng</a>
+              <a routerLink="/cart/order" class="btn-pay ms-2 px-3 py-2 text-decoration-none" (click)="payment()">Thanh toán</a>
             </div>
             <div class="mt-4">
               <p>Dữ liệu cá nhân của bạn sẽ được sử dụng để xử lý đơn đặt hàng của bạn,

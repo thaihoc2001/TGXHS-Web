@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {CookieService} from "ngx-cookie-service";
 import {apiPath} from "../../constance/api-path";
 import {IohProduct} from "../../model/product/ioh-product";
-import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
+import {LocalStorageService} from 'ngx-webstorage';
 
 const key = apiPath.cookie;
 @Injectable({
@@ -39,5 +39,15 @@ export class TokenStorageService {
   }
   public getCartItem(): any{
     return this.cookieService.retrieve(key.CART) ? JSON.parse(this.cookieService.retrieve(key.CART)) : [];
+  }
+  public addUser(user: any): void{
+    this.cookieService.store(key.USER, JSON.stringify(user));
+  }
+  public getUser(): any{
+    return this.cookieService.retrieve(key.USER) ? JSON.parse(this.cookieService.retrieve(key.USER)) : [];
+  }
+  public clearOrder(): any{
+    this.cookieService.clear(key.USER);
+    this.cookieService.clear(key.CART);
   }
 }

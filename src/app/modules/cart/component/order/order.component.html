@@ -1,4 +1,62 @@
-<div>
-
+<div class="row justify-content-center">
+  <div class="border-order col-12 col-lg-9 p-4 mt-4">
+    <div class="text-center text-light" style="background-color: var(--main-color)">
+      <h1 class="py-2">Thông tin đặt hàng</h1>
+    </div>
+    <div class="my-3">
+      <div class="d-flex">
+        <h5>Họ và tên: </h5> <h5 class="ms-2">{{this.order?.lastName + ' ' + this.order?.firstName}}</h5>
+      </div>
+      <div class="d-flex">
+        <h5>Số điện thoại: </h5> <h5 class="ms-2">{{this.order?.phone}}</h5>
+      </div>
+      <div class="d-flex">
+        <h5>Email: </h5> <h5 class="ms-2">{{this.order?.email}}</h5>
+      </div>
+      <div class="d-flex">
+        <h5>Địa chỉ: </h5> <h5 class="ms-2">{{this.order?.address}}</h5>
+      </div>
+      <div class="d-flex">
+        <h5>Ghi chú:</h5> <h5 class="ms-2">{{this.order?.message}}</h5>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col" class="border-0 bg-light">
+          <div class="p-2 px-3 text-uppercase">Sản phẩm</div>
+        </th>
+        <th scope="col" class="border-0 bg-light">
+          <div class="py-2 text-uppercase">Tổng tiền</div>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of listItemCart.reverse()">
+        <th scope="row" class="border-0 p-0">
+          <div class="p-2 d-lg-flex" >
+            <div class="ms-md-3 d-inline-block align-middle">
+              <p class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle text-decoration-none fw-normal">{{item.product.productName}} <span class="ms-2 fw-bold" style="color: var(--main-color)">x{{item.quantity}}</span></a></p>
+            </div>
+          </div>
+        </th>
+        <td class="border-0 align-middle p-0"><strong class=" fw-normal">{{item.product.priceNew * item.quantity | currency: 'VND'}}</strong></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="py-4">
+      <p class="font-italic mb-4">Dưới đây là tổng chi phí cho giỏ hàng của bạn. Nếu bạn thanh toán online vui lòng đợi nhân viên của chúng tôi liên hệ trước khi thanh toán.</p>
+      <ul class="list-unstyled mb-4">
+        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng tiền sản phẩm </strong><strong>{{this.total | currency: 'VND'}}</strong></li>
+        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tiền ship</strong><strong>{{0 | currency: 'VND'}}</strong></li>
+        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Thuế</strong><strong>{{0 | currency: 'VND'}}</strong></li>
+        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng tiền</strong>
+          <h5 class="font-weight-bold text-danger">{{this.total | currency: 'VND'}}</h5>
+        </li>
+      </ul>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button class="btn py-2 px-4 btn-block btn-main text-light" (click)="submit()">xác nhận</button>
+    </div>
+  </div>
 </div>
-<button (click)="submit()">xác nhận</button>
