@@ -1,0 +1,14 @@
+.container{
+  height: 70vh !important;
+}
+.border-main{
+  border: 5px solid var(--main-color);
+}
+.text-main{
+  color: var(--main-color);
+}
+.btn-main{
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+}
