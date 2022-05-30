@@ -24,7 +24,7 @@ export class ProductSaleHomeComponent implements OnInit {
     if(listProduct){
       console.log(listProduct);
       this.listProductSale = listProduct.filter(res => {
-        if(res.status === "Sale")
+        // if(res.status === "Sale")
         return res;
       });
     }

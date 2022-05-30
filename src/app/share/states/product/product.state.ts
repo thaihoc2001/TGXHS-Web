@@ -36,7 +36,6 @@ export class ProductState implements OnDestroy {
 
   constructor(private productService: ProductService,
               private productDetailService: ProductDetailService) {
-    console.log(this.getCountNumber());
   }
 
   ngOnDestroy(): void {
@@ -97,8 +96,8 @@ export class ProductState implements OnDestroy {
     this.subscription.add(sb);
   }
 
-  getListProduct(count: number): void {
-    const sb = this.productService.getProduct(count)
+  getListProduct(): void {
+    const sb = this.productService.getAllProducts()
       .pipe(
         tap((listProduct: IohProduct[]) => {
           this.setListProductSubject(listProduct);

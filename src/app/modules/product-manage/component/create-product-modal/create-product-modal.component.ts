@@ -157,7 +157,7 @@ export class CreateProductModalComponent implements OnInit {
           const productDetail = new IohProductDetail();
           return this.createProductDetail(productDetail, res.productId);
         }),
-        tap(res => this.productState.getListProduct(0))
+        tap(res => this.productState.getListProduct())
       )
       .subscribe(
       res => {
