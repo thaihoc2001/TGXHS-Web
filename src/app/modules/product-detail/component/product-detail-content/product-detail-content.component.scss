@@ -120,6 +120,7 @@ h1, i, h3{
   border: 3px solid var(--main-color);
   border-radius: 0 0 15px 15px;
 }
-figure img{
-  width: 90% !important;
+::ng-deep figure > img{
+  width:90% !important;
+  min-height:90% !important;
 }

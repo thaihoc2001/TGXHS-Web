@@ -52,6 +52,7 @@ export class ProductContentComponent implements OnInit {
 
   seeMore(): void {
     const count = this.productState.getCountNumber();
+    console.log(count);
     if (this.categoryId) {
       this.productState.getProductByCategory(parseInt(this.categoryId), count);
     } else if (this.typeId) {
@@ -59,6 +60,7 @@ export class ProductContentComponent implements OnInit {
     } else {
       this.productState.getAllProduct(count);
     }
+    this.listProductChange();
   }
 
 

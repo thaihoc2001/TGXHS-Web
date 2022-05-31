@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductState} from "../../share/states/product/product.state";
 
 @Component({
   selector: 'app-product-manage',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductManageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productState: ProductState) {
+    this.productState.getListProduct();
+  }
 
   ngOnInit(): void {
+
   }
 
 }
