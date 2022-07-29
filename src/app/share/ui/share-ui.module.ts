@@ -14,11 +14,12 @@ import {CollapseModule} from "ngx-bootstrap/collapse";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatTreeModule} from "@angular/material/tree";
 import {MatButtonModule} from '@angular/material/button';
-import {ProductTypeState} from "../states/product-type/product-type.state";
+import {ProductTypeState} from '../states/product-type/product-type.state';
 import { CardProductComponent } from './card-product/card-product.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import {TreeviewModule} from "ngx-treeview";
 import {RouterModule} from "@angular/router";
+import { SubMenuComponent } from './sub-menu/sub-menu.component';
 
 
 
@@ -32,6 +33,7 @@ import {RouterModule} from "@angular/router";
     SidebarAdminComponent,
     CardProductComponent,
     BreadcrumbComponent,
+    SubMenuComponent,
   ],
   exports: [
     NavbarComponent,
@@ -40,7 +42,8 @@ import {RouterModule} from "@angular/router";
     NavbarAdminComponent,
     SidebarAdminComponent,
     CardProductComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    SubMenuComponent,
   ],
     imports: [
         CommonModule,

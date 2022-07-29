@@ -1,153 +1,33 @@
-<!--<menu class="py-2 m-0">-->
-<!--  <div class="container">-->
-<!--      <ul class="d-flex m-0 p-0 list-unstyled text-center my-auto">-->
-<!--        <li class="m-0 p-0 col-3">-->
-<!--          <a href="/home"><img src="assets/image/logo-vuong-k-nen.PNG" width="150"></a>-->
-<!--        </li>-->
-<!--        <li class="m-0 p-0 my-auto col-1">-->
-<!--          <a href="/product" class="text-light">Sản phẩm</a>-->
-<!--        </li>-->
-<!--        <li class="m-0 p-0 my-auto col-1">-->
-<!--          <a href="/product/category/17" class="text-light">Khuyễn mãi</a>-->
-<!--        </li>-->
-<!--        <li class="m-0 p-0 my-auto col-1">-->
-<!--          <a href="/product/type/15" class="text-light">Dịch vụ</a>-->
-<!--        </li>-->
-<!--        <li class="m-0 p-0 my-auto col-1">-->
-<!--          <a href="#" class="text-light">Cửa hàng</a>-->
-<!--        </li>-->
-<!--        <li class="m-0 p-0 my-auto col-1">-->
-<!--          <a href="#" class="text-light">Tin tức</a>-->
-<!--        </li>-->
-<!--        <li class="">-->
-<!--          <div class="container">-->
-<!--            <div class="form-group">-->
-<!--              <i class="fa fa-search form-control-icon"></i>-->
-<!--              <input type="text" class="form-control pe-5" placeholder="Tìm kiếm sản phẩm">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li class="col-1 my-auto">-->
-<!--          <a href="/cart" class="text-light"><i class="fas fa-cart-arrow-down"></i></a>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--  </div>-->
-<!--</menu>-->
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <div class="container-lg p-0">
-    <a class="navbar-brand" href="/home">
-      <img src="assets/image/logo-vuong-k-nen.PNG" width="150" >
-    </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-      data-spy="affix"
-      data-offset-top="700"
-    >
-      <span class="navbar-toggler-icon">
-        <i class="fa fa-navicon" style="color:#fff; font-size:28px;"></i>
-      </span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="mx-3 icon-logo navbar-nav col-12 col-lg-8 row text-lg-center h-100">
-        <li class="col-1"></li>
-        <li class="nav-item active col-4 col-lg-2 p-0 dropdown h-100" (click)="toProduct()">
-          <a href="/product" class="nav-link text-light fw-bold dropdown-toggle" >
-            Sản phẩm
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 40vw;">
-            <div class="row ">
-              <div class="col-12 col-lg-3 mt-2">
-                <a class="dropdown-item" href="#">
-                  <h6 class="fw-bold">Xe ga 50cc</h6>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Yadea</a>
-                <a class="dropdown-item" href="#">Beforall</a>
-                <a class="dropdown-item" href="#">MSI</a>
-              </div>
-              <div class="col-12 col-lg-3 mt-2">
-                <a class="dropdown-item" href="#">
-                  <h6 class="fw-bold">Xe ga 50cc</h6>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Yadea</a>
-                <a class="dropdown-item" href="#">Beforall</a>
-                <a class="dropdown-item" href="#">MSI</a>
-              </div>
-              <div class="col-12 col-lg-3 mt-2">
-                <a class="dropdown-item" href="#">
-                  <h6 class="fw-bold">Xe ga 50cc</h6>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Yadea</a>
-                <a class="dropdown-item" href="#">Beforall</a>
-                <a class="dropdown-item" href="#">MSI</a>
-              </div>
-              <div class="col-12 col-lg-3 mt-2">
-                <a class="dropdown-item" href="#">
-                  <h6 class="fw-bold">Xe ga 50cc</h6>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Yadea</a>
-                <a class="dropdown-item" href="#">Beforall</a>
-                <a class="dropdown-item" href="#">MSI</a>
-              </div>
-              <div class="col-12 col-lg-3 mt-2">
-                <a class="dropdown-item" href="#">
-                  <h6 class="fw-bold">Xe ga 50cc</h6>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Yadea</a>
-                <a class="dropdown-item" href="#">Beforall</a>
-                <a class="dropdown-item" href="#">MSI</a>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="nav-item active col-4 col-lg-2 p-0">
-          <a class="nav-link text-light fw-bold" href="#">
-            Khuyến mãi
-          </a>
-        </li>
-        <li class="nav-item active col-4 col-lg-2 p-0">
-          <a class="nav-link text-light" href="#">
-            Dịch vụ
-          </a>
-        </li>
-        <li class="nav-item active col-4 col-lg-2 p-0">
-          <a class="nav-link text-light" href="#">
-            Cửa hàng
-          </a>
-        </li>
-        <li class="nav-item active col-4 col-lg-2 p-0">
-          <a class="nav-link text-light" href="#">
-            Tin tức
-          </a>
-        </li>
-      </ul>
-      <ul class="mx-3 icon-logo navbar-nav col-12 col-lg-4 row">
-        <li class="nav-item active col-10 p-0">
-          <a class="nav-link text-light fw-bold">
-            <div class="container-lg d-none d-lg-block">
-              <div class="form-group">
-                <i class="fa fa-search form-control-icon"></i>
-                <input type="text" class="form-control pe-5" placeholder="Tìm kiếm sản phẩm">
-              </div>
-            </div>
-          </a>
-        </li>
-        <li class="nav-item active col-2 p-0">
-          <a class="nav-link text-light fw-bold" href="/cart">
-            <i class="fas fa-cart-arrow-down"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
+<div #menu class="bg-black py-1 d-flex menu">
+  <div class="d-flex justify-content-between container">
+    <ul class="d-flex list-unstyled my-auto w-75">
+      <li>
+        Xe đạp điện
+      </li>
+      <li>
+        Xe máy điện
+      </li>
+      <li>
+        Xe ga 50cc
+      </li>
+      <li>
+        Xe số 50cc
+      </li>
+      <li>
+        Xe điện gấp
+      </li>
+      <li>
+        Xe 3 bánh
+      </li>
+      <li>
+        Phụ kiện
+      </li>
+    </ul>
+    <ul class="d-flex justify-content-end my-auto list-unstyled">
+      <li class="cart-item text-end">
+        <i class="fas fa-cart-plus"></i>
+        <span class="ms-2">0/0</span>
+      </li>
+    </ul>
   </div>
-</nav>
+</div>
