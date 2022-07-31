@@ -51,7 +51,7 @@ import { SubMenuComponent } from './sub-menu/sub-menu.component';
         MatIconModule,
         FormsModule,
         MatInputModule,
-        CollapseModule,
+        CollapseModule.forRoot(),
         MatExpansionModule,
         MatTreeModule,
         MatButtonModule,

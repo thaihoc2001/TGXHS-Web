@@ -2,7 +2,15 @@
   background-color: var(--main-color);
 }
 
-::ng-deep .owl-carousel .owl-dot,::ng-deep .owl-carousel .owl-nav .owl-next {
+@media only screen and (max-width: 768px) {
+  .image-banner-small{
+    & img{
+      height: 8vh;
+    }
+  }  
+}
+
+:host ::ng-deep .owl-carousel .owl-dot,:host ::ng-deep .owl-carousel .owl-nav .owl-next {
   position: absolute !important;
   right: -25px;
   top: 50%;
@@ -15,7 +23,7 @@
   color: #fff;
   transform: translate(-50%, -50%);
 }
-::ng-deep .owl-carousel .owl-nav .owl-prev{
+:host ::ng-deep .owl-carousel .owl-nav .owl-prev{
   position: absolute !important;
   left: 15px;
   top: 50%;
@@ -30,23 +38,23 @@
 }
 
 
-::ng-deep .deals .owl-carousel .item img{
+:host ::ng-deep .deals .owl-carousel .item img{
   width: 80px;
   margin: 0 auto;
   text-align: center;
 }
 
 
-::ng-deep .owl-theme .owl-nav [class*=owl-]:hover{
+:host ::ng-deep .owl-theme .owl-nav [class*=owl-]:hover{
   background-color: #fff;
 }
 
 
-::ng-deep .deals .owl-carousel .item figure {
+:host ::ng-deep .deals .owl-carousel .item figure {
   margin: 0;
 }
 
-::ng-deep .deals .owl-carousel .item figure a {
+:host ::ng-deep .deals .owl-carousel .item figure a {
   display: block;
   text-align: center;
   max-width: 100%;

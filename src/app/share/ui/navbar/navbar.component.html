@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-dark py-2">
+<nav class="sidebar navbar navbar-expand-lg navbar-dark py-2">
   <div class="container-lg p-0">
-    <a class="navbar-brand" href="/home">
+    <a class="navbar-brand ms-2 ms-lg-0" href="/home">
       <img src="assets/image/logo-vuong-k-nen.PNG" width="150" >
     </a>
     <button
-      class="navbar-toggler"
+      class="navbar-toggler me-2 me-lg-2"
       type="button"
       data-toggle="collapse"
       data-target="#navbarNavDropdown"
@@ -18,85 +18,43 @@
         <i class="fa fa-navicon" style="color:#fff; font-size:28px;"></i>
       </span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <!-- <ul class="mx-3 icon-logo navbar-nav col-12 col-lg-8 row text-lg-center h-100">
-        <li class="col-1"></li>
-        <li class="nav-item active col-4 col-lg-2 p-0 dropdown h-100" (click)="toProduct()">
-          <a href="/product" class="nav-link text-light fw-bold dropdown-toggle" >
-            Sản phẩm
+    <div class="collapse navbar-collapse " id="navbarNavDropdown">
+      <ul class="mx-3 icon-logo navbar-nav col-12 col-lg-8 row text-lg-center h-100 d-lg-none">
+        <li class="nav-item has-submenu active col-12 p-0 h-100" *ngFor="let item of listItemMenu">
+          <a 
+          class="nav-link text-light fw-bold" 
+          [class.dropdown-toggle] = "item.category || item.acquy" 
+          data-toggle="collapse"
+          href="#{{item.id}}"
+          role="button" 
+          aria-expanded="false" 
+          aria-controls="item.id"
+          >
+            {{item.name}}
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 40vw;">
-            <div class="row ">
-              <div class="col-12 col-lg-3 mt-2">
-                <a class="dropdown-item" href="#">
-                  <h6 class="fw-bold">Xe ga 50cc</h6>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Yadea</a>
-                <a class="dropdown-item" href="#">Beforall</a>
-                <a class="dropdown-item" href="#">MSI</a>
-              </div>
-              <div class="col-12 col-lg-3 mt-2">
-                <a class="dropdown-item" href="#">
-                  <h6 class="fw-bold">Xe ga 50cc</h6>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Yadea</a>
-                <a class="dropdown-item" href="#">Beforall</a>
-                <a class="dropdown-item" href="#">MSI</a>
-              </div>
-              <div class="col-12 col-lg-3 mt-2">
-                <a class="dropdown-item" href="#">
-                  <h6 class="fw-bold">Xe ga 50cc</h6>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Yadea</a>
-                <a class="dropdown-item" href="#">Beforall</a>
-                <a class="dropdown-item" href="#">MSI</a>
-              </div>
-              <div class="col-12 col-lg-3 mt-2">
-                <a class="dropdown-item" href="#">
-                  <h6 class="fw-bold">Xe ga 50cc</h6>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Yadea</a>
-                <a class="dropdown-item" href="#">Beforall</a>
-                <a class="dropdown-item" href="#">MSI</a>
-              </div>
-              <div class="col-12 col-lg-3 mt-2">
-                <a class="dropdown-item" href="#">
-                  <h6 class="fw-bold">Xe ga 50cc</h6>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Yadea</a>
-                <a class="dropdown-item" href="#">Beforall</a>
-                <a class="dropdown-item" href="#">MSI</a>
-              </div>
-            </div>
+          <div *ngIf="item.category" class="collapse" id="{{item.id}}">
+            <ul>
+              <li *ngFor="let category of item.category?.list">
+                <a class="nav-link" href="#">{{category.name}}</a>
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="item.acquy" class="collapse navbar-collapse" id="collapseBasic" [collapse]="isCollapsed">
+            <ul class="navbar-nav">
+              <li>
+                <a class="nav-link" href="#">{{item.acquy.title}}</a>
+              </li>
+              <li>
+                <a class="nav-link" href="#">{{item.universalAccessories.title}}</a>
+              </li>
+              <li>
+                <a class="nav-link" href="#">{{item.ortherAccessories.title}}</a>
+              </li>
+            </ul>
           </div>
         </li>
-        <li class="nav-item active col-4 col-lg-2 p-0">
-          <a class="nav-link text-light fw-bold" href="#">
-            Khuyến mãi
-          </a>
-        </li>
-        <li class="nav-item active col-4 col-lg-2 p-0">
-          <a class="nav-link text-light" href="#">
-            Dịch vụ
-          </a>
-        </li>
-        <li class="nav-item active col-4 col-lg-2 p-0">
-          <a class="nav-link text-light" href="#">
-            Cửa hàng
-          </a>
-        </li>
-        <li class="nav-item active col-4 col-lg-2 p-0">
-          <a class="nav-link text-light" href="#">
-            Tin tức
-          </a>
-        </li>
-      </ul> -->
-      <ul class="mx-5 icon-logo navbar-nav col-12 row justify-content-end">
+      </ul>
+      <ul class="mx-5 icon-logo navbar-nav col-12 row justify-content-end d-none d-lg-flex">
         <li class="nav-item active col-5 p-0">
           <div class="nav-link text-light fw-bold me-5">
             <div class="container-lg d-none d-lg-block">
@@ -107,7 +65,7 @@
             </div>
           </div>
         </li>
-        <li class="nav-item active col-2 p-0 ms-4 my-auto">
+        <li class="nav-item active col-2 p-0 ms-lg-4 my-auto">
           <div class="d-flex">
             <i class="icon-size-medium fas fa-map-marked my-auto"></i>
             <div class="ms-3">

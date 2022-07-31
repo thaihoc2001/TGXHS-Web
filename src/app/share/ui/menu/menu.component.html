@@ -1,31 +1,73 @@
 <div #menu class="bg-black py-1 d-flex menu">
   <div class="d-flex justify-content-between container">
     <ul class="d-flex list-unstyled my-auto w-75">
-      <li>
-        Xe đạp điện
-      </li>
-      <li>
-        Xe máy điện
-      </li>
-      <li>
-        Xe ga 50cc
-      </li>
-      <li>
-        Xe số 50cc
-      </li>
-      <li>
-        Xe điện gấp
-      </li>
-      <li>
-        Xe 3 bánh
-      </li>
-      <li>
-        Phụ kiện
+      <li *ngFor="let item of listItemMenu" class="dropdown">
+        <a class="text-decoration-none text-light" [class.dropdown-toggle]="item.category || item.acquy" href="{{item.href}}">{{item.name}}</a>
+        <div *ngIf="item.category || item.acquy" class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 40vw;">
+          <div class="row">
+            <div class="col-12 col-lg-4 mt-2" *ngIf="item.category">
+              <div class="dropdown-item">
+                <h6 class="fw-bold">{{item.category?.title}}</h6>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div *ngFor="let category of item.category?.list">
+                <a class="dropdown-item" href="{{category.link}}">{{category.name}}</a>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4 mt-2" *ngIf="item.type">
+              <div class="dropdown-item">
+                <h6 class="fw-bold">{{item.type?.title}}</h6>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div *ngFor="let type of item.type?.list">
+                <a class="dropdown-item" href="{{type.link}}">{{type.name}}</a>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4 mt-2" *ngIf="item.price">
+              <div class="dropdown-item">
+                <h6 class="fw-bold">{{item.price?.title}}</h6>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div *ngFor="let price of item.price?.list">
+                <a class="dropdown-item" href="{{price.link}}">{{price.name}}</a>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4 mt-2" *ngIf="item.acquy">
+              <div class="dropdown-item">
+                <h6 class="fw-bold">{{item.acquy?.title}}</h6>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div *ngFor="let acquy of item.acquy?.list">
+                <a class="dropdown-item" href="{{acquy.link}}">{{acquy.name}}</a>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4 mt-2" *ngIf="item.universalAccessories">
+              <div class="dropdown-item">
+                <h6 class="fw-bold">{{item.universalAccessories?.title}}</h6>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div *ngFor="let universalAccessories of item.universalAccessories?.list">
+                <a class="dropdown-item" href="{{universalAccessories.link}}">{{universalAccessories.name}}</a>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4 mt-2" *ngIf="item.ortherAccessories">
+              <div class="dropdown-item">
+                <h6 class="fw-bold">{{item.ortherAccessories?.title}}</h6>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div *ngFor="let ortherAccessories of item.ortherAccessories?.list">
+                <a class="dropdown-item" href="{{ortherAccessories.link}}">{{ortherAccessories.name}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </li>
     </ul>
     <ul class="d-flex justify-content-end my-auto list-unstyled">
       <li class="cart-item text-end">
-        <i class="fas fa-cart-plus"></i>
+        <a class="text-decoration-none text-light" href="/cart">
+          <i class="fas fa-cart-plus"></i>
+        </a>
         <span class="ms-2">0/0</span>
       </li>
     </ul>

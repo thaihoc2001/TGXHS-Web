@@ -1,18 +1,14 @@
 <div class="container mt-5 product-hot p-0">
-  <div>
+  <div class="image-banner-small">
     <img src="assets/image/product/banner-nho.jpg" width="100%">
   </div>
-  <div class="mt-5 px-3 pb-4">
+  <div class="mt-5 px-3 pb-4 list-product-sale">
     <owl-carousel-o [options]="customOptions">
-        <ng-template carouselSlide *ngFor="let product of listProductSale">
-          <div *ngIf="product">
-            <app-card-product [productCard]="product"></app-card-product>
-          </div>
-        </ng-template>
+      <ng-template carouselSlide *ngFor="let product of listProductSale">
+        <div class="mx-3">
+          <app-card-product [productCard]="product"></app-card-product>
+        </div>
+      </ng-template>
     </owl-carousel-o>
   </div>
-  <div class="d-flex justify-content-center pb-5">
-    <button class="btn-show-all col-2 py-2">Xem tất cả</button>
-  </div>
 </div>
-

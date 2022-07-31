@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
 import {ProductState} from "../../../../share/states/product/product.state";
 import {IohProduct} from "../../../../share/model/product/ioh-product";
@@ -7,7 +7,7 @@ import {ActivatedRoute} from "@angular/router";
 @Component({
   selector: 'app-product-sale-home',
   templateUrl: './product-sale-home.component.html',
-  styleUrls: ['./product-sale-home.component.scss']
+  styleUrls: ['./product-sale-home.component.scss'],
 })
 export class ProductSaleHomeComponent implements OnInit {
   listProductSale: IohProduct[] = [];
@@ -24,11 +24,9 @@ export class ProductSaleHomeComponent implements OnInit {
     if(listProduct){
       console.log(listProduct);
       this.listProductSale = listProduct.filter(res => {
-        // if(res.status === "Sale")
         return res;
       });
     }
-    console.log(this.listProductSale);
   }
   customOptions: OwlOptions = {
     loop: true,
@@ -40,16 +38,16 @@ export class ProductSaleHomeComponent implements OnInit {
     navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
     responsive: {
       0: {
-        items: 2
+        items: 1.5
       },
       400: {
-        items: 3
+        items: 2
       },
       740: {
-        items: 4
+        items: 3
       },
       940: {
-        items: 5
+        items: 4
       }
     },
     nav: true

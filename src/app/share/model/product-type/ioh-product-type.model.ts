@@ -1,5 +1,6 @@
 import {classToPlain, deserialize, Expose, serialize, Type} from 'class-transformer';
 import {IohImage} from "../image/ioh-image";
+import { IohProduct } from '../product/ioh-product';
 
 export class IohProductTypeModel {
   @Expose({name: 'id'})
@@ -21,6 +22,10 @@ export class IohProductTypeModel {
   @Expose({name: 'updated_at'})
   @Type(() => Date)
   updateAt: String;
+
+  @Expose({name: 'list_product'})
+  @Type(() => IohProduct)
+  listProduct: IohProduct[];
 
   static fromJson(gender: any): IohProductTypeModel {
     return deserialize(IohProductTypeModel, gender);
