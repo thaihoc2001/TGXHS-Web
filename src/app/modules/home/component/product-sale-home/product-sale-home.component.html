@@ -2,7 +2,8 @@
   <div class="image-banner-small">
     <img src="assets/image/product/banner-nho.jpg" width="100%">
   </div>
-  <div class="mt-5 px-3 pb-4 list-product-sale">
+  <div class="mt-5 px-3 pb-4 list-product-sale" #productSaleElement>
+    <div class="loader" *ngIf="!loaderStatus"></div>
     <owl-carousel-o [options]="customOptions">
       <ng-template carouselSlide *ngFor="let product of listProductSale">
         <div class="mx-3">

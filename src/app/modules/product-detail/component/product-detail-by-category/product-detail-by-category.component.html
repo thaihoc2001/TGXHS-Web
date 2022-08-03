@@ -1,25 +1,21 @@
 <div class="mt-5">
-  <div class = "">
+  <div class="image-banner-small">
+    <img src="assets/image/product/banner-nho.jpg" width="100%" height="500">
+  </div>
+  <div class = "mt-4">
     <h3 class="py-4">Sản phẩm tương tự</h3>
   </div>
   <owl-carousel-o [options]="customOptions">
-    <ng-template carouselSlide>
-      <app-card-product></app-card-product>
+    <ng-template carouselSlide *ngFor="let product of listProductByCategory">
+      <div class="mx-3">
+        <app-card-product [productCard]="product"></app-card-product>
+      </div>
     </ng-template>
-    <ng-template carouselSlide>
-      <app-card-product></app-card-product>
+    <ng-template carouselSlide *ngIf = "listProductByCategory.length < 2 && this.innerWidth >= 0">
     </ng-template>
-    <ng-template carouselSlide>
-      <app-card-product></app-card-product>
+    <ng-template carouselSlide *ngIf = "listProductByCategory.length < 3 && this.innerWidth >= 740">
     </ng-template>
-    <ng-template carouselSlide>
-      <app-card-product></app-card-product>
-    </ng-template>
-    <ng-template carouselSlide>
-      <app-card-product></app-card-product>
-    </ng-template>
-    <ng-template carouselSlide>
-      <app-card-product></app-card-product>
+    <ng-template carouselSlide *ngIf = "listProductByCategory.length < 4 && this.innerWidth >= 940">
     </ng-template>
   </owl-carousel-o>
 </div>

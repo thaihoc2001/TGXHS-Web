@@ -127,7 +127,6 @@ export class ProductState implements OnDestroy {
     const sb = this.productService.productById(id)
       .pipe(
         tap((product: IohProduct) => {
-          console.log(product);
           this.setProduct(product)
         }),
         catchError(async (error) => console.log(error)),

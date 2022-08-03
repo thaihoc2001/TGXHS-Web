@@ -39,7 +39,7 @@
               </li>
             </ul>
           </div>
-          <div *ngIf="item.acquy" class="collapse navbar-collapse" id="collapseBasic" [collapse]="isCollapsed">
+          <div *ngIf="item.acquy" class="collapse" id="{{item.id}}">
             <ul class="navbar-nav">
               <li>
                 <a class="nav-link" href="#">{{item.acquy.title}}</a>

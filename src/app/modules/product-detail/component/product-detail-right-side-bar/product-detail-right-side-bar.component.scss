@@ -1,0 +1,19 @@
+.product-detail-right-sidebar{
+  & .customer-support{
+    border: 1px solid var(--gray-light);
+    border-radius: 5px;
+    & h5 {
+      color: var(--orange);
+    }
+  }
+  & .header-info{
+    background-color: var(--main-color);
+    padding: 10px 0;
+  }
+  & .specifications{
+    & .content-info{
+      //border: 1px solid var(--gray-light);
+    }
+  }
+
+}

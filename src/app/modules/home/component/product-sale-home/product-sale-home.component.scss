@@ -68,3 +68,15 @@
   background-color: var(--main-color);
   border: 3px solid var(--white);
 }
+.heightAfter{
+  height: 20vh;
+}
+.list-product-sale{
+  position: relative;
+}
+.loader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

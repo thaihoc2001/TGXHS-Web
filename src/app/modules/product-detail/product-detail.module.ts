@@ -9,13 +9,15 @@ import { ProductDetailByCategoryComponent } from './component/product-detail-by-
 import {CarouselModule} from "ngx-owl-carousel-o";
 import {MatCardModule} from "@angular/material/card";
 import {ShareUiModule} from "../../share/ui/share-ui.module";
+import { ProductDetailRightSideBarComponent } from './component/product-detail-right-side-bar/product-detail-right-side-bar.component';
 
 
 @NgModule({
   declarations: [
     ProductDetailComponent,
     ProductDetailContentComponent,
-    ProductDetailByCategoryComponent
+    ProductDetailByCategoryComponent,
+    ProductDetailRightSideBarComponent
   ],
     imports: [
         CommonModule,

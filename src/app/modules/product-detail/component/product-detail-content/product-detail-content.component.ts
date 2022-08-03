@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProductState} from "../../../../share/states/product/product.state";
 import {IohProduct} from "../../../../share/model/product/ioh-product";
@@ -8,40 +8,26 @@ import {IohProduct} from "../../../../share/model/product/ioh-product";
   templateUrl: './product-detail-content.component.html',
   styleUrls: ['./product-detail-content.component.scss']
 })
-export class ProductDetailContentComponent implements OnInit {
-  productId: string | null = '';
-  productItem: any;
+export class ProductDetailContentComponent implements OnInit, AfterViewInit{
+  @Input('productId') productId: string | null = '';
+  @Input('productItem') productItem: any;
+  @ViewChild('description', { read: ElementRef, static:false }) description: ElementRef;
+  seeMoreDescriptionStatus = false;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private productState: ProductState) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getIdFormParams();
-    this.listenState();
     this.slideImage();
   }
-  listenState(): void{
-    if(this.productId){
-      this.productState.getProductById(parseInt(this.productId));
-    }
-    this.productState.$product.subscribe(res => this.listenProductDetail())
-  }
-
-  getIdFormParams(): void{
-    this.activatedRoute.paramMap.subscribe(params => {
-      this.productId = params.get('id');
-      console.log(this.productId);
-    });
-  }
-
-  listenProductDetail(): void{
-    const product = this.productState.getProduct();
-    if(product){
-      this.productItem = product;
-      console.log(this.productItem);
-      console.log(this.productItem.productName);
+  ngAfterViewInit(): void {
+    this.productItem && console.log(this.description.nativeElement);
+    if(this.productItem && this.description.nativeElement.height > 500){
+      this.seeMoreDescriptionStatus = true;
+    }else{
+      this.seeMoreDescriptionStatus = false;
     }
   }
+
   slideImage(): void{
     let thumbnails = document.getElementsByClassName('thumbnail')
     let activeImages = document.getElementsByClassName('active')

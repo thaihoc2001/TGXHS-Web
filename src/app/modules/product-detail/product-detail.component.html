@@ -1,8 +1,22 @@
 <div class="container">
   <div class="mt-5">
     <app-breadcrumb></app-breadcrumb>
-    <img src="assets/image/Line%204.png" width="100%">
   </div>
-  <app-product-detail-content></app-product-detail-content>
-  <app-product-detail-by-category class="mt-5"></app-product-detail-by-category>
+  <div class="row">
+    <div class="col-9">
+      <app-product-detail-content
+        [productId]="productId"
+        [productItem]="productItem"
+      ></app-product-detail-content>
+    </div>
+    <div class="col-3">
+      <app-product-detail-right-side-bar
+        [productItem]="productItem"
+      ></app-product-detail-right-side-bar>
+    </div>
+  </div>
+  <app-product-detail-by-category
+    class="mt-5"
+    [listProductByCategory]="listProductByCategory"
+  ></app-product-detail-by-category>
 </div>

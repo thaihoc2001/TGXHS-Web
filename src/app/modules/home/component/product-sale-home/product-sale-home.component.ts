@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
 import {ProductState} from "../../../../share/states/product/product.state";
 import {IohProduct} from "../../../../share/model/product/ioh-product";
@@ -9,23 +9,34 @@ import {ActivatedRoute} from "@angular/router";
   templateUrl: './product-sale-home.component.html',
   styleUrls: ['./product-sale-home.component.scss'],
 })
-export class ProductSaleHomeComponent implements OnInit {
+export class ProductSaleHomeComponent implements OnInit, AfterViewInit{
   listProductSale: IohProduct[] = [];
-  constructor(private productState: ProductState) { }
+  loaderStatus = false;
+  @ViewChild('productSaleElement', { read: ElementRef, static:false }) productSaleElement: ElementRef;
+  constructor(private productState: ProductState) {
+
+  }
+  ngAfterViewInit(): void {
+    this.productSaleElement.nativeElement.classList.add('heightAfter');
+  }
 
   ngOnInit(): void {
     this.listenState();
   }
   listenState(): void{
+
     this.productState.$listProduct.subscribe(res => this.changeListProduct())
   }
   changeListProduct(): void{
     const listProduct = this.productState.getListProductSubject();
     if(listProduct){
-      console.log(listProduct);
       this.listProductSale = listProduct.filter(res => {
         return res;
       });
+      if(this.listProductSale.length > 0){
+        this.loaderStatus = true;
+        this.productSaleElement.nativeElement.classList.remove('heightAfter');
+      }
     }
   }
   customOptions: OwlOptions = {

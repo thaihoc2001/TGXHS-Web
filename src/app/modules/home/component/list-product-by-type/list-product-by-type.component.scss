@@ -1,3 +1,7 @@
 .title-product-type{
     color: var(--main-color) !important;
 }
+.list-product-and-type, .list-product-by-type{
+    position: relative;
+    height: 20vh;
+}

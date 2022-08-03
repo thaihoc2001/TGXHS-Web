@@ -21,3 +21,32 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+.loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #CECECE;
+  box-shadow: 32px 0 #CECECE, -32px 0 #CECECE;
+  position: relative;
+  animation: flash 0.5s ease-out infinite alternate;
+}
+
+@keyframes flash {
+  0% {
+    background-color: #FFF2;
+    box-shadow: 32px 0 #FFF2, -32px 0 #CECECE;
+  }
+  50% {
+    background-color: #CECECE;
+    box-shadow: 32px 0 #FFF2, -32px 0 #FFF2;
+  }
+  100% {
+    background-color: #FFF2;
+    box-shadow: 32px 0 #CECECE, -32px 0 #FFF2;
+  }
+}
+
+.text-main-color{
+  color: var(--main-color);
+}

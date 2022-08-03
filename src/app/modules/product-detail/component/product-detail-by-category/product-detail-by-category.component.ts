@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
 import {ActivatedRoute} from "@angular/router";
 import {ProductState} from "../../../../share/states/product/product.state";
@@ -10,43 +10,18 @@ import {IohProduct} from "../../../../share/model/product/ioh-product";
   styleUrls: ['./product-detail-by-category.component.scss']
 })
 export class ProductDetailByCategoryComponent implements OnInit {
-  productId: string | null = '';
-  productItem: IohProduct;
-
-  constructor(private activatedRoute: ActivatedRoute,
-              private productState: ProductState) { }
+  @Input('listProductByCategory') listProductByCategory: IohProduct[] = [];
+  innerWidth: number = 0;
+  constructor() { }
 
   ngOnInit(): void {
-    this.listenState();
-    this.getIdFormParams();
-  }
-  listenState(): void{
-    if(this.productId){
-      this.productState.getProductById(parseInt(this.productId));
-    }
-    this.productState.$product.subscribe(res => this.listenProductDetail())
-  }
-
-  getIdFormParams(): void{
-    this.activatedRoute.paramMap.subscribe(params => {
-      this.productId = params.get('id');
-      console.log(this.productId);
-    });
-  }
-
-  listenProductDetail(): void{
-    const product = this.productState.getProduct();
-    if(product){
-      this.productItem = product;
-      console.log(this.productItem);
-      console.log(this.productItem.productName);
-    }
+    this.innerWidth = window.innerWidth
   }
 
   customOptions: OwlOptions = {
-    loop: true,
+    loop: false,
     mouseDrag: true,
-    autoWidth: true,
+    autoWidth: false,
     touchDrag: true,
     pullDrag: true,
     dots: false,
@@ -54,16 +29,16 @@ export class ProductDetailByCategoryComponent implements OnInit {
     navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
     responsive: {
       0: {
-        items: 1
+        items: 1.5
       },
       400: {
-        items: 3
+        items: 2
       },
       740: {
-        items: 4
+        items: 3
       },
       940: {
-        items: 5
+        items: 4
       }
     },
     nav: true

@@ -12,9 +12,7 @@ export class CardProductComponent implements OnInit {
   @Input('productCard') productChildren: IohProduct;
 
   constructor(private storageService: TokenStorageService,
-              private  notifyService: NotifyService) {
-    console.log(this.productChildren);
-  }
+              private  notifyService: NotifyService) {}
 
   ngOnInit(): void {
   }
@@ -24,15 +22,11 @@ export class CardProductComponent implements OnInit {
       product: product,
       quantity: 1
     }
-    console.log(this.storageService.getCartItem());
     // const listProduct = this.storageService.getCartItem() ? JSON.parse(this.storageService.getCartItem()) : [];
     const listProduct = this.storageService.getCartItem();
-    console.log(listProduct);
     const index = listProduct.findIndex((res: any) => res.product.productId === product.productId)
-    console.log(index);
     if (index === -1) {
       listProduct.push(data);
-      console.log(listProduct);
       this.storageService.addCart(listProduct);
       this.notifyService.success('Thêm sản phẩm vào giỏ hàng thành công')
     } else {
