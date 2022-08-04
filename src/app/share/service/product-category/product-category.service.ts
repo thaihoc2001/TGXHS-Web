@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ApiService} from "../_core/api.service";
-import {environment} from "../../../../environments/environment";
+import {environment} from "../../../../environments/environment.prod";
 import {apiPath} from "../../constance/api-path";
 import {IohProduct} from "../../model/product/ioh-product";
 import {Observable} from "rxjs";

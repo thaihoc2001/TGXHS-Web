@@ -1,14 +1,8 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 import {catchError, finalize, first, tap} from 'rxjs/operators';
-import {environment} from '../../../../environments/environment';
 import {ProductService} from "../../service/product/product.service";
-import {ProductCategoryService} from "../../service/product-category/product-category.service";
-import {ProductTypeService} from "../../service/product-type/product-type.service";
-import {IohProductCategoryModel} from "../../model/categories/ioh-product-category.model";
-import {IohProductTypeModel} from "../../model/product-type/ioh-product-type.model";
 import {IohProduct} from "../../model/product/ioh-product";
-import {Parser} from "@angular/compiler";
 import {IohProductDetail} from "../../model/product-detail/ioh-product-detail";
 import {ProductDetailService} from "../../service/product-detail/product-detail.service";
 

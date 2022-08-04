@@ -3,7 +3,7 @@ import {ApiService} from "../_core/api.service";
 import {Observable} from "rxjs";
 import {Token} from "../../model/token/token";
 import {apiPath} from "../../constance/api-path";
-import {environment} from "../../../../environments/environment";
+import {environment} from "../../../../environments/environment.prod";
 import {HttpResponse} from "@angular/common/http";
 import {map} from "rxjs/operators";
 

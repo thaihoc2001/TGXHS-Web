@@ -1,7 +1,7 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 import {catchError, finalize, first, tap} from 'rxjs/operators';
-import {environment} from '../../../../environments/environment';
+import {environment} from '../../../../environments/environment.prod';
 import {ProductService} from "../../service/product/product.service";
 import {ProductCategoryService} from "../../service/product-category/product-category.service";
 import {ProductTypeService} from "../../service/product-type/product-type.service";

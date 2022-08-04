@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../../environments/environment";
+import {environment} from "../../../../environments/environment.prod";
 import {apiPath} from "../../constance/api-path";
 import {ApiService} from "../_core/api.service";
 import {IohProductTypeModel} from "../../model/product-type/ioh-product-type.model";
