@@ -30,21 +30,16 @@ export class OrderComponent implements OnInit {
   listenState(): void {
     // this.ordersState.order$.subscribe(res => this.orderChange())
     this.order = this.storageService.getUser();
-    console.log(this.order);
   }
 
   private orderChange(): void {
     const order = this.ordersState.getOrder();
-    console.log(order);
     if (order) {
       this.order = order;
-      console.log(this.order);
-      console.log(this.order.lastName);
     }
   }
 
   submit() {
-    console.log(this.order);
     const order = new IohOrder();
     this.createOrder(order);
   }
@@ -65,18 +60,16 @@ export class OrderComponent implements OnInit {
         this.router.navigate(['/cart/order-complete']);
         this.notifyService.success("Thanh toán hóa đơn thành công");
         this.storageService.clearOrder();
-        console.log(res);
         },
         error => {
           this.notifyService.error("Thanh toán hóa đơn thất bại");
-          console.log(error);
         }
       )
   }
 
   getItemCart(): void {
     this.listItemCart = this.storageService.getCartItem();
-    console.log(this.listItemCart);
+    this.listItemCart.reverse()
   }
 
   sumTotal(): void {

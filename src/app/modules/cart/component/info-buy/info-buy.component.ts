@@ -39,7 +39,7 @@ export class InfoBuyComponent implements OnInit {
 
   getItemCart(): void {
     this.listItemCart = this.storageService.getCartItem();
-    console.log(this.listItemCart);
+    this.listItemCart.reverse()
   }
 
   initForm(): void {
@@ -89,10 +89,7 @@ export class InfoBuyComponent implements OnInit {
         quantity: res.quantity
       }
       listProduct.push(data);
-      console.log(productOrder);
-      console.log(listProduct);
     })
-    console.log(listProduct);
     order.firstName = this.infoCustomerForm.get('firstName').value;
     order.lastName = this.infoCustomerForm.get('lastName').value;
     order.phone = this.infoCustomerForm.get('phone').value;
@@ -104,11 +101,8 @@ export class InfoBuyComponent implements OnInit {
     order.total = this.total;
     order.listProduct = listProduct;
     if(order){
-      console.log(order);
       this.storageService.addUser(order);
     }
-
-
   }
 
   clickPayOption(): void{

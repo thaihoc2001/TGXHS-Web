@@ -17,13 +17,11 @@ export class CartDetailComponent implements OnInit {
   }
   getItemCart(): void{
     this.listItemCart = this.storageService.getCartItem();
-    console.log(this.listItemCart);
+    this.listItemCart && this.listItemCart.reverse();
   }
 
   removeItemCart(item: any): void {
-    console.log(item.product.productId);
     const index = this.listItemCart.findIndex((res:any) => res.product.productId === item.product.productId);
-    console.log(index);
     this.listItemCart.splice(index, 1);
     this.storageService.addCart(this.listItemCart);
   }

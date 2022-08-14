@@ -6,7 +6,8 @@ import {AuthGuard} from "./share/guard/auth.guard";
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/layout/layout.module').then(m => m.LayoutModule)
+    loadChildren: () => import('./pages/layout/layout.module').then(m => m.LayoutModule),
+    data: {breadcrumb:  'Home'},
   },
   {
     path: 'admin',

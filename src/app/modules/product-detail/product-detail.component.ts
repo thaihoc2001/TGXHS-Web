@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProductState} from "../../share/states/product/product.state";
 import {IohProduct} from "../../share/model/product/ioh-product";
+import {BreadcrumbService} from "xng-breadcrumb";
 
 @Component({
   selector: 'app-product-detail',
@@ -13,7 +14,8 @@ export class ProductDetailComponent implements OnInit {
   productItem: any;
   listProductByCategory: IohProduct[] = [];
   constructor(private activatedRoute: ActivatedRoute,
-              private productState: ProductState) { }
+              private productState: ProductState,
+              private breadcrumbService: BreadcrumbService,) { }
 
   ngOnInit(): void {
     this.getIdFormParams();
@@ -45,6 +47,10 @@ export class ProductDetailComponent implements OnInit {
     if(product){
       this.productItem = product;
       this.productItem && this.productState.getProductByCategory(this.productItem.categoryId, 0);
+      console.log('this.productItem.productName', this.productItem.productName);
+      this.breadcrumbService.breadcrumbs$.subscribe(res => console.log(res));
+      this.breadcrumbService.set('product', 'this.productItem.productName');
+      this.breadcrumbService.set('product/:id', this.productItem.productName);
     }
   }
 }

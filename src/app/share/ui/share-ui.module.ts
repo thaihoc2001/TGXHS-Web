@@ -20,6 +20,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import {TreeviewModule} from "ngx-treeview";
 import {RouterModule} from "@angular/router";
 import { SubMenuComponent } from './sub-menu/sub-menu.component';
+import {BreadcrumbModule} from "xng-breadcrumb";
 
 
 
@@ -45,19 +46,20 @@ import { SubMenuComponent } from './sub-menu/sub-menu.component';
     BreadcrumbComponent,
     SubMenuComponent,
   ],
-    imports: [
-        CommonModule,
-        MatFormFieldModule,
-        MatIconModule,
-        FormsModule,
-        MatInputModule,
-        CollapseModule.forRoot(),
-        MatExpansionModule,
-        MatTreeModule,
-        MatButtonModule,
-        TreeviewModule,
-        RouterModule
-    ],
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    FormsModule,
+    MatInputModule,
+    CollapseModule.forRoot(),
+    MatExpansionModule,
+    MatTreeModule,
+    MatButtonModule,
+    TreeviewModule,
+    RouterModule,
+    BreadcrumbModule
+  ],
   providers: [
     ProductTypeState
   ]

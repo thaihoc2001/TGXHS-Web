@@ -1,7 +1,4 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb m-0">
-    <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Home</a></li>
-    <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Library</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
-  </ol>
-</nav>
+<xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+<ng-template #iconTemplate>
+  <mat-icon>chevron_right</mat-icon>
+</ng-template>

@@ -79,7 +79,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let item of listItemCart.reverse()">
+              <tr *ngFor="let item of listItemCart">
                 <th scope="row" class="border-0 p-0">
                   <div class="p-2 d-lg-flex" >
                     <div class="ms-md-3 d-inline-block align-middle">
@@ -118,8 +118,8 @@
               </div>
             </form>
             <div class="mt-4 d-flex">
-              <a routerLink="/cart/cart-detail" class="btn btn-danger px-3 py-2">Quay lại giỏ hàng</a>
-              <a routerLink="/cart/order" class="btn-pay ms-2 px-3 py-2 text-decoration-none" (click)="payment()">Thanh toán</a>
+              <button routerLink="/cart/cart-detail" class="btn btn-danger px-3 py-2">Quay lại giỏ hàng</button>
+              <button routerLink="/cart/order" class="btn-pay ms-2 px-3 py-2 text-decoration-none" (click)="payment()">Thanh toán</button>
             </div>
             <div class="mt-4">
               <p>Dữ liệu cá nhân của bạn sẽ được sử dụng để xử lý đơn đặt hàng của bạn,
