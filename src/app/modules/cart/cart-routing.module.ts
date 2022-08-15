@@ -18,19 +18,23 @@ const routes: Routes = [
       },
       {
         path: 'cart-detail',
-        component: CartDetailComponent
+        component: CartDetailComponent,
+        data: {breadcrumb: 'Cart detail'}
       },
       {
         path: 'info-buy',
-        component: InfoBuyComponent
+        component: InfoBuyComponent,
+        data: {breadcrumb: 'Info buy'}
       },
       {
         path: 'order',
-        component: OrderComponent
+        component: OrderComponent,
+        data: {breadcrumb: 'Order'}
       },
       {
         path: 'order-complete',
-        component: OrderCompleteComponent
+        component: OrderCompleteComponent,
+        data: {breadcrumb: 'Order Complete'}
       }
     ]
   }

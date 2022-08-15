@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
 import {ActivatedRoute} from "@angular/router";
-import {ProductState} from "../../../../share/states/product/product.state";
-import {IohProduct} from "../../../../share/model/product/ioh-product";
+import {IohProduct} from "../../../../../share/model/product/ioh-product";
+
 
 @Component({
   selector: 'app-product-detail-by-category',

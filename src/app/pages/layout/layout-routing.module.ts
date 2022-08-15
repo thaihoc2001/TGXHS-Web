@@ -15,38 +15,30 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () => import('../../modules/home/home.module').then(m => m.HomeModule),
-        data: {breadcrumb: 'Product'},
-      },
-      {
-        path: 'product/:id',
-        loadChildren: () => import('../../modules/product-detail/product-detail.module').then(m => m.ProductDetailModule),
-        data: {breadcrumb: {disable: true}}
       },
       {
         path: 'product',
-        loadChildren: () => import('../../modules/product/product.module').then(m => m.ProductModule),
+        loadChildren: () => import('../../modules/products/products.module').then(m => m.ProductsModule),
         data: {breadcrumb: 'Product'},
       },
-      {
-        path: 'product/category/:categoryId',
-        loadChildren: () => import('../../modules/product/product.module').then(m => m.ProductModule),
-        data: {
-          breadcrumb: 'Category'
-        }
-      },
-      {
-        path: 'product/type/:typeId',
-        loadChildren: () => import('../../modules/product/product.module').then(m => m.ProductModule),
-        data: {
-          breadcrumb: 'Product type',
-        }
-      },
+      // {
+      //   path: 'product/category/:categoryId',
+      //   loadChildren: () => import('../../modules/product/product.module').then(m => m.ProductModule),
+      //   data: {
+      //     breadcrumb: 'Category'
+      //   }
+      // },
+      // {
+      //   path: 'product/type/:typeId',
+      //   loadChildren: () => import('../../modules/product/product.module').then(m => m.ProductModule),
+      //   data: {
+      //     breadcrumb: 'Product type',
+      //   }
+      // },
       {
         path: 'cart',
         loadChildren: () => import('../../modules/cart/cart.module').then(m => m.CartModule),
-        data: {
-          breadcrumb: {alias: 'Cart'}
-        }
+        data: {breadcrumb: 'Cart'}
       }
     ]
   }

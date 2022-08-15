@@ -1,7 +1,5 @@
 import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ProductState} from "../../../../share/states/product/product.state";
-import {IohProduct} from "../../../../share/model/product/ioh-product";
 
 @Component({
   selector: 'app-product-detail-content',

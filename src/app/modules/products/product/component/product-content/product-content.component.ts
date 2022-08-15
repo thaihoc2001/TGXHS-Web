@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductState} from "../../../../share/states/product/product.state";
-import {IohProduct} from "../../../../share/model/product/ioh-product";
 import {tap} from 'rxjs/operators';
 import {ActivatedRoute} from "@angular/router";
+import {IohProduct} from "../../../../../share/model/product/ioh-product";
+import {ProductState} from "../../../../../share/states/product/product.state";
 
 @Component({
   selector: 'app-product-content',
